@@ -11,8 +11,6 @@ import Introspect
 import CodeScanner
 
 struct HomeView: View {
-    
-    
     @ObservedObject var login = Login()
     @ObservedObject var loginVM = LoginViewModel()
     @Binding var currentBtnEm: BtnEm
@@ -145,8 +143,8 @@ struct HomeView: View {
     var btnScan:some View{
         HStack{
             Button(action: {
-                self.showScannerScan = true
-                self.action = 2
+                //self.showScannerScan = true
+                //self.action = 2
                
             }){
                 HStack{
@@ -161,7 +159,7 @@ struct HomeView: View {
                 
             }
             //.background(Color.blue.opacity(0.5))
-            .sheet(isPresented: self.$showScannerTransporte) {
+           /* .sheet(isPresented: self.$showScannerScan) {
                 CodeScannerView(codeTypes: [.qr]){ result in
                     switch result {
                     case .success(let codigo):
@@ -172,7 +170,7 @@ struct HomeView: View {
                             self.montoQR = String(self.resultado.dropFirst(24))
                             print("el monto \(self.montoQR)")
                             self.qrPaymentVM.userAfiliacion(id_afiliado: self.idconmonto)
-                            self.showScannerTransporte = false
+                            self.showScannerScan = false
                         }else{
                             print("no tiene monto")
                             self.qrPaymentVM.userAfiliacion(id_afiliado: self.resultado)
@@ -192,11 +190,11 @@ struct HomeView: View {
                     }
                   
                 }
-            }
+            }*/
           
-            NavigationLink(destination: PayView(User: self.userDataVM.userResponsePago, montoQR: self.$montoQR), isActive: self.$userDataVM.nextPayview) {
+           /* NavigationLink(destination: PayView(User: self.userDataVM.userResponsePago, montoQR: self.$montoQR), isActive: self.$userDataVM.nextPayview) {
                 EmptyView()
-            }
+            }*/
         }
     }
     
@@ -244,7 +242,7 @@ struct HomeView: View {
     var home:some View{
         ScrollView{
             HStack(spacing:10){
-                //self.btnScan
+                self.btnScan
                 self.btnPay
                 self.btnIngresar
                 }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
@@ -270,21 +268,6 @@ struct HomeView: View {
                         Spacer()
                             .frame(maxWidth:.infinity)
                 }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-                //pruebas
-                HStack{
-                    if self.userDataVM.isloading == true || self.qrPaymentVM.isloading == true{
-                        Loader()
-                    }
-                    Button(action: {
-                        self.action = 3
-                    }){
-                        //Text("Aceptar")
-                    }
-                    //NavigationLink(destination: testView(), tag: 3, selection: self.$action) {
-                    //    EmptyView()
-                   // }
-                   // Text(self.resultado)
-                }
             
             }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
   
@@ -303,9 +286,9 @@ struct HomeView: View {
         HStack{
             self.home
         }
-        .alert(isPresented:  self.$qrPaymentVM.alertNoAfiliado){
+        /*.alert(isPresented:  self.$qrPaymentVM.alertNoAfiliado){
             self.alerts
-        }
+        }*/
         }
     
 }
@@ -316,14 +299,3 @@ struct HomeView_Previews: PreviewProvider {
             
     }
 }
-//retorno de cambio de variables ViewModel
-/*  .onReceive(self.qrPaymentVM.$noafiliado) {
-      if $0 == nil{
-          self.alertState = true
-      }
-  }
-  .onReceive(self.qrPaymentVM.$enespera) {
-      if $0 == "false"{
-          self.alertState = true
-      }
-  }*/

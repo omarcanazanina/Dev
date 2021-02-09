@@ -27,8 +27,8 @@ struct MembershipView: View {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColorPrimary()
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColorPrimary()], for: .normal)
-        self.userDataVM.DatosUser()
-        self.afiliacionVM.verifiAffiliate(id_cobrador: self.userDataVM.user._id)
+       // self.userDataVM.DatosUser()
+       // self.afiliacionVM.verifiAffiliate(id_cobrador: self.userDataVM.user._id)
     }
     
     func generarQR(text: String) -> UIImage{

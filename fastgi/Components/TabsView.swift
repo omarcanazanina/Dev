@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct TabsView: View {
-    //test new navegation
-    @State var selected: MenuItem = .TEST
     @State private var selectedTab = 0
     @Binding var currentBtnEm: BtnEm
     //header
@@ -40,23 +38,17 @@ struct TabsView: View {
                         Image(systemName: self.selectedTab == 1 ? "chart.bar.fill" : "chart.bar")
                         Text("Historial")
                     }.tag(1)
-                MembershipView()
+                /*MembershipView()
                     .tabItem {
                         Image(self.selectedTab == 2 ? "handshakes.fill" : "handshakes")
                         //Image("handshakes")
                         Text("Afiliarse")
-                    }.tag(2)
+                    }.tag(2)*/
                 SettingsView()
                     .tabItem {
                         Image(systemName: self.selectedTab == 3 ? "person.circle.fill" : "person.circle")
                         Text("Ajustes")
                     }.tag(3)
-                /*TestView(selectedMenuItem: $selected, logo: "", isSelect: true)
-                    .navigationViewStyle(StackNavigationViewStyle())
-                    .tabItem {
-                        Image(systemName: self.selectedTab == 3  ? "person.circle.fill" : "person.circle")
-                        Text("test")
-                    }.tag(MenuItem.TEST)*/
             }
             .accentColor(Color("primary"))
             .navigationBarTitle(self.titulo(), displayMode: .inline)
@@ -71,11 +63,7 @@ struct TabsView: View {
     
 }
 
-enum MenuItem: Int, Codable {
-    case HOME
-    case TEST
 
-}
 
 
 struct TabsView_Previews: PreviewProvider {
