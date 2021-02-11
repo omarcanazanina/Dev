@@ -889,7 +889,7 @@
 				DEVELOPMENT_TEAM = 8434L4CAU2;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = fastgi/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -914,7 +914,7 @@
 				DEVELOPMENT_TEAM = 8434L4CAU2;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = fastgi/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
