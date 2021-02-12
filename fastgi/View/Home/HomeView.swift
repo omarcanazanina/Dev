@@ -17,26 +17,26 @@ struct HomeView: View {
     @ObservedObject var loginVM = LoginViewModel()
     @Binding var currentBtnEm: BtnEm
     //pagoQR
-    @ObservedObject var qrPayment = QrPayment()
-    @ObservedObject var qrPaymentVM = QrPaymentViewModel()
+   // @ObservedObject var qrPayment = QrPayment()
+   // @ObservedObject var qrPaymentVM = QrPaymentViewModel()
     @ObservedObject var userData = UserData()
     @ObservedObject var userDataVM = UserDataViewModel()
     @ObservedObject var contactsVM = ContactsViewModel()
     //lector qr
-    @State private var showScannerTeleferico = false
+    /*@State private var showScannerTeleferico = false
     @State private var showScannerTransporte = false
     @State private var showScannerScan = false
     @State private var resultado = ""
     @State private var resultadosScan = ""
     //lector con monto
     @State private var idconmonto = ""
-    @State private var montoQR = ""
+    @State private var montoQR = ""*/
     
     @State private var action:Int? = 0
    // @State private var dataUserLog = UpdateUserModel(role: "", estado: true, _id: "", telefono: "", pin: "", fecha: "", apellidos: "", correo: "", direccion: "", nit: "", nombrenit: "", nombres: "", ci: "")
     //alert
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @State var alertState: Bool = false
+   /* @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @State var alertState: Bool = false*/
     
     init(currentBtnEm: Binding<BtnEm>) {
         self._currentBtnEm = currentBtnEm
@@ -45,10 +45,10 @@ struct HomeView: View {
         appearance.shadowColor = .clear
         UINavigationBar.appearance().standardAppearance = appearance
         self.contactsVM.getContacts()
-        self.userDataVM.DatosUser()
+       // self.userDataVM.DatosUser()
     }
     
-    var btnTeleferic:some View{
+    /*var btnTeleferic:some View{
         Button(action: {
             self.showScannerTeleferico = true
         }){
@@ -223,6 +223,7 @@ struct HomeView: View {
             }
         }
     }
+    */
     var home:some View{
         ScrollView{
             /*HStack(spacing:10){
@@ -263,22 +264,21 @@ struct HomeView: View {
   
         }
         .padding()
-        
     }
     
-    var alerts:Alert{
+   /* var alerts:Alert{
         Alert(title: Text("Fastgi"), message: Text("Usuario no afiliado."), dismissButton: .default(Text("Aceptar"), action: {
             self.presentationMode.wrappedValue.dismiss()
         }))
-    }
+    }*/
     
     var body: some View {
         HStack{
             self.home
         }
-        .alert(isPresented:  self.$qrPaymentVM.alertNoAfiliado){
+        /*.alert(isPresented:  self.$qrPaymentVM.alertNoAfiliado){
             self.alerts
-        }
+        }*/
         }
     
 }

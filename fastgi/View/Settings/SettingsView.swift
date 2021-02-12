@@ -222,7 +222,7 @@ struct SettingsView: View {
     //imagen
     // @ObservedObject var image = ImageAvatar()
     @ObservedObject var imageVM = ImageViewModel()
-    @ObservedObject var afiliacionVM = AfiliacionViewModel()
+   // @ObservedObject var afiliacionVM = AfiliacionViewModel()
     //test
     // @State private var image : UIImage? = nil
     //back
@@ -240,7 +240,7 @@ struct SettingsView: View {
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColorPrimary()], for: .normal)
         self.userDataVM.DatosUser()
-        self.afiliacionVM.verifiAffiliate(id_cobrador: self.userDataVM.user._id)
+      //  self.afiliacionVM.verifiAffiliate(id_cobrador: self.userDataVM.user._id)
     }
     
 
@@ -407,7 +407,7 @@ struct SettingsView: View {
                                 .frame(maxWidth:.infinity, alignment: .trailing)
                         }
                     }
-                    if self.afiliacionVM.afiliacionHabilitacion._id == "" {
+                   /* if self.afiliacionVM.afiliacionHabilitacion._id == "" {
                         
                     }else if self.afiliacionVM.afiliacionHabilitacion.habilitado == true{
                         NavigationLink(destination: QrGeneratorView(dataUserlog: self.userDataVM.user, monto: "")) {
@@ -420,7 +420,7 @@ struct SettingsView: View {
                                     .frame(maxWidth:.infinity, alignment: .trailing)
                             }
                         }
-                    }
+                    }*/
                   
                 }
             }

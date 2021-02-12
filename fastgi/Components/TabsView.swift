@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct TabsView: View {
-    //test new navegation
-    @State var selected: MenuItem = .TEST
     @State private var selectedTab = 0
     @Binding var currentBtnEm: BtnEm
     //header
@@ -40,12 +38,12 @@ struct TabsView: View {
                         Image(systemName: self.selectedTab == 1 ? "chart.bar.fill" : "chart.bar")
                         Text("Historial")
                     }.tag(1)
-                MembershipView()
+               /* MembershipView()
                     .tabItem {
                         Image(self.selectedTab == 2 ? "handshakes.fill" : "handshakes")
                         //Image("handshakes")
                         Text("Afiliarse")
-                    }.tag(2)
+                    }.tag(2)*/
                 SettingsView()
                     .tabItem {
                         Image(systemName: self.selectedTab == 3 ? "person.circle.fill" : "person.circle")
@@ -69,12 +67,6 @@ struct TabsView: View {
         }.navigationViewStyle(StackNavigationViewStyle())
     }
     
-}
-
-enum MenuItem: Int, Codable {
-    case HOME
-    case TEST
-
 }
 
 
@@ -139,38 +131,3 @@ extension TabsView{
 }
 
 
-/*
-
- **/
-/**
- NavigationView{
-     TabView(selection: $selected) {
-         NewHomeView(selectedMenuItem: $selected)
-             .navigationViewStyle(StackNavigationViewStyle())
-             .tabItem {
-                 Image(self.selected == MenuItem.HOME ? "home.fill" : "home")
-                 Text("Inicio \(self.userDataVM.user.nombres)")
-             }.tag(MenuItem.HOME)
-             
-    
-         TestView(selectedMenuItem: $selected, logo: "", isSelect: true)
-             .navigationViewStyle(StackNavigationViewStyle())
-             .tabItem {
-                 Image(systemName: self.selected == MenuItem.TEST   ? "person.circle.fill" : "person.circle")
-                 Text("test\(self.userDataVM.user.nombres)")
-             }.tag(MenuItem.TEST)
-     }
-     .accentColor(Color("primary"))
-     .navigationBarTitle(self.titulo(), displayMode: .inline)
-      /*.navigationBarItems(
-        leading:
-             self.headerIzquierda(),
-          trailing:
-             self.headerDerecha()
-      )*/
- }
- /*.onChange(of: selected) { newValue in
-     self.userDataVM.DatosUser()
-     print(newValue)
- }*///.navigationViewStyle(StackNavigationViewStyle())
- */
