@@ -225,11 +225,11 @@ struct HomeView: View {
     }
     var home:some View{
         ScrollView{
-            HStack(spacing:10){
+            /*HStack(spacing:10){
                 self.btnScan
                 self.btnPay
                 self.btnIngresar
-                }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)*/
             VStack{
                 Text("Recarga de línea pre pago")
                     .font(.caption)
@@ -241,7 +241,7 @@ struct HomeView: View {
                     CardServiceHomeView(contContacts: self.contactsVM.listContacts.count, logo: "Tigo", isSelect: false, currentBtnEm: self.$currentBtnEm, btn: .Tigo)
                 }
             }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-            VStack{
+            /*VStack{
                 Text("Transportes")
                     .font(.caption)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
@@ -257,18 +257,9 @@ struct HomeView: View {
                     if self.userDataVM.isloading == true || self.qrPaymentVM.isloading == true{
                         Loader()
                     }
-                    Button(action: {
-                        self.action = 3
-                    }){
-                        //Text("Aceptar")
-                    }
-                    //NavigationLink(destination: testView(), tag: 3, selection: self.$action) {
-                    //    EmptyView()
-                   // }
-                   // Text(self.resultadosScan)
                 }
             
-            }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+            }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)*/
   
         }
         .padding()
