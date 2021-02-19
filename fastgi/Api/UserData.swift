@@ -17,6 +17,7 @@ class UserData: ObservableObject {
     
     private let tokenKey = "token"
     private let idKey = "usuario._id"
+   // private let nombrekey = "usuario.nombres"
     //datauser
    // @Published var userResponse:UpdateUserModel?
     @Published var user:UpdateUserModel?
@@ -29,6 +30,9 @@ class UserData: ObservableObject {
     
     //loading
     @Published var isloading = false
+    //test
+    @Published var testid :String = ""
+    
     func DataUser(){
         // creando headers
         var headers: HTTPHeaders = [
@@ -43,6 +47,7 @@ class UserData: ObservableObject {
         }
         else {
             let idusu = storage.string(forKey: idKey)!
+            //let nombreusu = storage.string(forKey: nombrekey)
             guard let url = URL(string: "https://api2.fastgi.com/usuario/\(idusu)") else { return }
             DispatchQueue.main.async {
                 AF.request(url,method:.get,headers: headers )
@@ -54,6 +59,8 @@ class UserData: ObservableObject {
                             //Cast respuesta a MeResponce
                             if let decodedResponse = try? JSONDecoder().decode(DataUserResponse.self, from: data) {
                                 print(decodedResponse.usuario)
+                                self.testid = idusu
+                                //print("nombre del storage \(nombreusu)")
                                 self.user=decodedResponse.usuario
                                 return
                             }

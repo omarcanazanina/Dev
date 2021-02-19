@@ -232,7 +232,7 @@ struct HomeView: View {
                 self.btnIngresar
                 }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)*/
             VStack{
-                Text("Recarga de línea pre pago")
+                Text("Recarga de línea pre pago \(self.userDataVM.testid)")
                     .font(.caption)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                     .padding(.vertical,10)
@@ -275,7 +275,15 @@ struct HomeView: View {
     var body: some View {
         HStack{
             self.home
+            /*VStack{
+                Button(action: {
+                    print("llego esto\(self.userDataVM.testid)")
+                }){
+                    Text("test")
+                }
+            }*/
         }
+        
         /*.alert(isPresented:  self.$qrPaymentVM.alertNoAfiliado){
             self.alerts
         }*/

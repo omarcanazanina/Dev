@@ -26,6 +26,18 @@ class UserDataViewModel: ObservableObject {
     //load de espera
     //@Published var enEsperaQR : String = ""
     @Published var isloading: Bool = false
+   //test storage
+    @Published var testid :String = ""
+    
+    //recuperar usuario no en bd
+    private var testIdPublished: AnyPublisher<String, Never> {
+        userDataResponse.$testid
+            .receive(on: RunLoop.main)
+            .map { response in
+                return response
+        }
+        .eraseToAnyPublisher()
+    }
     
     private var DataUserPublisher: AnyPublisher<UpdateUserModel, Never> {
           userDataResponse.$user
@@ -88,6 +100,12 @@ class UserDataViewModel: ObservableObject {
     }
     
     init(){
+        
+        testIdPublished
+            .receive(on: RunLoop.main)
+            .assign(to: \.testid, on: self)
+            .store(in: &disposables)
+        
         //DataUser
           DataUserPublisher
               .receive(on: RunLoop.main)

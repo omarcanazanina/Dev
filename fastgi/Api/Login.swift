@@ -22,7 +22,7 @@ class Login: ObservableObject {
     @EnvironmentObject private var authState : AuthState
     private let tokenKey = "token"
     private let idKey = "usuario._id"
-    
+   
     //Storage
     private let storage = UserDefaults.standard
     //rutas
