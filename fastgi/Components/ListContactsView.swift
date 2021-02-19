@@ -91,20 +91,23 @@ struct ListContactsView: View {
                     //self.alert = true
                 }*/
               
-            }.pullToRefresh(isShowing: $isShowingReferesh) {
+            }
+            //empieza
+            /*.pullToRefresh(isShowing: $isShowingReferesh) {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     print("cargo")
                     self.contactsVM.updateContacts()
                     self.isShowingReferesh = false
-                }
+                }*/
+            //termina
               /* if self.contactsVM.isloading == true{
                             Loader()
                 }else if self.contactsVM.messageError != ""{
                     Text(self.contactsVM.messageError)
                         .foregroundColor(.red)
                     //self.alert = true
-                }*/
-            }
+                }
+            }*/
             
        
             .alert(item: $contactsVM1.permissionsError) {_ in
