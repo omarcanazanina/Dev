@@ -325,7 +325,7 @@ struct SettingsView: View {
                         HStack{
                             Text("NUMERO CELULAR")
                                 .textStyle(TitleStyle())
-                            Text(self.userDataVM.user.telefono)
+                            Text("+591 \(self.userDataVM.user.telefono)")
                                 .padding(.trailing)
                                 .frame(maxWidth:.infinity, alignment: .trailing)
                         }

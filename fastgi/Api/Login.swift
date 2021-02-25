@@ -31,6 +31,8 @@ class Login: ObservableObject {
     @Published var userResponse:UpdateUserModel?
     //pin
     @Published var smstext :String = ""
+    //test envio nro
+    @Published var nroTel :String = ""
     
     func loginDetail(telefono:String) {
         self.isloading = true
@@ -86,12 +88,14 @@ class Login: ObservableObject {
                     case let .success(data):
                         //Cast respuesta a LoginSmsResponse
                         if let decodedResponse = try? JSONDecoder().decode(LoginSmsResponse.self, from: data) {
-                            print(decodedResponse.usuario)
+                            //print(decodedResponse.usuario)
                             //sesion
                             self.storage.set(decodedResponse.token, forKey: self.tokenKey)
                             self.storage.set(decodedResponse.usuario._id, forKey: self.idKey)
                             SDWebImageDownloader.shared.setValue(decodedResponse.token, forHTTPHeaderField: "token")
-                            print(decodedResponse)
+                            print("confor code \(decodedResponse)")
+                            self.nroTel = decodedResponse.usuario.telefono
+                            print("desd el login \(self.nroTel)")
                             //
                             self.loginResponse = true
                             // self.authState.isAuth = true

@@ -34,7 +34,7 @@ struct WelcomeTermsAndConditionsView: View {
                 .font(.title2)
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)
-            Text("Una forma rápida y segura para hacer tus pagos.")
+            Text("Una forma rápida y segura para hacer tus recargas telefónicas.")
                 .multilineTextAlignment(.center)
             VStack{
                 Text("Pulsa en \"Aceptar y continuar\" para aceptar")

@@ -11,6 +11,10 @@ struct DataUserResponse : Codable {
     let usuario : UpdateUserModel
 }
 
+struct DataUserResponse1 : Codable {
+    let usuario : UserLogModel
+}
+
 struct ErrorDataUserResponse : Codable {
     var ok : Bool
     var err : ErrorUpdateUser

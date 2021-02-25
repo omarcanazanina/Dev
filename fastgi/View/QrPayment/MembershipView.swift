@@ -105,7 +105,7 @@ struct MembershipView: View {
                     }else if self.afiliacionVM.afiliacionHabilitacion.habilitado == true{
                         VStack{
                             self.imageProfile
-                            Text("\(self.userDataVM.user.nombres) \(self.userDataVM.user.apellidos)")
+                            Text("\(self.userDataVM.user.nombres ?? "") \(self.userDataVM.user.apellidos  ?? "")")
                                 .bold()
                             Image(uiImage: generarQR(text: self.userDataVM.user._id))
                                 .interpolation(.none)

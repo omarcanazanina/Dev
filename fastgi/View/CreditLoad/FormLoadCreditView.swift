@@ -9,7 +9,7 @@ import SwiftUI
 import Introspect
 
 struct FormLoadCreditView: View {
-    var contContacts : Int
+    var contContacts : Int 
     var empresa: String
     @State  var SelectEm :BtnEm
     @State private  var telefono = ""
@@ -29,6 +29,8 @@ struct FormLoadCreditView: View {
     //alert
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var alertState: Bool = false
+    //navegation
+    var navigationRoot = NavigationRoot()
     
     /*init(SelectEm: BtnEm, Empresa: String, MontoRecarga1: BtnCA, montorecarga: String) {
         self.SelectEm = SelectEm
@@ -49,7 +51,7 @@ struct FormLoadCreditView: View {
             VStack{
                 //campo para ingresar numero de contacto
                 HStack{
-                    TextField("Número de teléfono", text: $telefono)
+                    TextField("Número de teléfono \(self.contContacts)", text: $telefono)
                         .padding(.horizontal,12)
                         .padding(.vertical,8)
                         .keyboardType(.numberPad)
@@ -64,11 +66,16 @@ struct FormLoadCreditView: View {
                             textField.inputAccessoryView = toolBar
                          }
                     Button(action: {
+                        //if self.contactsVM.listContacts.count == 0{
                             if self.contContacts == 0{
                                 print("no hay contactos")
                                 print(self.contContacts)
-                                self.contacts.sendContacts()
+                                //self.contacts.sendContacts()
+                                self.contactsVM.importContacts()
                                 self.contactsVM.getContacts()
+                                self.navigationRoot.setRootView()
+                                //self.showingSheet.toggle()
+                            
                             }else{
                                 print("si hay contactos")
                                 print(self.contContacts)
@@ -79,6 +86,12 @@ struct FormLoadCreditView: View {
                         Image(systemName: "person.2")
                             .foregroundColor(Color("primary"))
                             .padding(12)
+                    }
+                    .onReceive(self.contactsVM.$controlContacts) { (contacts) in
+                        if contacts == true {
+                            print("entro onreceive e importo")
+                            self.contactsVM.getContacts()
+                        }
                     }
                     //ListcontactsView
                     .sheet(isPresented: $showingSheet) {
@@ -154,6 +167,7 @@ struct FormLoadCreditView: View {
             //self.presentationMode.wrappedValue.dismiss()
         }))
     }
+    
     
     var body: some View {
         VStack{

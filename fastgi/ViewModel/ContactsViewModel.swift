@@ -22,7 +22,7 @@ class ContactsViewModel: ObservableObject {
     @Published var messageError : String = ""
     //carga de la lista
    // @Published var listComplete: Bool = false
-    
+    @Published var controlContacts : Bool = false
     private var isListContactsPublisher: AnyPublisher<Bool, Never> {
         contactsResponse.$getContactsResponse
             .receive(on: RunLoop.main)
@@ -54,7 +54,15 @@ class ContactsViewModel: ObservableObject {
         }
         .eraseToAnyPublisher()
     }
-    
+    //importacion de contacts
+    private var ImportContactsPublished: AnyPublisher<Bool, Never> {
+        contactsResponse.$controlContacts
+            .receive(on: RunLoop.main)
+            .map { response in
+                return response
+        }
+        .eraseToAnyPublisher()
+    }
     
  
     
@@ -74,6 +82,11 @@ class ContactsViewModel: ObservableObject {
             .assign(to: \.messageError, on: self)
             .store(in: &disposables)
         
+        ImportContactsPublished
+            .receive(on: RunLoop.main)
+            .assign(to: \.controlContacts, on: self)
+            .store(in: &disposables)
+        
         //getContacts()
     }
     
@@ -87,6 +100,9 @@ class ContactsViewModel: ObservableObject {
     func updateContacts() {
         contactsResponse.updateContacts()
             
+    }
+    func importContacts() {
+        contactsResponse.sendContacts()
     }
     
 }

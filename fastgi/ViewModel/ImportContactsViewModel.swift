@@ -12,7 +12,7 @@ import Contacts
 final class ImportContactsViewModel: ObservableObject {
     @Published var contacts: [Contact] = []
     @Published var permissionsError : PermissionsError? = .none
-
+  
     
     init() {
         permissions()

@@ -55,10 +55,10 @@ struct HistoryView: View {
                     {
                         HStack(){
                             VStack(){
-                                Text(recarga.fecha)
+                               /* Text(recarga.fecha)
                                     .opacity(0.8)
                                     .font(.caption)
-                                    .frame(maxWidth:.infinity, alignment: .leading)
+                                    .frame(maxWidth:.infinity, alignment: .leading)*/
                                 Text("Tipo")// \(recarga.fecha)")
                                     .font(.caption)
                                     .frame(maxWidth:.infinity, alignment: .leading)
@@ -135,10 +135,17 @@ struct HistoryView: View {
                 }.pickerStyle(SegmentedPickerStyle())
                 .padding()
                 if(optionPicker==0){
-                    self.list
-                    NavigationLink(destination: TransactionDetailView(fecha: self.fecha, hora: self.hora, empresa: self.empresa, phone: self.phone, monto: self.monto, control: 0, fechaFormat: "", horaFormat: ""), tag: 1, selection: self.$action) {
-                        EmptyView()
+                    if self.RecargaVM.ListRecargas.count == 0 {
+                        self.list
+                        Text("No realizó ninguna recarga")
+                    }else{
+                        self.list
+                        NavigationLink(destination: TransactionDetailView(fecha: self.fecha, hora: self.hora, empresa: self.empresa, phone: self.phone, monto: self.monto, control: 0, fechaFormat: "", horaFormat: ""), tag: 1, selection: self.$action) {
+                            EmptyView()
+                        }
                     }
+                    
+                    
                 }
                 if(optionPicker==1){
                     //Text("list no realizadas")

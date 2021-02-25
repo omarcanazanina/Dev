@@ -117,7 +117,7 @@ struct ListContactsView: View {
     }
     
     var alerts:Alert{
-        Alert(title: Text("Fastgi"), message: Text("Actualización exitosa."), dismissButton: .default(Text("Aceptar"), action: {
+        Alert(title: Text("Fastgi"), message: Text("Se actualizó tu lista de contactos."), dismissButton: .default(Text("Aceptar"), action: {
           //  self.presentationMode.wrappedValue.dismiss()
         }))
     }

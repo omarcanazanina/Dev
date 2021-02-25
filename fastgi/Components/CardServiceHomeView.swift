@@ -13,6 +13,9 @@ struct CardServiceHomeView: View {
     @State var isSelect:Bool
     @ObservedObject var login = Login()
     @State private var  estado : Bool = false
+    //contacts
+    @ObservedObject var contactsVM = ContactsViewModel()
+    @ObservedObject var contacts = Contacts()
     //
     @Binding var currentBtnEm: BtnEm
     //navegation
@@ -24,8 +27,19 @@ struct CardServiceHomeView: View {
                 //self.login.ruta = "recargas"
                 self.currentBtnEm = self.btn
                 self.action = 1
-                print("este es el current desde el home\(self.currentBtnEm)")
-                print("este es el btn desde el home\(self.btn)")
+               // print("este es el current desde el home\(self.currentBtnEm)")
+                //print("este es el btn desde el home\(self.btn)")
+                //self.contactsVM.getContacts()
+               
+                /*print("desde el home \(self.contactsVM.listContacts.count)")
+                print("cont desde el home \(self.contContacts)")
+                //print("desde el home \(self.contContacts)")
+                if self.contContacts == 0 {
+                    //self.contacts.sendContacts()
+                    print("se importo los contctos")
+                }else if self.contContacts != 0{
+                    print("ya existe contactos")
+                }*/
             }) {
                 Image(logo)
                     .resizable()

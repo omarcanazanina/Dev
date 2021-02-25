@@ -25,6 +25,9 @@ class LoginViewModel: ObservableObject {
     @Published var statusResponce = false
     //sms porel momento
     //@Published var pin = Usuario(role: "", estado: true, _id: "", telefono: "", pin: "", fecha: "")
+    //test envio nro tel
+    @Published var nroTel :String = ""
+    
     var loginResponse=Login()
     
     private var disposables: Set<AnyCancellable> = []
@@ -54,6 +57,16 @@ class LoginViewModel: ObservableObject {
     
     private var isLoadingPublished: AnyPublisher<Bool, Never> {
         loginResponse.$isloading
+            .receive(on: RunLoop.main)
+            .map { response in
+                return response
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    //recuperar usuario no en bd
+    private var nroTelPublished: AnyPublisher<String, Never> {
+        loginResponse.$nroTel
             .receive(on: RunLoop.main)
             .map { response in
                 return response
@@ -110,6 +123,11 @@ class LoginViewModel: ObservableObject {
             .assign(to: \.smstext, on: self)
             .store(in: &disposables)
         
+        nroTelPublished
+            .receive(on: RunLoop.main)
+            .assign(to: \.nroTel, on: self)
+            .store(in: &disposables)
+        
     }
     
     func loginSms(telefono:String) {
@@ -118,6 +136,8 @@ class LoginViewModel: ObservableObject {
     
     func verificarCode(telefono:String,code:String) {
         loginResponse.confirmCode(telefono: telefono, pin: code)
+        self.nroTel = telefono
+        print("vcvm \(self.nroTel)")
     }
     
     //validation

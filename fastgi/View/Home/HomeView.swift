@@ -8,7 +8,7 @@
 import SwiftUI
 import Introspect
 //lectorqr
-import CodeScanner
+//import CodeScanner
 
 struct HomeView: View {
     
@@ -16,12 +16,14 @@ struct HomeView: View {
     @ObservedObject var login = Login()
     @ObservedObject var loginVM = LoginViewModel()
     @Binding var currentBtnEm: BtnEm
+    //var telefono: String
     //pagoQR
    // @ObservedObject var qrPayment = QrPayment()
    // @ObservedObject var qrPaymentVM = QrPaymentViewModel()
     @ObservedObject var userData = UserData()
     @ObservedObject var userDataVM = UserDataViewModel()
     @ObservedObject var contactsVM = ContactsViewModel()
+    @ObservedObject var contacts = Contacts()
     //lector qr
     /*@State private var showScannerTeleferico = false
     @State private var showScannerTransporte = false
@@ -33,6 +35,9 @@ struct HomeView: View {
     @State private var montoQR = ""*/
     
     @State private var action:Int? = 0
+    //test de recuperar nro recien intalado la app
+    //@ObservedObject var updateVM = UpdateUserViewModel()
+    
    // @State private var dataUserLog = UpdateUserModel(role: "", estado: true, _id: "", telefono: "", pin: "", fecha: "", apellidos: "", correo: "", direccion: "", nit: "", nombrenit: "", nombres: "", ci: "")
     //alert
    /* @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -40,12 +45,14 @@ struct HomeView: View {
     
     init(currentBtnEm: Binding<BtnEm>) {
         self._currentBtnEm = currentBtnEm
+       //self.telefono = Telefono
         //Config for NavigationBar Transparent
         let appearance = UINavigationBarAppearance()
         appearance.shadowColor = .clear
         UINavigationBar.appearance().standardAppearance = appearance
         self.contactsVM.getContacts()
-       // self.userDataVM.DatosUser()
+        /*self.updateVM.updateUser(ci: self.userDataVM.user.ci, correo: self.userDataVM.user.correo, nombres: self.userDataVM.user.nombres, apellidos: self.userDataVM.user.apellidos, direccion: self.userDataVM.user.direccion, nombrenit: self.userDataVM.user.nombrenit, nit: self.userDataVM.user.nit)*/
+        //self.userDataVM.DatosUser()
     }
     
     /*var btnTeleferic:some View{
@@ -232,7 +239,7 @@ struct HomeView: View {
                 self.btnIngresar
                 }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)*/
             VStack{
-                Text("Recarga de línea pre pago \(self.userDataVM.testid)")
+                Text("Recarga de línea pre pago \(self.userDataVM.user1tel)")//\(self.userDataVM.testid)\\self.contactsVM.listContacts.count
                     .font(.caption)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                     .padding(.vertical,10)
@@ -275,9 +282,10 @@ struct HomeView: View {
     var body: some View {
         HStack{
             self.home
+          
             /*VStack{
                 Button(action: {
-                    print("llego esto\(self.userDataVM.testid)")
+                    self.contacts.sendContacts()
                 }){
                     Text("test")
                 }

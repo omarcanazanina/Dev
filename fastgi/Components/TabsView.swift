@@ -14,7 +14,7 @@ struct TabsView: View {
     //@ObservedObject var loginVM = LoginViewModel()
     @State var menu : Bool = false
     @ObservedObject var userDataVM = UserDataViewModel()
-    
+    //test
     init(currentBtnEm: Binding<BtnEm>) {
         self._currentBtnEm = currentBtnEm
         //Config for NavigationBar Transparent
@@ -22,6 +22,9 @@ struct TabsView: View {
         appearance.shadowColor = .clear
         UINavigationBar.appearance().standardAppearance = appearance
         self.userDataVM.DatosUser()
+        //self.userDataVM.DatosUser1()
+       // print("init tabs \(self.userDataVM.user1tel)")
+        
     }
    
     var body: some View {
@@ -122,7 +125,12 @@ extension TabsView{
     func headerIzquierda() -> AnyView{
         if   self.selectedTab == 0 || self.selectedTab == 1 || self.selectedTab == 2 {//} || self.selectedTab == 3{
             //return AnyView(HeaderUserView(text: "\(self.userDataVM.user.nombres) \(self.userDataVM.user.apellidos)", _id :self.userDataVM.user._id))
-            return AnyView(HeaderUserView(text: "\(self.userDataVM.user.nombres) \(self.userDataVM.user.apellidos)", _id :self.userDataVM.user._id))
+            if self.userDataVM.user.nombres == ""{
+                return AnyView(HeaderUserView(text: "Nombre", _id :self.userDataVM.user._id))
+            }else{
+                return AnyView(HeaderUserView(text: "\(self.userDataVM.user.nombres) \(self.userDataVM.user.apellidos)", _id :self.userDataVM.user._id))
+            }
+          
         }
         return AnyView(EmptyView())
         

@@ -28,6 +28,8 @@ class Contacts: ObservableObject {
     //control de update
     @Published var isloading = false
     @Published var messageError :String = ""
+    //test
+    @Published var controlContacts : Bool = false
     func sendContacts(){
         // print(self.contactsVM.contacts)
         for i in self.contactsVM.contacts {
@@ -64,6 +66,10 @@ class Contacts: ObservableObject {
                             //Cast respuesta a SmsResponse
                             if let decodedResponse = try? JSONDecoder().decode(CreateContactsResponse.self, from: data) {
                                 print(decodedResponse)
+                                self.controlContacts = true
+                                //self.nrocontrol = 1
+                                //print("test \(self.nrocontrol)")
+                                //print("test\(decodedResponse.contacto.nombre.count)")
                                 //debugPrint(decodedResponse.contacto.telefono)
                                 
                                 return
@@ -83,7 +89,7 @@ class Contacts: ObservableObject {
             }
             
         }
-        //  print(self.listNewNumbers)
+        //  print(self.nrocontrol)
     }
     
     func ListContacts(){
