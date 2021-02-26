@@ -11,16 +11,21 @@ struct DataUserResponse : Codable {
     let usuario : UpdateUserModel
 }
 
-struct DataUserResponse1 : Codable {
+struct UserResponse : Codable {
+    let usuario : UserModel
+}
+
+/*struct DataUserResponse1 : Codable {
     let usuario : UserLogModel
+}*/
+
+
+struct DataUserPagoResponse : Codable {
+    var ok: Bool
+    var usuario : UpdateUserPagoModel
 }
 
 struct ErrorDataUserResponse : Codable {
     var ok : Bool
     var err : ErrorUpdateUser
-}
-
-struct DataUserPagoResponse : Codable {
-    var ok: Bool
-    var usuario : UpdateUserPagoModel
 }

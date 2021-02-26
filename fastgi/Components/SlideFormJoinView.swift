@@ -65,8 +65,8 @@ struct SlideFormJoinView: View {
                     .textStyle(TitleStyle())
                 Text("TITULAR")
                     .textStyle(TitleStyle())
-                TextField("Titular", text: self.$userDataVM.user.nombres)
-                    .textFieldStyle(Input())
+                //TextField("Titular", text: self.$userDataVM.user.nombres)
+                   // .textFieldStyle(Input())
                 Text("BANCO")
                     .textStyle(TitleStyle())
                 self.pickerBank
@@ -116,12 +116,12 @@ struct SlideFormJoinView: View {
                     .textStyle(TitleStyle())
                 Text("NOMBRE COMPLETO")
                     .textStyle(TitleStyle())
-                TextField("Nombre completo", text: self.$userDataVM.user.nombres)
-                    .textFieldStyle(Input())
+                //TextField("Nombre completo", text: self.$userDataVM.user.nombres)
+                   // .textFieldStyle(Input())
                 Text("DOCUMENTO DE IDENTIDAD")
                     .textStyle(TitleStyle())
                 HStack{
-                    TextField("Nro. Documento", text: self.$userDataVM.user.ci)
+                    /*TextField("Nro. Documento", text: self.$userDataVM.user.ci)
                         .textFieldStyle(Input())
                         .keyboardType(.numberPad)
                         .introspectTextField { (textField) in
@@ -132,13 +132,13 @@ struct SlideFormJoinView: View {
                             toolBar.items = [flexButton, doneButton]
                             toolBar.setItems([flexButton, doneButton], animated: true)
                             textField.inputAccessoryView = toolBar
-                         }
+                         }*/
                     self.pickerCIType
                 }
                 Text("CORREO ELECTRÓNICO")
                     .textStyle(TitleStyle())
-                TextField("Correo electrónico", text: self.$userDataVM.user.correo)
-                    .textFieldStyle(Input())
+                //TextField("Correo electrónico", text: self.$userDataVM.user.correo)
+                    //.textFieldStyle(Input())
             }.padding()
             Spacer()
         }.frame(width: UIScreen.main.bounds.width)

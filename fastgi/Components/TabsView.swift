@@ -15,6 +15,7 @@ struct TabsView: View {
     @State var menu : Bool = false
     @ObservedObject var userDataVM = UserDataViewModel()
     //test
+    //@ObservedObject var contactsVM = ContactsViewModel()
     init(currentBtnEm: Binding<BtnEm>) {
         self._currentBtnEm = currentBtnEm
         //Config for NavigationBar Transparent
@@ -22,6 +23,7 @@ struct TabsView: View {
         appearance.shadowColor = .clear
         UINavigationBar.appearance().standardAppearance = appearance
         self.userDataVM.DatosUser()
+        //print("init tabs \(self.userDataVM.user._id)")
         //self.userDataVM.DatosUser1()
        // print("init tabs \(self.userDataVM.user1tel)")
         
@@ -34,7 +36,7 @@ struct TabsView: View {
                 HomeView(currentBtnEm: $currentBtnEm)
                     .tabItem {
                         Image(self.selectedTab == 0 ? "home.fill" : "home")
-                        Text("Inicio")
+                        Text("Inicio ")//\(self.userDataVM.user._id)")
                     }.tag(0)
                 HistoryView()
                     .tabItem {
@@ -68,6 +70,9 @@ struct TabsView: View {
                     self.headerDerecha()
              )
         }.navigationViewStyle(StackNavigationViewStyle())
+        .onAppear{
+            print("se ejecuto onapeear de d")
+        }
     }
     
 }
@@ -125,10 +130,10 @@ extension TabsView{
     func headerIzquierda() -> AnyView{
         if   self.selectedTab == 0 || self.selectedTab == 1 || self.selectedTab == 2 {//} || self.selectedTab == 3{
             //return AnyView(HeaderUserView(text: "\(self.userDataVM.user.nombres) \(self.userDataVM.user.apellidos)", _id :self.userDataVM.user._id))
-            if self.userDataVM.user.nombres == ""{
-                return AnyView(HeaderUserView(text: "Nombre", _id :self.userDataVM.user._id))
+            if self.userDataVM.user.nombres == nil{
+                return AnyView(HeaderUserView(text: "+591 \(self.userDataVM.user.telefono)", _id :self.userDataVM.user._id))
             }else{
-                return AnyView(HeaderUserView(text: "\(self.userDataVM.user.nombres) \(self.userDataVM.user.apellidos)", _id :self.userDataVM.user._id))
+                return AnyView(HeaderUserView(text: "\(self.userDataVM.user.nombres ?? "") \(self.userDataVM.user.apellidos ?? "")", _id :self.userDataVM.user._id))
             }
           
         }
@@ -138,4 +143,8 @@ extension TabsView{
     
 }
 
-
+/*extension TabsView{
+    func contacts() -> Int {
+        self.contactsVM.listContacts.count
+        return 0
+    }*/

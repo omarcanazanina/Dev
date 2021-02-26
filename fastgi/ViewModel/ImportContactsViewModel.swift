@@ -12,7 +12,6 @@ import Contacts
 final class ImportContactsViewModel: ObservableObject {
     @Published var contacts: [Contact] = []
     @Published var permissionsError : PermissionsError? = .none
-  
     
     init() {
         permissions()
@@ -50,12 +49,14 @@ final class ImportContactsViewModel: ObservableObject {
         switch CNContactStore.authorizationStatus(for: .contacts) {
         case.authorized:
             getContacts()
+          
         case .notDetermined, .restricted, . denied:
             CNContactStore().requestAccess(for: .contacts) { [weak self] granted, error in
                 guard let self = self else {return}
                 switch granted {
                 case true:
                     self.getContacts()
+                
                 case false:
                     DispatchQueue.main.async {
                         self.permissionsError = .userError

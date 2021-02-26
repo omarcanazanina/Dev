@@ -30,6 +30,7 @@ class Contacts: ObservableObject {
     @Published var messageError :String = ""
     //test
     @Published var controlContacts : Bool = false
+    
     func sendContacts(){
         // print(self.contactsVM.contacts)
         for i in self.contactsVM.contacts {
@@ -89,6 +90,7 @@ class Contacts: ObservableObject {
             }
             
         }
+        self.ListContacts()
         //  print(self.nrocontrol)
     }
     

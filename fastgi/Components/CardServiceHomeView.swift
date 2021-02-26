@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CardServiceHomeView: View {
+    //var nombreUsu: String
     var contContacts : Int
     var logo : String
     @State var isSelect:Bool
@@ -27,6 +28,7 @@ struct CardServiceHomeView: View {
                 //self.login.ruta = "recargas"
                 self.currentBtnEm = self.btn
                 self.action = 1
+                
                // print("este es el current desde el home\(self.currentBtnEm)")
                 //print("este es el btn desde el home\(self.btn)")
                 //self.contactsVM.getContacts()
@@ -51,7 +53,7 @@ struct CardServiceHomeView: View {
                 )
             }.buttonStyle(PlainButtonStyle())
             if self.logo == "Entel"{
-                NavigationLink(destination: FormLoadCreditView(contContacts: self.contContacts, empresa: self.logo, SelectEm: .Entel, MontoRecarga1: .Btn30, MontoRecarga: ""), tag: 1, selection: self.$action) {
+                NavigationLink(destination: FormLoadCreditView( contContacts: self.contContacts, empresa: self.logo, SelectEm: .Entel, MontoRecarga1: .Btn30, MontoRecarga: ""), tag: 1, selection: self.$action) {
                     EmptyView()
                 }
             }else if self.logo == "Viva"{

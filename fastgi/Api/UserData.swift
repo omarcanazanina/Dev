@@ -20,8 +20,8 @@ class UserData: ObservableObject {
    // private let nombrekey = "usuario.nombres"
     //datauser
    // @Published var userResponse:UpdateUserModel?
-    @Published var user:UpdateUserModel?
-    @Published var user1:UserLogModel?
+    @Published var user:UserModel?
+    @Published var user1:UpdateUserModel?
     @Published var user1tel:String = ""
     @Published var userResponsePago:UpdateUserPagoModel?
     @Published var userResponsePay:UpdateUserPagoModel?
@@ -60,7 +60,7 @@ class UserData: ObservableObject {
                         switch response.result {
                         case let .success(data):
                             //Cast respuesta a MeResponce
-                            if let decodedResponse = try? JSONDecoder().decode(DataUserResponse.self, from: data) {
+                            if let decodedResponse = try? JSONDecoder().decode(UserResponse.self, from: data) {
                                 print(decodedResponse.usuario)
                                 self.testid = idusu
                                 //print("nombre del storage \(nombreusu)")
@@ -109,13 +109,13 @@ class UserData: ObservableObject {
                         switch response.result {
                         case let .success(data):
                             //Cast respuesta a MeResponce
-                            if let decodedResponse = try? JSONDecoder().decode(DataUserResponse1.self, from: data) {
+                            if let decodedResponse = try? JSONDecoder().decode(DataUserResponse.self, from: data) {
                                 //print(decodedResponse.usuario)
-                                self.testid = idusu
+                              //  self.testid = idusu
                                 //print("nombre del storage \(nombreusu)")
                                 self.user1=decodedResponse.usuario
-                                self.user1tel=decodedResponse.usuario.telefono
-                                print("user1 log \(self.user1tel)")
+                                //self.user1tel=decodedResponse.usuario.telefono
+                                //print("user1 log \(self.user1tel)")
                                 return
                             }
                             //Cast respuesta a ErrorResponce

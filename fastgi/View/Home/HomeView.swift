@@ -51,6 +51,9 @@ struct HomeView: View {
         appearance.shadowColor = .clear
         UINavigationBar.appearance().standardAppearance = appearance
         self.contactsVM.getContacts()
+        self.userDataVM.DatosUser()
+
+        //print("init del home \(self.userDataVM.user._id)")
         /*self.updateVM.updateUser(ci: self.userDataVM.user.ci, correo: self.userDataVM.user.correo, nombres: self.userDataVM.user.nombres, apellidos: self.userDataVM.user.apellidos, direccion: self.userDataVM.user.direccion, nombrenit: self.userDataVM.user.nombrenit, nit: self.userDataVM.user.nit)*/
         //self.userDataVM.DatosUser()
     }
@@ -239,14 +242,14 @@ struct HomeView: View {
                 self.btnIngresar
                 }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)*/
             VStack{
-                Text("Recarga de línea pre pago \(self.userDataVM.user1tel)")//\(self.userDataVM.testid)\\self.contactsVM.listContacts.count
+                Text("Recarga de línea pre pago ")//\(self.userDataVM.testid)\\self.contactsVM.listContacts.count
                     .font(.caption)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                     .padding(.vertical,10)
                 HStack{
-                    CardServiceHomeView(contContacts: self.contactsVM.listContacts.count, logo: "Entel", isSelect: false, currentBtnEm: self.$currentBtnEm, btn: .Entel)
-                    CardServiceHomeView(contContacts: self.contactsVM.listContacts.count, logo: "Viva", isSelect: false, currentBtnEm: self.$currentBtnEm, btn: .Viva)
-                    CardServiceHomeView(contContacts: self.contactsVM.listContacts.count, logo: "Tigo", isSelect: false, currentBtnEm: self.$currentBtnEm, btn: .Tigo)
+                    CardServiceHomeView( contContacts: self.contactsVM.listContacts.count, logo: "Entel", isSelect: false, currentBtnEm: self.$currentBtnEm, btn: .Entel)
+                    CardServiceHomeView( contContacts: self.contactsVM.listContacts.count, logo: "Viva", isSelect: false, currentBtnEm: self.$currentBtnEm, btn: .Viva)
+                    CardServiceHomeView( contContacts: self.contactsVM.listContacts.count, logo: "Tigo", isSelect: false, currentBtnEm: self.$currentBtnEm, btn: .Tigo)
                 }
             }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
             /*VStack{

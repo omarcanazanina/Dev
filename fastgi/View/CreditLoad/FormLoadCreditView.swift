@@ -9,6 +9,7 @@ import SwiftUI
 import Introspect
 
 struct FormLoadCreditView: View {
+    //var nombreUsu : String
     var contContacts : Int 
     var empresa: String
     @State  var SelectEm :BtnEm
@@ -51,7 +52,7 @@ struct FormLoadCreditView: View {
             VStack{
                 //campo para ingresar numero de contacto
                 HStack{
-                    TextField("Número de teléfono \(self.contContacts)", text: $telefono)
+                    TextField("Número de teléfono", text: $telefono)
                         .padding(.horizontal,12)
                         .padding(.vertical,8)
                         .keyboardType(.numberPad)
@@ -196,6 +197,6 @@ struct FormLoadCreditView: View {
 struct FormLoadCreditView_Previews: PreviewProvider {
     static var previews: some View {
        // FormLoadCreditView(SelectEm: .Entel, montoRecarga1: .Btn10, montoRecarga: "")
-        FormLoadCreditView(contContacts: 0, empresa: "", SelectEm: .Tigo, MontoRecarga1: .Btn30, MontoRecarga: "")
+        FormLoadCreditView( contContacts: 0, empresa: "", SelectEm: .Tigo, MontoRecarga1: .Btn30, MontoRecarga: "")
     }
 }
