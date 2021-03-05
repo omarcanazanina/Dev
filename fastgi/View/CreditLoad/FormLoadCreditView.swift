@@ -10,7 +10,7 @@ import Introspect
 
 struct FormLoadCreditView: View {
     //var nombreUsu : String
-    var contContacts : Int 
+    //var contContacts : Int
     var empresa: String
     @State  var SelectEm :BtnEm
     @State private  var telefono = ""
@@ -70,7 +70,7 @@ struct FormLoadCreditView: View {
                         //if self.contactsVM.listContacts.count == 0{
                             if self.contContacts == 0{
                                 print("no hay contactos")
-                                print(self.contContacts)
+                               // print(self.contContacts)
                                 //self.contacts.sendContacts()
                                 self.contactsVM.importContacts()
                                 self.contactsVM.getContacts()
