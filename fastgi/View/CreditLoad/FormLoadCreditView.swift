@@ -37,8 +37,8 @@ struct FormLoadCreditView: View {
         self.empresa = Empresa
         self._MontoRecarga1 = MontoRecarga1
         self.MontoRecarga = montorecarga
-        self.contactsVM.getContacts()
-        print("INIT DEL FORMLOADCREDIT \(self.contactsVM.listContacts.count)")
+        //self.contactsVM.getContacts()
+        //print("INIT DEL FORMLOADCREDIT \(self.contactsVM.listContacts.count)")
     }
     
     var home: some View {
@@ -90,7 +90,7 @@ struct FormLoadCreditView: View {
                     }
                     //ListcontactsView
                     .sheet(isPresented: $showingSheet) {
-                        ListContactsView(showingSheet: self.$showingSheet, telefono: self.$telefono, nombre: self.$nombreContact, modal: self.$showingSheet)
+                        ListContactsView(showingSheet: self.$showingSheet, telefono: self.$telefono, nombre: self.$nombreContact, modal: self.$showingSheet, listAllContacts: self.$contactsVM.listContacts )
                     }
                     //end
                 }.background(Color("input"))
@@ -183,7 +183,7 @@ struct FormLoadCreditView: View {
         //llamado desde ContactsViewModel
          .onAppear{
             //self.userDataVM.DatosUser()
-          //  self.contactsVM.getContacts()
+            self.contactsVM.getContacts()
         }
     }
 }

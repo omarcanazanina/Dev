@@ -28,19 +28,21 @@ struct ListContactsView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var alertState: Bool = false
     
-    init(showingSheet: Binding<Bool>, telefono: Binding<String>, nombre :Binding<String>, modal: Binding<Bool>){
+    //
+    @Binding var listAllContacts : [ContactModel]
+    init(showingSheet: Binding<Bool>, telefono: Binding<String>, nombre :Binding<String>, modal: Binding<Bool>, listAllContacts :Binding<[ContactModel]>){
         self._showingSheet = showingSheet
         self._telefono = telefono
         self._nombre = nombre
         self._modal = modal
-        self.contactsVM.getContacts()
+        self._listAllContacts = listAllContacts
+        //self.contactsVM.getContacts()
     }
-    
     var list:some View{
         VStack{
             SearchBar(text: $searchText, placeholder: "Buscar")
             List {
-                ForEach(self.contactsVM.listContacts.filter({searchText.isEmpty ? true : $0.nombre.lowercased().contains(searchText.lowercased())}), id: \.self._id){ (contact:ContactModel) in
+                ForEach(self.listAllContacts.filter({searchText.isEmpty ? true : $0.nombre.lowercased().contains(searchText.lowercased())}), id: \.self._id){ (contact:ContactModel) in
               
                     Button(action: {
                         self.telefono = contact.telefono
@@ -74,40 +76,10 @@ struct ListContactsView: View {
                     )
                    
                 }
-               /* Button(action: {
-                    self.contactsVM.updateContacts()
-                }) {
-                    Text("Update")
-                    
-                }
-                //.onAppear{
-                  //  self.contactsVM.getContacts()
-                //}
-                if self.contactsVM.isloading == true{
-                            Loader()
-                }else if self.contactsVM.messageError != ""{
-                    Text(self.contactsVM.messageError)
-                        .foregroundColor(.red)
-                    //self.alert = true
-                }*/
+  
               
             }
-            //empieza
-            /*.pullToRefresh(isShowing: $isShowingReferesh) {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    print("cargo")
-                    self.contactsVM.updateContacts()
-                    self.isShowingReferesh = false
-                }*/
-            //termina
-              /* if self.contactsVM.isloading == true{
-                            Loader()
-                }else if self.contactsVM.messageError != ""{
-                    Text(self.contactsVM.messageError)
-                        .foregroundColor(.red)
-                    //self.alert = true
-                }
-            }*/
+
             
        
             .alert(item: $contactsVM1.permissionsError) {_ in
@@ -125,7 +97,6 @@ struct ListContactsView: View {
     var body: some View {
         NavigationView {
                 self.list
-                    
                     .navigationBarTitle(Text("Elige un contacto"), displayMode: .inline)
                     .navigationBarItems(leading:
                                   HStack {
@@ -149,6 +120,7 @@ struct ListContactsView: View {
                         Text("Cerrar1").bold()
                             .foregroundColor(Color("primary"))
                     })*/
+                   
             }
         .alert(isPresented:  self.$alertState){
             self.alerts
@@ -156,12 +128,12 @@ struct ListContactsView: View {
     }
 }
 
-struct ListContactsView_Previews: PreviewProvider {
+/*struct ListContactsView_Previews: PreviewProvider {
     @State static var showingSheet = true
     static var previews: some View {
-        ListContactsView(showingSheet: $showingSheet, telefono: .constant(""), nombre: .constant(""), modal: .constant(false))
+        ListContactsView(showingSheet: $showingSheet, telefono: .constant(""), nombre: .constant(""), modal: .constant(false), listAllContacts: <#Binding<ContactModel>#>)
     }
-}
+}*/
 
 
 
