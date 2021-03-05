@@ -50,7 +50,7 @@ struct HomeView: View {
         let appearance = UINavigationBarAppearance()
         appearance.shadowColor = .clear
         UINavigationBar.appearance().standardAppearance = appearance
-        self.contactsVM.getContacts()
+        //self.contactsVM.getContacts()
         self.userDataVM.DatosUser()
 
         //print("init del home \(self.userDataVM.user._id)")
@@ -247,9 +247,9 @@ struct HomeView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                     .padding(.vertical,10)
                 HStack{
-                    CardServiceHomeView( contContacts: self.contactsVM.listContacts.count, logo: "Entel", isSelect: false, currentBtnEm: self.$currentBtnEm, btn: .Entel)
-                    CardServiceHomeView( contContacts: self.contactsVM.listContacts.count, logo: "Viva", isSelect: false, currentBtnEm: self.$currentBtnEm, btn: .Viva)
-                    CardServiceHomeView( contContacts: self.contactsVM.listContacts.count, logo: "Tigo", isSelect: false, currentBtnEm: self.$currentBtnEm, btn: .Tigo)
+                    CardServiceHomeView( logo: "Entel", isSelect: false, currentBtnEm: self.$currentBtnEm, btn: .Entel)
+                    CardServiceHomeView(logo: "Viva", isSelect: false, currentBtnEm: self.$currentBtnEm, btn: .Viva)
+                    CardServiceHomeView(logo: "Tigo", isSelect: false, currentBtnEm: self.$currentBtnEm, btn: .Tigo)
                 }
             }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
             /*VStack{
