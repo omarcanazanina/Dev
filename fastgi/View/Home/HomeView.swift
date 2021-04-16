@@ -285,14 +285,17 @@ struct HomeView: View {
     var body: some View {
         HStack{
             self.home
-          
-            /*VStack{
+            VStack{
                 Button(action: {
-                    self.contacts.sendContacts()
+                    self.action = 44
                 }){
-                    Text("test")
+                    Text("test1")
                 }
-            }*/
+                
+                NavigationLink(destination: testView(), tag: 44, selection: self.$action) {
+                    EmptyView()
+                }
+            }
         }
         
         /*.alert(isPresented:  self.$qrPaymentVM.alertNoAfiliado){

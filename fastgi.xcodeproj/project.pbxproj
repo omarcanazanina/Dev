@@ -16,6 +16,7 @@
 		9224FE6A256DE45F00F79FA4 /* MembershipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9224FE69256DE45F00F79FA4 /* MembershipView.swift */; };
 		92278A5F2556186E00D746EA /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92278A5E2556186E00D746EA /* Helper.swift */; };
 		923AE28825CAF3A30015ECA8 /* QrChargeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923AE28725CAF3A30015ECA8 /* QrChargeView.swift */; };
+		924951ED2629E28C0033A96D /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 924951EC2629E28C0033A96D /* PopupView */; };
 		925F07282580323000153B5A /* Afiliacion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925F07272580323000153B5A /* Afiliacion.swift */; };
 		925F072B2580372B00153B5A /* AfiliacionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925F072A2580372B00153B5A /* AfiliacionViewModel.swift */; };
 		9271EF1A258D4D2E009659F4 /* AffiliateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9271EF19258D4D2E009659F4 /* AffiliateModel.swift */; };
@@ -123,6 +124,7 @@
 		9224FE69256DE45F00F79FA4 /* MembershipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipView.swift; sourceTree = "<group>"; };
 		92278A5E2556186E00D746EA /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		923AE28725CAF3A30015ECA8 /* QrChargeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrChargeView.swift; sourceTree = "<group>"; };
+		924951EF2629E3740033A96D /* fastgi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = fastgi.entitlements; sourceTree = "<group>"; };
 		925F07272580323000153B5A /* Afiliacion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Afiliacion.swift; sourceTree = "<group>"; };
 		925F072A2580372B00153B5A /* AfiliacionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfiliacionViewModel.swift; sourceTree = "<group>"; };
 		9271EF19258D4D2E009659F4 /* AffiliateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffiliateModel.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 			files = (
 				9279D54C256F0D5400890C84 /* CodeScanner in Frameworks */,
 				92DBE2A225537827001B791B /* SwiftUIRefresh in Frameworks */,
+				924951ED2629E28C0033A96D /* PopupView in Frameworks */,
 				573DD5AA824DD586829F7E7E /* Pods_fastgi.framework in Frameworks */,
 				92A3BAFF25536D7A00DF3707 /* ValidatedPropertyKit in Frameworks */,
 			);
@@ -287,6 +290,7 @@
 		92A3BA232553616F00DF3707 /* fastgi */ = {
 			isa = PBXGroup;
 			children = (
+				924951EF2629E3740033A96D /* fastgi.entitlements */,
 				9222F66725E99E9800931A36 /* Request */,
 				92A3BA402553627C00DF3707 /* Camera */,
 				92A3BA47255362E500DF3707 /* NavigationRoot */,
@@ -563,6 +567,7 @@
 				92A3BAFE25536D7A00DF3707 /* ValidatedPropertyKit */,
 				92DBE2A125537827001B791B /* SwiftUIRefresh */,
 				9279D54B256F0D5400890C84 /* CodeScanner */,
+				924951EC2629E28C0033A96D /* PopupView */,
 			);
 			productName = fastgi;
 			productReference = 92A3BA212553616F00DF3707 /* fastgi.app */;
@@ -595,6 +600,7 @@
 				92A3BAFD25536D7A00DF3707 /* XCRemoteSwiftPackageReference "ValidatedPropertyKit" */,
 				92DBE2A025537827001B791B /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */,
 				9279D54A256F0D5400890C84 /* XCRemoteSwiftPackageReference "CodeScanner" */,
+				924951EB2629E28C0033A96D /* XCRemoteSwiftPackageReference "PopupView" */,
 			);
 			productRefGroup = 92A3BA222553616F00DF3707 /* Products */;
 			projectDirPath = "";
@@ -901,13 +907,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = fastgi/fastgi.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"fastgi/Preview Content\"";
 				DEVELOPMENT_TEAM = 8434L4CAU2;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = fastgi/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -927,13 +934,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = fastgi/fastgi.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"fastgi/Preview Content\"";
 				DEVELOPMENT_TEAM = 8434L4CAU2;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = fastgi/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -971,6 +979,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		924951EB2629E28C0033A96D /* XCRemoteSwiftPackageReference "PopupView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/PopupView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.12;
+			};
+		};
 		9279D54A256F0D5400890C84 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "http://github.com/twostraws/CodeScanner";
@@ -998,6 +1014,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		924951EC2629E28C0033A96D /* PopupView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 924951EB2629E28C0033A96D /* XCRemoteSwiftPackageReference "PopupView" */;
+			productName = PopupView;
+		};
 		9279D54B256F0D5400890C84 /* CodeScanner */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9279D54A256F0D5400890C84 /* XCRemoteSwiftPackageReference "CodeScanner" */;
