@@ -127,7 +127,14 @@ struct HistoryView: View {
     
     
     var body: some View {
-        VStack {
+        VStack {  Button(action: {
+            self.action = 5
+        }){
+            Text("Filtrar")
+        }
+        NavigationLink(destination: CalendarView(), tag: 5, selection: self.$action) {
+            EmptyView()
+        }
             VStack{
                 Picker(selection: $optionPicker, label: Text("")) {
                     Text("Realizadas").tag(0)

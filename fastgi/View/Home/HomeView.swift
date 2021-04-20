@@ -283,7 +283,7 @@ struct HomeView: View {
     }*/
     
     var body: some View {
-        HStack{
+        VStack{
             self.home
             VStack{
                 Button(action: {

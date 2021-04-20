@@ -12,6 +12,11 @@
 		9202E997255DF485009115ED /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9202E996255DF485009115ED /* test.swift */; };
 		92064B8E25706ABA00D84932 /* PayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92064B8D25706ABA00D84932 /* PayView.swift */; };
 		9208DE4B256EFB4A00EA9C23 /* RegistrationFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9208DE4A256EFB4A00EA9C23 /* RegistrationFormView.swift */; };
+		920CF234262F743E00F94C25 /* QrPaymentModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920CF233262F743E00F94C25 /* QrPaymentModule.swift */; };
+		920CF237262F748200F94C25 /* QrPaymentModuleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920CF236262F748200F94C25 /* QrPaymentModuleModel.swift */; };
+		920CF23A262F74B900F94C25 /* QrPaymentModuleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920CF239262F74B900F94C25 /* QrPaymentModuleResponse.swift */; };
+		920CF23E262F759500F94C25 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 920CF23D262F759500F94C25 /* FSCalendar */; };
+		920CF241262F75C400F94C25 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920CF240262F75C400F94C25 /* CalendarView.swift */; };
 		9222F66925E99ED800931A36 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9222F66825E99ED800931A36 /* LoginRequest.swift */; };
 		9224FE6A256DE45F00F79FA4 /* MembershipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9224FE69256DE45F00F79FA4 /* MembershipView.swift */; };
 		92278A5F2556186E00D746EA /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92278A5E2556186E00D746EA /* Helper.swift */; };
@@ -120,6 +125,10 @@
 		9202E996255DF485009115ED /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		92064B8D25706ABA00D84932 /* PayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayView.swift; sourceTree = "<group>"; };
 		9208DE4A256EFB4A00EA9C23 /* RegistrationFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFormView.swift; sourceTree = "<group>"; };
+		920CF233262F743E00F94C25 /* QrPaymentModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrPaymentModule.swift; sourceTree = "<group>"; };
+		920CF236262F748200F94C25 /* QrPaymentModuleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrPaymentModuleModel.swift; sourceTree = "<group>"; };
+		920CF239262F74B900F94C25 /* QrPaymentModuleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrPaymentModuleResponse.swift; sourceTree = "<group>"; };
+		920CF240262F75C400F94C25 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		9222F66825E99ED800931A36 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		9224FE69256DE45F00F79FA4 /* MembershipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipView.swift; sourceTree = "<group>"; };
 		92278A5E2556186E00D746EA /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
@@ -225,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9279D54C256F0D5400890C84 /* CodeScanner in Frameworks */,
+				920CF23E262F759500F94C25 /* FSCalendar in Frameworks */,
 				92DBE2A225537827001B791B /* SwiftUIRefresh in Frameworks */,
 				924951ED2629E28C0033A96D /* PopupView in Frameworks */,
 				573DD5AA824DD586829F7E7E /* Pods_fastgi.framework in Frameworks */,
@@ -358,6 +368,7 @@
 				927D1DA025785C4200A97455 /* UserData.swift */,
 				92AB8CF12579B6C4006F0FA7 /* QrPayment.swift */,
 				925F07272580323000153B5A /* Afiliacion.swift */,
+				920CF233262F743E00F94C25 /* QrPaymentModule.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -390,6 +401,7 @@
 				92A3BA872553664700DF3707 /* UsuarioModel.swift */,
 				92AB8CF72579B7F4006F0FA7 /* QrPaymentModel.swift */,
 				9271EF19258D4D2E009659F4 /* AffiliateModel.swift */,
+				920CF236262F748200F94C25 /* QrPaymentModuleModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -405,6 +417,7 @@
 				92A3BA9A2553673200DF3707 /* DataUserResponse.swift */,
 				92AB8CF42579B779006F0FA7 /* QrPaymentResponse.swift */,
 				9271EF1C258D4DC8009659F4 /* AffiliateResponse.swift */,
+				920CF239262F74B900F94C25 /* QrPaymentModuleResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -444,6 +457,7 @@
 			isa = PBXGroup;
 			children = (
 				92A3BAAE2553684900DF3707 /* HomeView.swift */,
+				920CF240262F75C400F94C25 /* CalendarView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -568,6 +582,7 @@
 				92DBE2A125537827001B791B /* SwiftUIRefresh */,
 				9279D54B256F0D5400890C84 /* CodeScanner */,
 				924951EC2629E28C0033A96D /* PopupView */,
+				920CF23D262F759500F94C25 /* FSCalendar */,
 			);
 			productName = fastgi;
 			productReference = 92A3BA212553616F00DF3707 /* fastgi.app */;
@@ -601,6 +616,7 @@
 				92DBE2A025537827001B791B /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */,
 				9279D54A256F0D5400890C84 /* XCRemoteSwiftPackageReference "CodeScanner" */,
 				924951EB2629E28C0033A96D /* XCRemoteSwiftPackageReference "PopupView" */,
+				920CF23C262F759500F94C25 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 			);
 			productRefGroup = 92A3BA222553616F00DF3707 /* Products */;
 			projectDirPath = "";
@@ -712,6 +728,7 @@
 				92A3BAA6255367E200DF3707 /* LoginView.swift in Sources */,
 				92A3BAE625536AAB00DF3707 /* Loader.swift in Sources */,
 				92A3BAE025536A7800DF3707 /* HeaderUserView.swift in Sources */,
+				920CF237262F748200F94C25 /* QrPaymentModuleModel.swift in Sources */,
 				92A3BA852553662D00DF3707 /* ErrorModel.swift in Sources */,
 				92A3BA5E2553642800DF3707 /* Login.swift in Sources */,
 				92A3BABE255368F300DF3707 /* HistoryView.swift in Sources */,
@@ -720,12 +737,14 @@
 				92A3BA45255362C500DF3707 /* ImagePicker.swift in Sources */,
 				92A3BA58255363D800DF3707 /* Contacts.swift in Sources */,
 				92A3BA882553664700DF3707 /* UsuarioModel.swift in Sources */,
+				920CF241262F75C400F94C25 /* CalendarView.swift in Sources */,
 				92A3BAC22553692E00DF3707 /* FormCreditCardView.swift in Sources */,
 				92A3BA712553655500DF3707 /* LoginViewModel.swift in Sources */,
 				92AB8CF22579B6C4006F0FA7 /* QrPayment.swift in Sources */,
 				92A3BA492553631C00DF3707 /* NavigationRoot.swift in Sources */,
 				92A3BA422553629F00DF3707 /* PhotoCaptureView.swift in Sources */,
 				92E3FE2425C0AA4A00320396 /* testView.swift in Sources */,
+				920CF234262F743E00F94C25 /* QrPaymentModule.swift in Sources */,
 				92A3BA292553616F00DF3707 /* ContentView.swift in Sources */,
 				92A3BA6E2553651C00DF3707 /* RecargaViewModel.swift in Sources */,
 				92A3BAD4255369EC00DF3707 /* InputCreditAmountView.swift in Sources */,
@@ -737,6 +756,7 @@
 				92A3BAA3255367C600DF3707 /* BrokenRulesView.swift in Sources */,
 				92A3BA512553638700DF3707 /* ImageAvatar.swift in Sources */,
 				92A3BA5B2553641100DF3707 /* Recargas.swift in Sources */,
+				920CF23A262F74B900F94C25 /* QrPaymentModuleResponse.swift in Sources */,
 				9271EF1D258D4DC8009659F4 /* AffiliateResponse.swift in Sources */,
 				92A3BAF025536B1E00DF3707 /* ContentButtonsView.swift in Sources */,
 				92A3BA4D2553635F00DF3707 /* AuthState.swift in Sources */,
@@ -979,6 +999,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		920CF23C262F759500F94C25 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.2;
+			};
+		};
 		924951EB2629E28C0033A96D /* XCRemoteSwiftPackageReference "PopupView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/exyte/PopupView.git";
@@ -1014,6 +1042,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		920CF23D262F759500F94C25 /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 920CF23C262F759500F94C25 /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
+		};
 		924951EC2629E28C0033A96D /* PopupView */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 924951EB2629E28C0033A96D /* XCRemoteSwiftPackageReference "PopupView" */;
