@@ -90,7 +90,7 @@ struct FormLoadCreditView: View {
                     }
                     //ListcontactsView
                     .sheet(isPresented: $showingSheet) {
-                        ListContactsView(showingSheet: self.$showingSheet, telefono: self.$telefono, nombre: self.$nombreContact, modal: self.$showingSheet, listAllContacts: self.$contactsVM.listContacts )
+                        ListContactsView(showingSheet: self.$showingSheet, telefono: self.$telefono, nombre: self.$nombreContact, modal: self.$showingSheet)//, listAllContacts: self.$contactsVM.listContacts
                     }
                     //end
                 }.background(Color("input"))
@@ -99,6 +99,10 @@ struct FormLoadCreditView: View {
                 //.clipShape(Capsule())
             }.padding()
             //Card select
+            if self.contactsVM.isloading == true{
+                Loader()
+            }
+            
             NavigationLink(destination: SelectCreditCardView()) {
                 HStack{
                     Text("Seleccionar tarjeta \(self.contactsVM.listContacts.count)")
@@ -176,15 +180,18 @@ struct FormLoadCreditView: View {
                     .padding(.leading)
                     .padding(.top,80)
             //}
-        }.alert(isPresented:  self.$alertState){
+        }
+        .alert(isPresented:  self.$alertState){
             self.alerts
         }
         .edgesIgnoringSafeArea(.top)
+        
         //llamado desde ContactsViewModel
          .onAppear{
             //self.userDataVM.DatosUser()
             self.contactsVM.getContacts()
         }
+       
     }
 }
 

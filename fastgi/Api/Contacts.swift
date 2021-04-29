@@ -32,6 +32,7 @@ class Contacts: ObservableObject {
     @Published var controlContacts : Bool = false
     
     func sendContacts(){
+        self.isloading = true
         // print(self.contactsVM.contacts)
         for i in self.contactsVM.contacts {
             print(i.firstName)
@@ -68,6 +69,7 @@ class Contacts: ObservableObject {
                             if let decodedResponse = try? JSONDecoder().decode(CreateContactsResponse.self, from: data) {
                                 print(decodedResponse)
                                 self.controlContacts = true
+                                self.isloading = false
                                 //self.nrocontrol = 1
                                 //print("test \(self.nrocontrol)")
                                 //print("test\(decodedResponse.contacto.nombre.count)")
@@ -78,18 +80,20 @@ class Contacts: ObservableObject {
                             //Cast respuesta a ErrorResponce
                             if let decodedResponse = try? JSONDecoder().decode(ErrorRecargaResponse.self, from: data) {
                                 print(decodedResponse.err.message)
+                                self.isloading = false
                                 //  self.ErrorRes = decodedResponse.err.message
                                 return
                             }
                             
                         case let .failure(error):
-                            //self.isloading = false
+                            self.isloading = false
                             print(error)
                         }
                     }
             }
             
         }
+        
         self.ListContacts()
         //  print(self.nrocontrol)
     }
@@ -118,7 +122,7 @@ class Contacts: ObservableObject {
                         if let decodedResponse = try? JSONDecoder().decode(ContactsResponse.self, from: data) {
                             // print("get")
                             self.getContactsResponse = decodedResponse.contacto
-                            print(self.getContactsResponse)
+                            print(self.getContactsResponse!)
                             self.getContactsResponse?.forEach({ (contact) in
                                 self.listNumbersApp.append(contact.telefono)
                             })
@@ -135,12 +139,23 @@ class Contacts: ObservableObject {
         self.isloading = true
         //get contactos dentro app
         self.ListContacts()
+        //print("asdsad \(self.listNumbersApp.count)")
+        //print(self.listNumbersApp)
+        print("asd")
+        print(self.listNumbersApp)
+        /*self.getContactsResponse?.forEach({ (contact) in
+            self.listNumbersApp.append(contact.telefono)
+            
+            print(self.listNumbersApp)
+        })*/
+        
+        
         if self.listNumbersApp.count != 0 {
             for i in self.contactsVM.contacts {
                 self.listNewNumbers.append(i.phone!)
             }
-            //print(self.listNumbersApp)
-            // print(self.listNewNumbers)
+           // print(self.listNumbersApp)
+            //print(self.listNewNumbers)
             
             //funcion distintos
             let difference = self.listNewNumbers.difference(from: self.listNumbersApp)
@@ -218,7 +233,7 @@ class Contacts: ObservableObject {
             self.isloading = false
             self.messageError = "Se actualizo exitosamente"
       
-            print("no hay contactos nuevos")
+            print("no hay contactos nuevos1")
         }
     }
 }

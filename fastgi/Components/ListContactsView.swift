@@ -29,20 +29,22 @@ struct ListContactsView: View {
     @State var alertState: Bool = false
     
     //
-    @Binding var listAllContacts : [ContactModel]
-    init(showingSheet: Binding<Bool>, telefono: Binding<String>, nombre :Binding<String>, modal: Binding<Bool>, listAllContacts :Binding<[ContactModel]>){
+    //@Binding var listAllContacts : [ContactModel]
+    //init(showingSheet: Binding<Bool>, telefono: Binding<String>, nombre :Binding<String>, modal: Binding<Bool>, listAllContacts :Binding<[ContactModel]>){
+    init(showingSheet: Binding<Bool>, telefono: Binding<String>, nombre :Binding<String>, modal: Binding<Bool>){
         self._showingSheet = showingSheet
         self._telefono = telefono
         self._nombre = nombre
         self._modal = modal
-        self._listAllContacts = listAllContacts
-        //self.contactsVM.getContacts()
+        //self._listAllContacts = listAllContacts
+        self.contactsVM.getContacts()
     }
     var list:some View{
         VStack{
             SearchBar(text: $searchText, placeholder: "Buscar")
             List {
-                ForEach(self.listAllContacts.filter({searchText.isEmpty ? true : $0.nombre.lowercased().contains(searchText.lowercased())}), id: \.self._id){ (contact:ContactModel) in
+                ForEach(self.contactsVM.listContacts.filter({searchText.isEmpty ? true : $0.nombre.lowercased().contains(searchText.lowercased())}), id: \.self._id){ (contact:ContactModel) in
+              // ForEach(self.listAllContacts.filter({searchText.isEmpty ? true : $0.nombre.lowercased().contains(searchText.lowercased())}), id: \.self._id){ (contact:ContactModel) in
               
                     Button(action: {
                         self.telefono = contact.telefono
@@ -101,8 +103,8 @@ struct ListContactsView: View {
                     .navigationBarItems(leading:
                                   HStack {
                                       Button("Actualizar") {
-                                          print("actualizar!")
-                                        print("cargo")
+                                          //print("actualizar!")
+                                        //print("cargo")
                                         self.contactsVM.updateContacts()
                                         self.alertState = true
                                       }
