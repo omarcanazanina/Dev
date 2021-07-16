@@ -108,7 +108,7 @@ class Contacts: ObservableObject {
         }
         //"5f56de014e834e3bc4c02059"
         let idusu = storage.string(forKey: idKey)!
-        guard let url = URL(string: "https://api2.fastgi.com/contactos/\(idusu)") else { return }
+        guard let url = URL(string: "https://api.fastgi.com/contactos/\(idusu)") else { return }
         
         
         DispatchQueue.main.async {

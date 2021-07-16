@@ -11,7 +11,8 @@ import Introspect
 //import CodeScanner
 
 struct HomeView: View {
-    
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @State var alertState: Bool = false
     
     @ObservedObject var login = Login()
     @ObservedObject var loginVM = LoginViewModel()
@@ -24,6 +25,8 @@ struct HomeView: View {
     @ObservedObject var userDataVM = UserDataViewModel()
     @ObservedObject var contactsVM = ContactsViewModel()
     @ObservedObject var contacts = Contacts()
+    
+    @State var showingSheet = false
     //lector qr
     /*@State private var showScannerTeleferico = false
     @State private var showScannerTransporte = false
@@ -281,11 +284,33 @@ struct HomeView: View {
             self.presentationMode.wrappedValue.dismiss()
         }))
     }*/
+    var alerts:Alert{
+        Alert(title: Text("Fastgi"), message: Text("Datos modificados correctamente."), dismissButton: .default(Text("Aceptar"), action: {
+            self.presentationMode.wrappedValue.dismiss()
+            //self.navigationRoot.setRootView()
+        }))
+    }
     
     var body: some View {
         VStack{
             self.home
-            VStack{
+            //test de registro de tarjetas
+             VStack{
+                 Button(action: {
+                     print("home")
+                    self.showingSheet.toggle()
+                   // self.alertState = true
+                    //self.cards.saveCard(card_nombre: "Banco App", card_number: "123123123123123", card_expiry_date: "11-2022", card_cvn: "312", card_type: "111")
+                 }){
+                    // Text("test1")
+                 }
+                 .sheet(isPresented: $showingSheet) {
+                   // DeleteCardView()
+                 }
+             }
+         
+ 
+           /* VStack{
                 Button(action: {
                     self.action = 44
                 }){
@@ -295,9 +320,11 @@ struct HomeView: View {
                 NavigationLink(destination: testView(), tag: 44, selection: self.$action) {
                     EmptyView()
                 }
-            }
+            }*/
         }
-        
+        .alert(isPresented:  self.$alertState){
+            self.alerts
+        }
         /*.alert(isPresented:  self.$qrPaymentVM.alertNoAfiliado){
             self.alerts
         }*/

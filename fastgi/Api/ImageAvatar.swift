@@ -22,9 +22,12 @@ class ImageAvatar: ObservableObject {
     //Storage
     private let storage = UserDefaults.standard
     @Published var image: UIImage?
-    
+    //nav
+    var navigationRoot = NavigationRoot()
+    //var dataUserVM = UserDataViewModel()
     
     func getImage(){
+        
         // creando headers
         var headers: HTTPHeaders = [
             "Accept": "application/json"
@@ -69,6 +72,8 @@ class ImageAvatar: ObservableObject {
     }
     
     func uploadAvatar(image: Data){
+       // SDImageCache.shared.clearMemory()
+       // SDImageCache.shared.clearDisk()
         print("entro al uploadAvatar")
         debugPrint(image)
         //     isLoading = true
@@ -92,6 +97,10 @@ class ImageAvatar: ObservableObject {
             },
             to: url,method: .post, headers:headers)
             .responseDecodable(of:DataImageResponse.self){ (response) in
+                //self.getImage()
+               // self.dataUserVM.DatosUser1()
+                //self.navigationRoot.setRootView()
+                //self.getImage()
                 //self.isLoading.toggle()
                 // self.completeUpdateUserResponse.toggle()
                 debugPrint(response)

@@ -42,7 +42,7 @@ class UpdateUser{
             headers.add(name: "token", value: token)
         }
         let idusu = storage.string(forKey: idKey)!
-        guard let url = URL(string: "https://api2.fastgi.com/usuario/\(idusu)") else { return }
+        guard let url = URL(string: "https://api.fastgi.com/usuario/\(idusu)") else { return }
         DispatchQueue.main.async {
             AF.request(url,method:.put,parameters: parametros,headers: headers )
                 .validate(contentType: ["application/json"])

@@ -51,7 +51,7 @@ class UserData: ObservableObject {
         else {
             let idusu = storage.string(forKey: idKey)!
             //let nombreusu = storage.string(forKey: nombrekey)
-            guard let url = URL(string: "https://api2.fastgi.com/usuario/\(idusu)") else { return }
+            guard let url = URL(string: "https://api.fastgi.com/usuario/\(idusu)") else { return }
             DispatchQueue.main.async {
                 AF.request(url,method:.get,headers: headers )
                     //.validate(contentType: ["application/json"])
@@ -100,7 +100,7 @@ class UserData: ObservableObject {
         else {
             let idusu = storage.string(forKey: idKey)!
             //let nombreusu = storage.string(forKey: nombrekey)
-            guard let url = URL(string: "https://api2.fastgi.com/usuario/\(idusu)") else { return }
+            guard let url = URL(string: "https://api.fastgi.com/usuario/\(idusu)") else { return }
             DispatchQueue.main.async {
                 AF.request(url,method:.get,headers: headers )
                     //.validate(contentType: ["application/json"])

@@ -39,7 +39,7 @@ class Login: ObservableObject {
         let parametros : Parameters = [
             "telefono": telefono
         ]
-        guard let url = URL(string: "https://api2.fastgi.com/sms") else { return }
+        guard let url = URL(string: "https://api.fastgi.com/sms") else { return }
         DispatchQueue.main.async {
             AF.request(url, method: .post, parameters: parametros)
                 .responseData { (response) in
@@ -82,7 +82,7 @@ class Login: ObservableObject {
             "telefono": telefono,
             "pin": pin
         ]
-        guard let url = URL(string: "https://api2.fastgi.com/loginsms") else { return }
+        guard let url = URL(string: "https://api.fastgi.com/loginsms") else { return }
         DispatchQueue.main.async {
             AF.request(url, method: .post, parameters: parametros)
                 .responseData { (response) in

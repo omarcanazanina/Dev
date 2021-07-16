@@ -13,7 +13,15 @@ struct CreditCardView: View {
     var bank : String? = ""
     var dateExp : String? = "00/00"
     var number : String? = "0000"
+    var id_card: String? = ""
     @State private var sizeChanged = false
+    @State var delete = false
+    
+    /*init() {
+        print("creditcarview")
+        
+    }*/
+    
     var body: some View {
         VStack{
             HStack{
@@ -51,12 +59,29 @@ struct CreditCardView: View {
                 Spacer()
                 Text("Vence: \(self.dateExp!)")
                     .font(.caption)
-                
+                Button(action: {
+                    self.delete.toggle()
+                    print("menu")
+                }){
+                    VStack{
+                        Image(systemName: "trash")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20)
+                            .padding(.trailing,6)
+                    }
+                }
+                NavigationLink(destination: DeleteCardView(idCard: self.id_card ?? "") , isActive: $delete) {
+                    EmptyView()
+                }
+                    
             }
+            
             .padding(.horizontal)
             .foregroundColor(.white)
             .frame(maxWidth: .infinity, maxHeight: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
         }
+      
         .padding(.bottom,8)
         .padding(.horizontal)
         .frame(minWidth: 280, idealWidth: 280, maxWidth: 280, minHeight: 180, idealHeight: 180, maxHeight: 180, alignment: .center)
@@ -70,7 +95,6 @@ struct CreditCardView: View {
          self.sizeChanged.toggle()
          }
          }*/
-
     }
 }
 

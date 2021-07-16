@@ -41,7 +41,7 @@ class Recargas: ObservableObject {
         }
         
          
-        guard let url = URL(string: "https://api2.fastgi.com/recarga") else { return }
+        guard let url = URL(string: "https://api.fastgi.com/recarga") else { return }
         DispatchQueue.main.async {
             AF.request(url,method:.post,parameters: parametros,headers: headers )
                 // .validate(contentType: ["application/json"])
@@ -87,7 +87,7 @@ class Recargas: ObservableObject {
            }
            //"5f56de014e834e3bc4c02059"
            let idusu = storage.string(forKey: idKey)!
-               guard let url = URL(string: "https://api2.fastgi.com/historial/\(idusu)") else { return }
+               guard let url = URL(string: "https://api.fastgi.com/historial/\(idusu)") else { return }
         //print("este es el idusuariolist recargas\(idusu)")
                DispatchQueue.main.async {
                    AF.request(url,method:.get,headers: headers )

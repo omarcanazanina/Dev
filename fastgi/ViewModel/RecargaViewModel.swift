@@ -12,7 +12,7 @@ import SwiftUI
 
 class RecargaViewModel: ObservableObject {
     @Published var control: String = ""
-     var RecargaResponse=Recargas()
+    var RecargaResponse=Recargas()
     private var disposables: Set<AnyCancellable> = []
     //recarga exitosa
     @Published var recargaData = RecargaModel(_id: "", empresa: "", recarga: "", id_usuario: "", telefono: "", fecha: "")

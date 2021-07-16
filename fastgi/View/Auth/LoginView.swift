@@ -21,7 +21,8 @@ struct LoginView: View {
     @State var telefono: String = ""
     
     var image = UIImage()
-    
+    //clogin con correo
+    @State private var action:Int? = 0
     init(){
         UITableView.appearance().backgroundColor = .clear
     }
@@ -91,11 +92,17 @@ struct LoginView: View {
                     Text("Ingresar")
                         .textStyle(TextButtonLoginStyle())
                 }
+                Button(action: {
+                    self.action = 1
+                }){
+                    Text("logueo por user y password")
+                        .font(.caption)
+                        .foregroundColor(.white)
+                }
                 Spacer()
-               
-               /* NavigationLink(destination: CodeView(number: self.loginVM.telefono.bound, smstext: self.loginVM.smstext), tag: "idlogin", selection: self.$login.ruta) {
+                NavigationLink(destination: LoginUserPasswordView(), tag: 1, selection: self.$action) {
                     EmptyView()
-                }*/
+                }
               /*  NavigationLink(destination: CodeView(number: "12121212", smstext: self.loginVM.smstext), tag: "idlogin", selection: self.$login.ruta) {
                     EmptyView()
                 }*/

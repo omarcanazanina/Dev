@@ -17,6 +17,9 @@ struct FormLoadCreditView: View {
     @State var MontoRecarga1: BtnCA
     @State  var MontoRecarga = ""
     @ObservedObject var RecargaVM = RecargaViewModel()
+    //card number
+    @State private  var cardNumber = ""
+    @State private  var idCard = ""
     //contacts
     @ObservedObject var contactsVM1 = ImportContactsViewModel()
     @ObservedObject var contactsVM = ContactsViewModel()
@@ -103,12 +106,15 @@ struct FormLoadCreditView: View {
                 Loader()
             }
             
-            NavigationLink(destination: SelectCreditCardView()) {
+            NavigationLink(destination: SelectCreditCardView(cardNumber: $cardNumber, idCard: $idCard)) {
                 HStack{
-                    Text("Seleccionar tarjeta \(self.contactsVM.listContacts.count)")
-                        .foregroundColor(Color.primary)
+                    TextField("Seleccionar tarjeta", text: $cardNumber)
                         .padding(.horizontal,12)
                         .padding(.vertical,8)
+                   /* Text("Seleccionar tarjeta \(self.cardNumber)")//\(self.contactsVM.listContacts.count)
+                        .foregroundColor(Color.primary)
+                        .padding(.horizontal,12)
+                        .padding(.vertical,8)*/
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
             
