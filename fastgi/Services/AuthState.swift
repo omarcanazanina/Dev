@@ -11,7 +11,8 @@ class AuthState: ObservableObject {
     @Published var navigateBack: Bool = false
     @Published var isAuth : Bool = false
     private let storage = UserDefaults.standard
-    
+    //navigation back two views
+    @Published var moveToDashboard: Bool = false
     init() {
         self.validAuth()
     }

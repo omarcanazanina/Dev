@@ -17,36 +17,19 @@ struct LoginUserPasswordView: View {
                 .font(.largeTitle)
                 .foregroundColor(.white)
                 .padding(.top)
-            /*Text("Ingrese su correo y contraseña")
-                .font(.caption)
-                .foregroundColor(.white)
-                .padding(.bottom)
-              */
-            VStack{
-                
-                TextField("Correo", text: self.$correo)
-                    .keyboardType(.numberPad)
-                    .padding(12)
-                    .background(Color.white)
-                    .foregroundColor(.black)
-                    .clipShape(Capsule())
-                    .frame(width:220)
-                    .introspectTextField { (textField) in
-                        textField.becomeFirstResponder()
-                     }
-                HStack{
-                    TextField("Password", text: self.$password)
-                        .keyboardType(.numberPad)
-                        .padding(12)
-                        .background(Color.white)
-                        .foregroundColor(.black)
-                        .clipShape(Capsule())
-                        .frame(width:220)
-                        .introspectTextField { (textField) in
-                            textField.becomeFirstResponder()
-                         }
+            
+                VStack(alignment: .leading, spacing: 8){
+                    Text("CORREO ELECTRÓNICO")
+                        .textStyle(TitleStyle1())
+                    TextField("user@email.com", text: self.$correo)
+                    .textFieldStyle(Input())
+                        .keyboardType(.emailAddress)
+                    Text("PASSWORD")
+                        .textStyle(TitleStyle1())
+                    TextField("password", text: self.$password)
+                    .textFieldStyle(Input())
+                        .keyboardType(.alphabet)
                 }
-            }
         
             Button(action: {
                 

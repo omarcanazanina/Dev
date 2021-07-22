@@ -310,17 +310,19 @@ struct HomeView: View {
              }
          
  
-           /* VStack{
+            VStack{
                 Button(action: {
                     self.action = 44
                 }){
-                    Text("test1")
+                    Text("validacion")
                 }
                 
-                NavigationLink(destination: testView(), tag: 44, selection: self.$action) {
+                NavigationLink(destination: ContentView(), tag: 44, selection: self.$action) {
                     EmptyView()
                 }
-            }*/
+                
+                
+            }
         }
         .alert(isPresented:  self.$alertState){
             self.alerts

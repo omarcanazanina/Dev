@@ -112,6 +112,17 @@ struct TitleStyle: ViewModifier {
     }
 }
 
+struct TitleStyle1: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .foregroundColor(Color.white)
+            .lineSpacing(8)
+            .font(.caption)
+            //.opacity(0.5)
+        
+    }
+}
+
 
 /*Style TextField*/
 extension TextField {

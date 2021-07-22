@@ -12,6 +12,8 @@
 		9202E997255DF485009115ED /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9202E996255DF485009115ED /* test.swift */; };
 		92064B8E25706ABA00D84932 /* PayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92064B8D25706ABA00D84932 /* PayView.swift */; };
 		9208DE4B256EFB4A00EA9C23 /* RegistrationFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9208DE4A256EFB4A00EA9C23 /* RegistrationFormView.swift */; };
+		9209C21626A626F3004C2052 /* ValidationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9209C21526A626F3004C2052 /* ValidationViewModel.swift */; };
+		9209C21926A62726004C2052 /* Test2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9209C21826A62726004C2052 /* Test2View.swift */; };
 		920CF234262F743E00F94C25 /* QrPaymentModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920CF233262F743E00F94C25 /* QrPaymentModule.swift */; };
 		920CF237262F748200F94C25 /* QrPaymentModuleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920CF236262F748200F94C25 /* QrPaymentModuleModel.swift */; };
 		920CF23A262F74B900F94C25 /* QrPaymentModuleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920CF239262F74B900F94C25 /* QrPaymentModuleResponse.swift */; };
@@ -108,6 +110,7 @@
 		92AB8CF52579B779006F0FA7 /* QrPaymentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AB8CF42579B779006F0FA7 /* QrPaymentResponse.swift */; };
 		92AB8CF82579B7F4006F0FA7 /* QrPaymentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AB8CF72579B7F4006F0FA7 /* QrPaymentModel.swift */; };
 		92AB8CFB2579B9E1006F0FA7 /* QrPaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AB8CFA2579B9E1006F0FA7 /* QrPaymentViewModel.swift */; };
+		92B2269326A775E0003334B7 /* ValidateCvvView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B2269226A775E0003334B7 /* ValidateCvvView.swift */; };
 		92B75E4A25B795C3005A2DCC /* EnterAmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B75E4925B795C3005A2DCC /* EnterAmountView.swift */; };
 		92C90EC226965B130092E9EF /* DeleteCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C90EC126965B130092E9EF /* DeleteCardView.swift */; };
 		92CA837C25D5C4EF00727F89 /* ChargeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CA837B25D5C4EF00727F89 /* ChargeView.swift */; };
@@ -133,6 +136,8 @@
 		9202E996255DF485009115ED /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		92064B8D25706ABA00D84932 /* PayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayView.swift; sourceTree = "<group>"; };
 		9208DE4A256EFB4A00EA9C23 /* RegistrationFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFormView.swift; sourceTree = "<group>"; };
+		9209C21526A626F3004C2052 /* ValidationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationViewModel.swift; sourceTree = "<group>"; };
+		9209C21826A62726004C2052 /* Test2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test2View.swift; sourceTree = "<group>"; };
 		920CF233262F743E00F94C25 /* QrPaymentModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrPaymentModule.swift; sourceTree = "<group>"; };
 		920CF236262F748200F94C25 /* QrPaymentModuleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrPaymentModuleModel.swift; sourceTree = "<group>"; };
 		920CF239262F74B900F94C25 /* QrPaymentModuleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrPaymentModuleResponse.swift; sourceTree = "<group>"; };
@@ -228,6 +233,7 @@
 		92AB8CF42579B779006F0FA7 /* QrPaymentResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrPaymentResponse.swift; sourceTree = "<group>"; };
 		92AB8CF72579B7F4006F0FA7 /* QrPaymentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrPaymentModel.swift; sourceTree = "<group>"; };
 		92AB8CFA2579B9E1006F0FA7 /* QrPaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrPaymentViewModel.swift; sourceTree = "<group>"; };
+		92B2269226A775E0003334B7 /* ValidateCvvView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateCvvView.swift; sourceTree = "<group>"; };
 		92B75E4925B795C3005A2DCC /* EnterAmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterAmountView.swift; sourceTree = "<group>"; };
 		92C90EC126965B130092E9EF /* DeleteCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCardView.swift; sourceTree = "<group>"; };
 		92CA837B25D5C4EF00727F89 /* ChargeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargeView.swift; sourceTree = "<group>"; };
@@ -403,6 +409,7 @@
 				92AB8CFA2579B9E1006F0FA7 /* QrPaymentViewModel.swift */,
 				925F072A2580372B00153B5A /* AfiliacionViewModel.swift */,
 				92418372268D1DD8002DF4B6 /* CardsViewModel.swift */,
+				9209C21526A626F3004C2052 /* ValidationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -533,6 +540,8 @@
 				92E4F3E326865F8B00E423CD /* ListCityView.swift */,
 				92A63D162693A63A00DA8F6E /* ListCardsView.swift */,
 				92C90EC126965B130092E9EF /* DeleteCardView.swift */,
+				9209C21826A62726004C2052 /* Test2View.swift */,
+				92B2269226A775E0003334B7 /* ValidateCvvView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -726,6 +735,7 @@
 				92AB8CFB2579B9E1006F0FA7 /* QrPaymentViewModel.swift in Sources */,
 				92AB8CF52579B779006F0FA7 /* QrPaymentResponse.swift in Sources */,
 				92A3BA9B2553673200DF3707 /* DataUserResponse.swift in Sources */,
+				9209C21626A626F3004C2052 /* ValidationViewModel.swift in Sources */,
 				92A3BA65255364AE00DF3707 /* UpdateUserViewModel.swift in Sources */,
 				92CA837C25D5C4EF00727F89 /* ChargeView.swift in Sources */,
 				92A3BA68255364CF00DF3707 /* ContactsViewModel.swift in Sources */,
@@ -754,6 +764,7 @@
 				92A3BAE625536AAB00DF3707 /* Loader.swift in Sources */,
 				92A3BAE025536A7800DF3707 /* HeaderUserView.swift in Sources */,
 				920CF237262F748200F94C25 /* QrPaymentModuleModel.swift in Sources */,
+				92B2269326A775E0003334B7 /* ValidateCvvView.swift in Sources */,
 				92A3BA852553662D00DF3707 /* ErrorModel.swift in Sources */,
 				92A3BA5E2553642800DF3707 /* Login.swift in Sources */,
 				92A3BABE255368F300DF3707 /* HistoryView.swift in Sources */,
@@ -793,6 +804,7 @@
 				92418370268D15E6002DF4B6 /* CardResponse.swift in Sources */,
 				92A3BAE325536A9500DF3707 /* TabsView.swift in Sources */,
 				92A3BB0A25536DE600DF3707 /* BrokenRule.swift in Sources */,
+				9209C21926A62726004C2052 /* Test2View.swift in Sources */,
 				92A3BAE925536ACD00DF3707 /* ListAreaCodeView.swift in Sources */,
 				C0722FAB2571A07500D5B225 /* ListAccountTypeView.swift in Sources */,
 				92278A5F2556186E00D746EA /* Helper.swift in Sources */,

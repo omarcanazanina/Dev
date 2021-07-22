@@ -34,6 +34,10 @@ struct FormLoadCreditView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var alertState: Bool = false
     
+    //***navigation back two views
+    @EnvironmentObject var authState: AuthState
+    @State var isView1Active: Bool = false
+    //****
     
     /*init(SelectEm: Binding<BtnEm>, Empresa: String, MontoRecarga1: Binding<BtnCA>, montorecarga: String) {
         self._selectEm = SelectEm
@@ -106,7 +110,7 @@ struct FormLoadCreditView: View {
                 Loader()
             }
             
-            NavigationLink(destination: SelectCreditCardView(cardNumber: $cardNumber, idCard: $idCard)) {
+            NavigationLink(destination: SelectCreditCardView( idCard: $idCard) , isActive: $isView1Active) {
                 HStack{
                     TextField("Seleccionar tarjeta", text: $cardNumber)
                         .padding(.horizontal,12)
@@ -117,11 +121,19 @@ struct FormLoadCreditView: View {
                         .padding(.vertical,8)*/
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-            
                 .background(Color("input"))
                         .clipShape(Capsule())
                 .padding(.horizontal)
             }
+            .isDetailLink(false)
+            .onReceive(self.authState.$moveToDashboard) { moveToDashboard in
+                if moveToDashboard {
+                    print("Move to dashboard: \(moveToDashboard)")
+                    self.isView1Active = false
+                    self.authState.moveToDashboard = false
+                }
+            }
+            
             // amounts select
            //lista de contactos
             //if self.contactsVM.listComplete == false {
@@ -164,6 +176,25 @@ struct FormLoadCreditView: View {
                 }
                 
             }
+            
+          /*  VStack {
+                Text("Content View")
+                    .font(.headline)
+                
+                NavigationLink(destination: SelectCreditCardView(cardNumber: $cardNumber, idCard: $idCard) , isActive: $isView1Active) {
+                    Text("View 1")
+                        .font(.headline)
+                }
+                .isDetailLink(false)
+            }
+            .onReceive(self.authState.$moveToDashboard) { moveToDashboard in
+                if moveToDashboard {
+                    print("Move to dashboard: \(moveToDashboard)")
+                    self.isView1Active = false
+                    self.authState.moveToDashboard = false
+                }
+            }*/
+            
         }
     }
     

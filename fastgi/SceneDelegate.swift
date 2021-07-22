@@ -25,6 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let welcome = WelcomeTermsAndConditionsView()
         //welcome
         let storage = UserDefaults.standard
+        
         if storage.string(forKey: "termsAndConditions") == nil{
             if let windowScene = scene as? UIWindowScene {
                 let window = UIWindow(windowScene: windowScene)
