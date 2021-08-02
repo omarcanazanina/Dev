@@ -11,26 +11,28 @@ struct LoginUserPasswordView: View {
     @State var correo: String = ""
     @State var password: String = ""
     var body: some View {
-        VStack(spacing:10) {
+        VStack(spacing:20) {
            
             Text("Fastgi")
                 .font(.largeTitle)
                 .foregroundColor(.white)
                 .padding(.top)
             
-                VStack(alignment: .leading, spacing: 8){
-                    Text("CORREO ELECTRÓNICO")
-                        .textStyle(TitleStyle1())
-                    TextField("user@email.com", text: self.$correo)
+            VStack(alignment: .leading, spacing: 8){
+                Text("CORREO ELECTRÓNICO")
+                    .textStyle(TitleStyle1())
+                TextField("user@email.com", text: self.$correo)
                     .textFieldStyle(Input())
-                        .keyboardType(.emailAddress)
-                    Text("PASSWORD")
-                        .textStyle(TitleStyle1())
-                    TextField("password", text: self.$password)
+                    .keyboardType(.emailAddress)
+            }
+            
+            VStack(alignment: .leading, spacing: 8){
+                Text("PASSWORD")
+                    .textStyle(TitleStyle1())
+                TextField("password", text: self.$password)
                     .textFieldStyle(Input())
-                        .keyboardType(.alphabet)
-                }
-        
+                    .keyboardType(.alphabet)
+            }
             Button(action: {
                 
             })

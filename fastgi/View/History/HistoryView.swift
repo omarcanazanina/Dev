@@ -41,7 +41,7 @@ struct HistoryView: View {
                  self.searchText.isEmpty ? true : $0.lowercased().contains(self.searchText.lowercased())
                  }, id: \.self) { item in
                  **/
-                ForEach(self.RecargaVM.ListRecargas, id: \.self._id){ (recarga:RecargaModel) in
+                ForEach(self.RecargaVM.ListRecargas, id: \.self._id){ (recarga:RecargaListModel) in
                     Button(action: {
                         print(self.RecargaVM.ListRecargas)
                         self.action = 1

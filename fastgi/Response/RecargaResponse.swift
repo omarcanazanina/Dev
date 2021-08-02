@@ -9,12 +9,13 @@ import Foundation
 
 struct RecargaResponse : Codable {
     let ok : Bool
+    let estado : String
     let recarga : RecargaModel
 }
 
 struct GetRecargasResponse : Codable {
     let ok :Bool
-    let recarga: [RecargaModel]
+    let recarga: [RecargaListModel]
 }
 struct ErrorRecargaResponse : Codable {
     var ok : Bool

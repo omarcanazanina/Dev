@@ -15,10 +15,11 @@ class RecargaViewModel: ObservableObject {
     var RecargaResponse=Recargas()
     private var disposables: Set<AnyCancellable> = []
     //recarga exitosa
-    @Published var recargaData = RecargaModel(_id: "", empresa: "", recarga: "", id_usuario: "", telefono: "", fecha: "")
+    @Published var recargaData = RecargaModel(_id: "", empresa: "", recarga: "", telefono: "", id_usuario: "", id_tarjeta: "", fecha: "")
     // lista de recargas
-    @Published var ListRecargas : [RecargaModel] = []
-   
+    @Published var ListRecargas : [RecargaListModel] = []
+    @Published var isloading: Bool = false
+    
     private var TestPublished: AnyPublisher<String, Never> {
         RecargaResponse.$control
             .receive(on: RunLoop.main)
@@ -41,7 +42,7 @@ class RecargaViewModel: ObservableObject {
         .eraseToAnyPublisher()
     }
     
-    private var isListRecargaPublisher: AnyPublisher<[RecargaModel], Never> {
+    private var isListRecargaPublisher: AnyPublisher<[RecargaListModel], Never> {
            RecargaResponse.$getRecargasResponse
                 .receive(on: RunLoop.main)
                 .map { response in
@@ -53,6 +54,15 @@ class RecargaViewModel: ObservableObject {
             .eraseToAnyPublisher()
         }
         
+    private var isLoadingPublished: AnyPublisher<Bool, Never> {
+        RecargaResponse.$isloading
+            .receive(on: RunLoop.main)
+            .map { response in
+                return response
+        }
+        .eraseToAnyPublisher()
+    }
+    
     init(){
             TestPublished
             .receive(on: RunLoop.main)
@@ -69,6 +79,11 @@ class RecargaViewModel: ObservableObject {
                  .assign(to: \.ListRecargas, on: self)
                  .store(in: &disposables)
             
+        isLoadingPublished
+            .receive(on: RunLoop.main)
+            .assign(to: \.isloading, on: self)
+            .store(in: &disposables)
+        
             //listRecargas()
         }
         
@@ -80,8 +95,8 @@ class RecargaViewModel: ObservableObject {
     /*   func SendRecarga(empresa:BtnEm,recarga:BtnCA,telefono:String) {
            RecargaResponse.sendRecarga(empresa:empresa, recarga:recarga, telefono: telefono)
        }*/
-       func SendRecarga(empresa:BtnEm,recarga:String,telefono:String, text: String) {
-           RecargaResponse.sendRecarga(empresa:empresa, recarga:recarga, telefono: telefono, text:text)
+    func SendRecarga(empresa:BtnEm,recarga:String,telefono:String, text: String, tarjetaid:String) {
+           RecargaResponse.sendRecarga(empresa:empresa, recarga:recarga, telefono: telefono, text:text, tarjetaid: tarjetaid)
        }
     
     

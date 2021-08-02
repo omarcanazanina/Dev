@@ -110,7 +110,7 @@ struct FormLoadCreditView: View {
                 Loader()
             }
             
-            NavigationLink(destination: SelectCreditCardView( idCard: $idCard) , isActive: $isView1Active) {
+            NavigationLink(destination: SelectCreditCardView( cardNumber1: $cardNumber, idCard1: $idCard) , isActive: $isView1Active) {
                 HStack{
                     TextField("Seleccionar tarjeta", text: $cardNumber)
                         .padding(.horizontal,12)
@@ -146,13 +146,14 @@ struct FormLoadCreditView: View {
                     print(self.MontoRecarga1)
                     print(self.MontoRecarga)
                     print(self.telefono)
+                    print(self.idCard)
                     if  self.telefono == "" {
                         self.alertState = true
                     }else{
                         if self.MontoRecarga == ""{
-                            self.RecargaVM.SendRecarga(empresa: self.selectEm, recarga: "30", telefono: self.telefono,  text: "")
+                            self.RecargaVM.SendRecarga(empresa: self.selectEm, recarga: "30", telefono: self.telefono,  text: "", tarjetaid: self.idCard)
                         }else{
-                            self.RecargaVM.SendRecarga(empresa: self.selectEm, recarga: self.MontoRecarga, telefono: self.telefono,  text: "")
+                            self.RecargaVM.SendRecarga(empresa: self.selectEm, recarga: self.MontoRecarga, telefono: self.telefono,  text: "", tarjetaid: self.idCard)
                         }
                             self.action = 1
                     }
@@ -168,6 +169,9 @@ struct FormLoadCreditView: View {
                         
                 }
                 
+            }
+            if self.RecargaVM.isloading == true{
+                Loader()
             }
             //end
             if self.RecargaVM.control != ""{

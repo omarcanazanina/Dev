@@ -23,12 +23,14 @@ class Recargas: ObservableObject {
     
     
     
-    func sendRecarga(empresa:BtnEm, recarga:String, telefono:String, text: String){
+    func sendRecarga(empresa:BtnEm, recarga:String, telefono:String, text: String, tarjetaid:String){
+        self.isloading = true
         let parametros : Parameters = [
             "id": storage.string(forKey: idKey)!,
             "empresa": empresa,
             "recarga":recarga,
-            "telefono":telefono
+            "telefono":telefono,
+            "tarjetaid":tarjetaid
               ]
         
          // creando headers
@@ -58,12 +60,14 @@ class Recargas: ObservableObject {
                             self.control = decodedResponse.recarga.empresa
                             self.recargaResponse = decodedResponse.recarga
                             print(self.recargaResponse!)
+                            self.isloading = false
                             // self.ruta = "idlogin"
                             return
                         }
                         //Cast respuesta a ErrorResponce
                         if let decodedResponse = try? JSONDecoder().decode(ErrorRecargaResponse.self, from: data) {
                             print(decodedResponse.err.message)
+                            self.isloading = false
                             //  self.ErrorRes = decodedResponse.err.message
                             return
                         }
