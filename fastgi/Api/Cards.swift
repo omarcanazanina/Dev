@@ -51,7 +51,7 @@ class Cards: ObservableObject {
                     case let .success(data):
                         //Cast respuesta a SmsResponse
                         if let decodedResponse = try? JSONDecoder().decode(CardResponse.self, from: data) {
-                            print("entro a la recarga")
+                            print("se guardo el card")
                             print(decodedResponse.afiliado)
                             self.isloading=false
                             //self.control = decodedResponse.recarga.empresa

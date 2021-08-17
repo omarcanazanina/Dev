@@ -27,7 +27,8 @@ struct CodeView: View {
     //temporizador
     @State var timeRemaining = 15
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    
+    //validar campo
+    @ObservedObject var validationVM = ValidationViewModel()
     var body: some View {
         VStack(spacing:10) {
             /*Text("Verificar código")
@@ -44,16 +45,23 @@ struct CodeView: View {
                 .font(.caption)
                 .foregroundColor(.white)
             HStack{
-                TextField("Código", text: $pin)// $telefono)
-                    .keyboardType(.numberPad)
-                    .padding(12)
-                    .background(Color.white)
-                    .foregroundColor(.black)
-                    .clipShape(Capsule())
-                    .frame(width:220)
-                    .introspectTextField { (textField) in
-                        textField.becomeFirstResponder()
-                     }
+                VStack{
+                    // TextField("Código", text: $pin)// $telefono)
+                     EntryField1(placeHolder: "Teléfono", field: $validationVM.pin)
+                         .keyboardType(.numberPad)
+                         .padding(20)
+                         .background(Color.white)
+                         .foregroundColor(.black)
+                         .clipShape(Capsule())
+                         .frame(width:220)
+                         .introspectTextField { (textField) in
+                             textField.becomeFirstResponder()
+                          }
+                    VStack{
+                        PromptFile(prompt: validationVM.pinPront)
+                    }
+                }
+               
                    
             }
            /* .accentColor(Color("primary"))
@@ -87,7 +95,7 @@ struct CodeView: View {
             }
             
             
-            Button(action: {
+           /* Button(action: {
                 self.contIntentos += 1
                 if self.contIntentos <= 3 {
                     self.loginVM.verificarCode(telefono: self.number, code: self.pin)
@@ -99,8 +107,22 @@ struct CodeView: View {
             {
                 Text("Aceptar")
                     .textStyle(TextButtonLoginStyle())
-            }
+            }*/
             
+             Button(action:{
+                self.contIntentos += 1
+                if self.contIntentos <= 3 {
+                    self.loginVM.verificarCode(telefono: self.number, code: self.validationVM.pin)
+                }else if self.contIntentos >= 4 {
+                    self.alertState = true
+                }
+             }){
+                Text("Aceptar")
+                    .textStyle(TextButtonLoginStyle())
+             }
+             .opacity(validationVM.isValidationCompletePin ? 1 : 0.6)
+             .disabled(!validationVM.isValidationCompletePin)
+             
             Text("SMS \(self.smstext)")
             if self.loginVM.isloading == true{
                 Loader()

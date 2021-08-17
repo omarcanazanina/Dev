@@ -317,7 +317,7 @@ struct HomeView: View {
                     Text("validacion")
                 }
                 
-                NavigationLink(destination: ContentView(), tag: 44, selection: self.$action) {
+                NavigationLink(destination: Test2View(), tag: 44, selection: self.$action) {
                     EmptyView()
                 }
                 

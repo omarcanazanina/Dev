@@ -32,7 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-    
     //notifications
     func registerForPushNotifications() {
       //1
@@ -45,7 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self?.getNotificationSettings()
           }
     }
-    
     func getNotificationSettings() {
       UNUserNotificationCenter.current().getNotificationSettings { settings in
         print("Notification settings: \(settings)")
@@ -56,18 +54,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
       }
     }
-    
     func application(
       _ application: UIApplication,
       didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
     ) {
-       
       let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
       let tokenDevice = tokenParts.joined()
       print("Device Token: \(tokenDevice)")
         storage.removeObject(forKey: "tokenDevice")
         storage.setValue(tokenDevice, forKey: "tokenDevice")
-    
     }
 
     func application(
@@ -90,34 +85,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       NewsItem.makeNewsItem(aps)
     }*/
     
-    /*extension AppDelegate: UNUserNotificationCenterDelegate {
-      func userNotificationCenter(
-        _ center: UNUserNotificationCenter,
-        didReceive response: UNNotificationResponse,
-        withCompletionHandler completionHandler: @escaping () -> Void
-      ) {
-        // 1
-        let userInfo = response.notification.request.content.userInfo
-        
-        // 2
-        if
-          let aps = userInfo["aps"] as? [String: AnyObject],
-          let newsItem = NewsItem.makeNewsItem(aps) {
-          (window?.rootViewController as? UITabBarController)?.selectedIndex = 1
-          
-          // 3
-          if response.actionIdentifier == Identifiers.viewAction,
-            let url = URL(string: newsItem.link) {
-            let safari = SFSafariViewController(url: url)
-            window?.rootViewController?
-              .present(safari, animated: true, completion: nil)
-          }
-        }
-        
-        // 4
-        completionHandler()
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+  func userNotificationCenter(
+    _ center: UNUserNotificationCenter,
+    didReceive response: UNNotificationResponse,
+    withCompletionHandler completionHandler: @escaping () -> Void
+  ) {
+    // 1
+    let userInfo = response.notification.request.content.userInfo
+     print(userInfo)
+    // 2
+    /*if
+      let aps = userInfo["aps"] as? [String: AnyObject],
+      let newsItem = NewsItem.makeNewsItem(aps) {
+      (window?.rootViewController as? UITabBarController)?.selectedIndex = 1
+      
+      // 3
+      if response.actionIdentifier == Identifiers.viewAction,
+        let url = URL(string: newsItem.link) {
+        let safari = SFSafariViewController(url: url)
+        window?.rootViewController?
+          .present(safari, animated: true, completion: nil)
       }
     }*/
     
+    // 4
+    completionHandler()
+  }
 }
-
