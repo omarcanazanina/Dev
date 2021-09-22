@@ -116,7 +116,7 @@
 		92CA837C25D5C4EF00727F89 /* ChargeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CA837B25D5C4EF00727F89 /* ChargeView.swift */; };
 		92D21ABA26BC84EC003C7B42 /* RadioButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D21AB926BC84EC003C7B42 /* RadioButtonView.swift */; };
 		92DBE2A225537827001B791B /* SwiftUIRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 92DBE2A125537827001B791B /* SwiftUIRefresh */; };
-		92E3FE2425C0AA4A00320396 /* testView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E3FE2325C0AA4A00320396 /* testView.swift */; };
+		92E2264626CDAD9A00F371B1 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E2264526CDAD9A00F371B1 /* ToastView.swift */; };
 		92E4F3E426865F8B00E423CD /* ListCityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E4F3E326865F8B00E423CD /* ListCityView.swift */; };
 		C0100033257ACF3B00945FCA /* SlideFormJoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0100032257ACF3B00945FCA /* SlideFormJoinView.swift */; };
 		C05413E525783C2F000343EB /* TestWizardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05413E425783C2F000343EB /* TestWizardView.swift */; };
@@ -239,7 +239,7 @@
 		92C90EC126965B130092E9EF /* DeleteCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCardView.swift; sourceTree = "<group>"; };
 		92CA837B25D5C4EF00727F89 /* ChargeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargeView.swift; sourceTree = "<group>"; };
 		92D21AB926BC84EC003C7B42 /* RadioButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonView.swift; sourceTree = "<group>"; };
-		92E3FE2325C0AA4A00320396 /* testView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testView.swift; sourceTree = "<group>"; };
+		92E2264526CDAD9A00F371B1 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		92E4F3E326865F8B00E423CD /* ListCityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCityView.swift; sourceTree = "<group>"; };
 		C0100032257ACF3B00945FCA /* SlideFormJoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideFormJoinView.swift; sourceTree = "<group>"; };
 		C05413E425783C2F000343EB /* TestWizardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestWizardView.swift; sourceTree = "<group>"; };
@@ -296,7 +296,6 @@
 				92064B8D25706ABA00D84932 /* PayView.swift */,
 				9290C1BA257AFFB000504158 /* TestpayDetail.swift */,
 				92B75E4925B795C3005A2DCC /* EnterAmountView.swift */,
-				92E3FE2325C0AA4A00320396 /* testView.swift */,
 				923AE28725CAF3A30015ECA8 /* QrChargeView.swift */,
 				92CA837B25D5C4EF00727F89 /* ChargeView.swift */,
 			);
@@ -545,6 +544,7 @@
 				9209C21826A62726004C2052 /* Test2View.swift */,
 				92B2269226A775E0003334B7 /* ValidateCvvView.swift */,
 				92D21AB926BC84EC003C7B42 /* RadioButtonView.swift */,
+				92E2264526CDAD9A00F371B1 /* ToastView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -784,9 +784,9 @@
 				92AB8CF22579B6C4006F0FA7 /* QrPayment.swift in Sources */,
 				92A3BA492553631C00DF3707 /* NavigationRoot.swift in Sources */,
 				92A3BA422553629F00DF3707 /* PhotoCaptureView.swift in Sources */,
-				92E3FE2425C0AA4A00320396 /* testView.swift in Sources */,
 				920CF234262F743E00F94C25 /* QrPaymentModule.swift in Sources */,
 				92A3BA292553616F00DF3707 /* ContentView.swift in Sources */,
+				92E2264626CDAD9A00F371B1 /* ToastView.swift in Sources */,
 				92A3BA6E2553651C00DF3707 /* RecargaViewModel.swift in Sources */,
 				92A3BAD4255369EC00DF3707 /* InputCreditAmountView.swift in Sources */,
 				92A3BAD725536A0700DF3707 /* BtnsEmView.swift in Sources */,
@@ -987,7 +987,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.9;
+				MARKETING_VERSION = 1.0.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hegaro.fastgicredit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1014,7 +1014,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.9;
+				MARKETING_VERSION = 1.0.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hegaro.fastgicredit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

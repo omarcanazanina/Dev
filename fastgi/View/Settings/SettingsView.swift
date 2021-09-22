@@ -235,7 +235,8 @@ struct SettingsView: View {
     @State private var sourceType: UIImagePickerController.SourceType = .camera
     //datos user
     @ObservedObject var userDataVM = UserDataViewModel()
-
+    //navegacion
+   // var navigationRoot = NavigationRoot()
     init() {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColorPrimary()
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
@@ -273,7 +274,7 @@ struct SettingsView: View {
     
     var imageProfile:some View {
         HStack(alignment: .center){
-            WebImage(url: URL(string: "https://api.fastgi.com/avatar/\(self.userDataVM.user._id)" ), options: .refreshCached)
+            WebImage(url: URL(string: "https://api.fastgi.com/avatar/\(self.userDataVM.user._id)"), options: .refreshCached)
             //WebImage(url: URL(string: "https://i.postimg.cc/8kJ4bSVQ/image.jpg" ))
             .onSuccess { image, data, cacheType in
                         // Success
@@ -291,7 +292,7 @@ struct SettingsView: View {
                             .stroke(Color("card"), lineWidth: 2))
             
         }
-        .overlay(
+       /* .overlay(
             HStack(alignment:.bottom){
                 Spacer()
                 Button(action: {
@@ -310,7 +311,7 @@ struct SettingsView: View {
                     
                 }.padding(.top,60)
             }
-        )
+        )*/
         .padding(.top)
     }
     
@@ -462,6 +463,7 @@ struct SettingsView: View {
                         // self.image.uploadAvatar(image: self.imageSelect!)
                         self.imageVM.changeImage()
                         //ImagePicker(image: self.$image, isShown: self.$showImagePicker, sourceType: self.sourceType)
+                        //self.navigationRoot.setRootView()
                         print("salio del sheet")
                     })
                     {

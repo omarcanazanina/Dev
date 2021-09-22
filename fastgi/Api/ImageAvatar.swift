@@ -24,7 +24,6 @@ class ImageAvatar: ObservableObject {
     @Published var image: UIImage?
     //nav
     var navigationRoot = NavigationRoot()
-    //var dataUserVM = UserDataViewModel()
     
     func getImage(){
         
@@ -53,6 +52,7 @@ class ImageAvatar: ObservableObject {
             AF.download(url,method: .get,headers: headers, to: destination)
                 .downloadProgress { progress in
                     print("Download Progress: \(progress.fractionCompleted)")
+                  
                 }
                 .response { response in
                     print("response")
@@ -72,8 +72,6 @@ class ImageAvatar: ObservableObject {
     }
     
     func uploadAvatar(image: Data){
-       // SDImageCache.shared.clearMemory()
-       // SDImageCache.shared.clearDisk()
         print("entro al uploadAvatar")
         debugPrint(image)
         //     isLoading = true
@@ -112,6 +110,7 @@ class ImageAvatar: ObservableObject {
             .downloadProgress { progress in
                 print("Download Progress: \(progress.fractionCompleted)")
             }
+            //self.navigationRoot.setRootView()
         }
     }
     

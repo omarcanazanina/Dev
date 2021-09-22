@@ -30,17 +30,19 @@ struct HistoryView: View {
     }
     let contacts = ["Herlan Garzon", "Omar Canaza", "Elvin Mollinedo", "Agustin Ayaviri", "Daniel Jaimes", "Amilkar Dominguez"]
     @State private var searchText : String = ""
+    @State private var searchText1 : [RecargaListModel] = []
+    
     var list:some View{
         //ScrollView{
         //NavigationView{
         VStack{
             // SearchBar(text: $searchText, placeholder: "Buscar")
             List {
-                /*
-                 ForEach(self.contacts.filter {
-                 self.searchText.isEmpty ? true : $0.lowercased().contains(self.searchText.lowercased())
-                 }, id: \.self) { item in
-                 **/
+                SearchBar(text: $searchText, placeholder: "Buscar")
+                /*ForEach(self.RecargaVM.ListRecargas.filter {
+                    self.searchText1.isEmpty ? true : $0.lowercased().contains(self.searchText.lowercased())
+                }, id: \.self._id) { (recarga:RecargaListModel) in
+               */
                 ForEach(self.RecargaVM.ListRecargas, id: \.self._id){ (recarga:RecargaListModel) in
                     Button(action: {
                         print(self.RecargaVM.ListRecargas)
@@ -139,6 +141,7 @@ struct HistoryView: View {
                 Picker(selection: $optionPicker, label: Text("")) {
                     Text("Realizadas").tag(0)
                     Text("No realizadas").tag(1)
+                    Text("Pendientes").tag(2)
                 }.pickerStyle(SegmentedPickerStyle())
                 .padding()
                 if(optionPicker==0){
@@ -155,6 +158,10 @@ struct HistoryView: View {
                     
                 }
                 if(optionPicker==1){
+                    //Text("list no realizadas")
+                    self.listNot
+                }
+                if(optionPicker==2){
                     //Text("list no realizadas")
                     self.listNot
                 }

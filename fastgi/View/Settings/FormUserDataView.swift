@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+import SDWebImageSwiftUI
 struct FormUserDataView: View {
     var updateUser = UpdateUser()
     @State var text: String = ""
@@ -26,11 +27,59 @@ struct FormUserDataView: View {
     //datos user
     @ObservedObject var userDataVM = UserDataViewModel()
     
+    //camera
+    @ObservedObject var imageVM = ImageViewModel()
+    @State private var showImagePicker: Bool = false
+    @State private var showSheet:Bool = false
+    @State private var imageSelect : UIImage? = nil
+    @State private var sourceType: UIImagePickerController.SourceType = .camera
     init() {
         self.userDataVM.DatosUser1()
       //  self.afiliacionVM.verifiAffiliate(id_cobrador: self.userDataVM.user._id)
     }
     
+    var imageProfile:some View {
+        HStack(alignment: .center){
+            WebImage(url: URL(string: "https://api.fastgi.com/avatar/\(self.userDataVM.user._id)"), options: .refreshCached)
+            //WebImage(url: URL(string: "https://i.postimg.cc/8kJ4bSVQ/image.jpg" ))
+            .onSuccess { image, data, cacheType in
+                        // Success
+                        // Note: Data exist only when queried from disk cache or network. Use `.queryMemoryData` if you really need data
+                    }
+                //Image(uiImage: self.imageVM.image ?? UIImage(named: "placeholder")!)
+                    .placeholder(Image( "user-default"))
+                    .resizable()
+                    .foregroundColor(.white)
+                    .frame(width: 100.0, height: 100.0)
+                    .clipShape(Circle())
+                    .shadow(color: Color.black.opacity(0.1), radius: 4, x: 2, y: 3)
+                    .overlay(
+                        Circle()
+                            .stroke(Color("card"), lineWidth: 2))
+            
+        }
+        .overlay(
+            HStack(alignment:.bottom){
+                Spacer()
+                Button(action: {
+                    self.showSheet = true
+                    // self.showImagePicker = true
+                    // self.sourceType = .photoLibrary
+                }){
+                    Image(systemName: "pencil")
+                        .foregroundColor(.white)
+                        .padding(10)
+                        .background(Color("primary"))
+                        .clipShape(Circle())
+                        .overlay(
+                            Circle()
+                                .stroke(Color("card"), lineWidth: 2))
+                    
+                }.padding(.top,60)
+            }
+        )
+        .padding(.top)
+    }
 
     var infoUser:some View{
         ScrollView(){
@@ -185,8 +234,21 @@ struct FormUserDataView: View {
     
     var body: some View {
         VStack(){
+            self.imageProfile
             self.infoUser
             self.buttonSuccess
+                .sheet(isPresented: self.$showImagePicker,onDismiss:  {
+                    print("ento al sheet")
+                    // debugPrint(self.image ?? "")
+                    // self.image.uploadAvatar(image: self.imageSelect!)
+                    self.imageVM.changeImage()
+                    //ImagePicker(image: self.$image, isShown: self.$showImagePicker, sourceType: self.sourceType)
+                    //self.navigationRoot.setRootView()
+                    print("salio del sheet")
+                })
+                {
+                    ImagePicker(image: self.$imageVM.image, isShown: self.$showImagePicker, sourceType: self.sourceType)
+                }
      //test validacion
      /*   VStack{
          
@@ -212,6 +274,21 @@ struct FormUserDataView: View {
         }*/
              //
 
+        }  .actionSheet(isPresented: self.$showSheet) {
+            ActionSheet(title: Text("Opciones"), buttons: [
+                .default(Text("Galeria")) {
+                    print("entro galeria")
+                    self.showImagePicker = true
+                    self.sourceType = .photoLibrary
+                   
+                },
+                .default(Text("Camara")) {
+                    print("camara")
+                    self.showImagePicker = true
+                    self.sourceType = .camera
+                },
+                .cancel()
+            ])
         }
             
         .offset(y: -self.valueKeyboard)

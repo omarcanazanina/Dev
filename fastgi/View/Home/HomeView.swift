@@ -314,10 +314,10 @@ struct HomeView: View {
                 Button(action: {
                     self.action = 44
                 }){
-                    Text("validacion")
+                    Text("toast notificacion")
                 }
                 
-                NavigationLink(destination: Test2View(), tag: 44, selection: self.$action) {
+                NavigationLink(destination: ToastView(), tag: 44, selection: self.$action) {
                     EmptyView()
                 }
                 

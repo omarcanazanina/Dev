@@ -32,3 +32,8 @@ struct LoginSmsResponse:Codable {
     var usuario : Usuario
     var token : String
 }
+
+struct UserPasswordResponse: Codable {
+    var ok :Bool
+    var usuarioPassword : UsuarioPassword
+}

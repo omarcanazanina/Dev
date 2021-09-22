@@ -8,7 +8,6 @@
 import Foundation
 import Combine
 import AVKit
-
 class ImageViewModel: ObservableObject {
     
     @Published var image: UIImage?
@@ -39,12 +38,17 @@ class ImageViewModel: ObservableObject {
        
     }
     
+    func getImage(){
+        imageResponse.getImage()
+    }
+    
     func changeImage(){
         print("entro changeImage")
         print(self.image ?? "")
         guard let img = self.image,
               
               let imgData:Data = img.jpegData(compressionQuality: 0.1)
+           
         else {
             print("error")
             return

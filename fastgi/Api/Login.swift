@@ -123,9 +123,48 @@ class Login: ObservableObject {
                     }
                 }
         }
-        
     }
     
+    
+    func userPassword(user:String, password: String) {
+        self.isloading = true
+        let parametros : Parameters = [
+            "user": user,
+            "password": password
+        ]
+        guard let url = URL(string: "https://api.fastgi.com/sms") else { return }
+        DispatchQueue.main.async {
+            AF.request(url, method: .post, parameters: parametros)
+                .responseData { (response) in
+                    switch response.result {
+                    case let .success(data):
+                        //Cast respuesta a SmsResponse
+                        if let decodedResponse = try? JSONDecoder().decode(UserPasswordResponse.self, from: data) {
+                            print(decodedResponse.usuarioPassword)
+                            //self.pin = decodedResponse.usuario
+                            //self.smstext = decodedResponse.usuario.pin
+                            print("este es el sms \(self.smstext)")
+                            self.ruta = "idlogin"
+                            self.isloading = false
+                            self.iscomplete = true
+                            //self.navigationRoot.setRootViewNav(number: telefono, smstext: self.smstext)
+                            return
+                        }
+                        //Cast respuesta a ErrorResponce
+                        if let decodedResponse = try? JSONDecoder().decode(ErrorResponse.self, from: data) {
+                            print(decodedResponse.err.message)
+                            //  self.ErrorRes = decodedResponse.err.message
+                            self.isloading = false
+                            self.iscomplete = true
+                            return
+                        }
+                    case let .failure(error):
+                        self.isloading = false
+                        print(error)
+                    }
+                }
+        }
+    }
     
     
 }
