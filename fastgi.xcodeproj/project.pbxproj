@@ -19,6 +19,9 @@
 		920CF23A262F74B900F94C25 /* QrPaymentModuleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920CF239262F74B900F94C25 /* QrPaymentModuleResponse.swift */; };
 		920CF23E262F759500F94C25 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 920CF23D262F759500F94C25 /* FSCalendar */; };
 		920CF241262F75C400F94C25 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920CF240262F75C400F94C25 /* CalendarView.swift */; };
+		921CAE0026FC126000812521 /* CarBode in Frameworks */ = {isa = PBXBuildFile; productRef = 921CADFF26FC126000812521 /* CarBode */; };
+		921CAE0326FC18D900812521 /* TransactionDetailChargePayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921CAE0226FC18D900812521 /* TransactionDetailChargePayView.swift */; };
+		921CAE0E26FC1A7100812521 /* PayScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921CAE0D26FC1A7100812521 /* PayScanView.swift */; };
 		9222F66925E99ED800931A36 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9222F66825E99ED800931A36 /* LoginRequest.swift */; };
 		9224FE6A256DE45F00F79FA4 /* MembershipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9224FE69256DE45F00F79FA4 /* MembershipView.swift */; };
 		92278A5F2556186E00D746EA /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92278A5E2556186E00D746EA /* Helper.swift */; };
@@ -143,6 +146,8 @@
 		920CF236262F748200F94C25 /* QrPaymentModuleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrPaymentModuleModel.swift; sourceTree = "<group>"; };
 		920CF239262F74B900F94C25 /* QrPaymentModuleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrPaymentModuleResponse.swift; sourceTree = "<group>"; };
 		920CF240262F75C400F94C25 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		921CAE0226FC18D900812521 /* TransactionDetailChargePayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailChargePayView.swift; sourceTree = "<group>"; };
+		921CAE0D26FC1A7100812521 /* PayScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayScanView.swift; sourceTree = "<group>"; };
 		9222F66825E99ED800931A36 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		9224FE69256DE45F00F79FA4 /* MembershipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipView.swift; sourceTree = "<group>"; };
 		92278A5E2556186E00D746EA /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
@@ -262,6 +267,7 @@
 				92DBE2A225537827001B791B /* SwiftUIRefresh in Frameworks */,
 				924951ED2629E28C0033A96D /* PopupView in Frameworks */,
 				573DD5AA824DD586829F7E7E /* Pods_fastgi.framework in Frameworks */,
+				921CAE0026FC126000812521 /* CarBode in Frameworks */,
 				92A3BAFF25536D7A00DF3707 /* ValidatedPropertyKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,6 +282,16 @@
 				35E979A5822FE3ED491C105A /* Pods-fastgi.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		921CADE526FC0C9F00812521 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				923AE28725CAF3A30015ECA8 /* QrChargeView.swift */,
+				921CAE0226FC18D900812521 /* TransactionDetailChargePayView.swift */,
+				921CAE0D26FC1A7100812521 /* PayScanView.swift */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		9222F66725E99E9800931A36 /* Request */ = {
@@ -296,7 +312,6 @@
 				92064B8D25706ABA00D84932 /* PayView.swift */,
 				9290C1BA257AFFB000504158 /* TestpayDetail.swift */,
 				92B75E4925B795C3005A2DCC /* EnterAmountView.swift */,
-				923AE28725CAF3A30015ECA8 /* QrChargeView.swift */,
 				92CA837B25D5C4EF00727F89 /* ChargeView.swift */,
 			);
 			path = QrPayment;
@@ -453,6 +468,7 @@
 		92A3BA9D2553675C00DF3707 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				921CADE526FC0C9F00812521 /* New Group */,
 				9224FE5E256DE2E500F79FA4 /* QrPayment */,
 				92A3BABC255368DD00DF3707 /* History */,
 				92A3BAB12553685900DF3707 /* Settings */,
@@ -619,6 +635,7 @@
 				9279D54B256F0D5400890C84 /* CodeScanner */,
 				924951EC2629E28C0033A96D /* PopupView */,
 				920CF23D262F759500F94C25 /* FSCalendar */,
+				921CADFF26FC126000812521 /* CarBode */,
 			);
 			productName = fastgi;
 			productReference = 92A3BA212553616F00DF3707 /* fastgi.app */;
@@ -653,6 +670,7 @@
 				9279D54A256F0D5400890C84 /* XCRemoteSwiftPackageReference "CodeScanner" */,
 				924951EB2629E28C0033A96D /* XCRemoteSwiftPackageReference "PopupView" */,
 				920CF23C262F759500F94C25 /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				921CADF026FC10A100812521 /* XCRemoteSwiftPackageReference "CarBode-Barcode-Scanner-For-SwiftUI" */,
 			);
 			productRefGroup = 92A3BA222553616F00DF3707 /* Products */;
 			projectDirPath = "";
@@ -767,6 +785,7 @@
 				92A3BAE625536AAB00DF3707 /* Loader.swift in Sources */,
 				92A3BAE025536A7800DF3707 /* HeaderUserView.swift in Sources */,
 				920CF237262F748200F94C25 /* QrPaymentModuleModel.swift in Sources */,
+				921CAE0E26FC1A7100812521 /* PayScanView.swift in Sources */,
 				92B2269326A775E0003334B7 /* ValidateCvvView.swift in Sources */,
 				92A3BA852553662D00DF3707 /* ErrorModel.swift in Sources */,
 				92A3BA5E2553642800DF3707 /* Login.swift in Sources */,
@@ -794,6 +813,7 @@
 				C05413E525783C2F000343EB /* TestWizardView.swift in Sources */,
 				92A3BADD25536A5600DF3707 /* CardServiceView.swift in Sources */,
 				925F07282580323000153B5A /* Afiliacion.swift in Sources */,
+				921CAE0326FC18D900812521 /* TransactionDetailChargePayView.swift in Sources */,
 				92A3BAA3255367C600DF3707 /* BrokenRulesView.swift in Sources */,
 				92A3BA512553638700DF3707 /* ImageAvatar.swift in Sources */,
 				92A3BA5B2553641100DF3707 /* Recargas.swift in Sources */,
@@ -910,6 +930,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -965,6 +986,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1055,6 +1077,14 @@
 				minimumVersion = 2.8.2;
 			};
 		};
+		921CADF026FC10A100812521 /* XCRemoteSwiftPackageReference "CarBode-Barcode-Scanner-For-SwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/heart/CarBode-Barcode-Scanner-For-SwiftUI";
+			requirement = {
+				branch = 2.1.2;
+				kind = branch;
+			};
+		};
 		924951EB2629E28C0033A96D /* XCRemoteSwiftPackageReference "PopupView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/exyte/PopupView.git";
@@ -1094,6 +1124,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 920CF23C262F759500F94C25 /* XCRemoteSwiftPackageReference "FSCalendar" */;
 			productName = FSCalendar;
+		};
+		921CADFF26FC126000812521 /* CarBode */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 921CADF026FC10A100812521 /* XCRemoteSwiftPackageReference "CarBode-Barcode-Scanner-For-SwiftUI" */;
+			productName = CarBode;
 		};
 		924951EC2629E28C0033A96D /* PopupView */ = {
 			isa = XCSwiftPackageProductDependency;

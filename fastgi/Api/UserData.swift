@@ -147,7 +147,7 @@ class UserData: ObservableObject {
             headers.add(name: "token", value: token)
         }
         //let idusu = storage.string(forKey: idKey)!
-        guard let url = URL(string: "https://api2.fastgi.com/usuario/\(id_usuario)") else { return }
+        guard let url = URL(string: "https://api.fastgi.com/usuario/\(id_usuario)") else { return }
         //print("este es el idusuario\(idusu)")
         DispatchQueue.main.async {
             AF.request(url,method:.get,headers: headers )

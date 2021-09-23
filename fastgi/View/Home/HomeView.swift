@@ -12,32 +12,45 @@ import CodeScanner
 import Foundation
 struct HomeView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    var navigationRoot = NavigationRoot()
+       
+       @ObservedObject var login = Login()
+       @ObservedObject var loginVM = LoginViewModel()
+       @Binding var currentBtnEm: BtnEm
+       //pagoQR
+       @ObservedObject var qrPayment = QrPayment()
+       @ObservedObject var qrPaymentVM = QrPaymentViewModel()
+       @ObservedObject var userData = UserData()
+       @ObservedObject var userDataVM = UserDataViewModel()
+       @ObservedObject var contactsVM = ContactsViewModel()
+       //lector qr
+       @State private var showScannerTeleferico = false
+       @State private var showScannerTransporte = false
+       @State private var showScannerScan = false
+       @State private var resultado = ""
+       @State private var resultadosScan = ""
+       //lector con monto
+       @State private var idconmonto = ""
+       @State private var montoQR = ""
+       
+       @State private var action:Int? = 0
+     //lector modulo PAGO con monto
+       @State private var montoPagoQR = ""
+       @State private var montoCobroQR = ""
+       //modal test
+       @State private var showScannerTransporte1 = false
+       @State var modal = false
+     
+       //calendar
+       //@State private var birthdate = Date()
+    
+       // compartir img
+       @State var items : [Any] = []
+       @State var sheet = false
+    
     @State var alertState: Bool = false
     
-    @ObservedObject var login = Login()
-    @ObservedObject var loginVM = LoginViewModel()
-    @Binding var currentBtnEm: BtnEm
-    //var telefono: String
-    //pagoQR
-   // @ObservedObject var qrPayment = QrPayment()
-   // @ObservedObject var qrPaymentVM = QrPaymentViewModel()
-    @ObservedObject var userData = UserData()
-    @ObservedObject var userDataVM = UserDataViewModel()
-    @ObservedObject var contactsVM = ContactsViewModel()
-    @ObservedObject var contacts = Contacts()
-    
-    @State var showingSheet = false
-    //lector qr
-    @State private var showScannerTeleferico = false
-    @State private var showScannerTransporte = false
-    @State private var showScannerScan = false
-    @State private var resultado = ""
-    @State private var resultadosScan = ""
-    //lector con monto
-    @State private var idconmonto = ""
-    @State private var montoQR = ""
-    
-    @State private var action:Int? = 0
+   
     //test de recuperar nro recien intalado la app
     //@ObservedObject var updateVM = UpdateUserViewModel()
     
@@ -159,42 +172,101 @@ struct HomeView: View {
      */
     
     var btnScan:some View{
-        HStack{
-            Button(action: {
-                self.showScannerScan = true
-                self.action = 2
-               
-            }){
-                HStack{
-                    Text("Scan")
-                        .frame(width:80, height: 80)
-                        .padding(10)
-                        .foregroundColor(Color.white)
+            HStack{
+                Button(action: {
+                    self.showScannerScan = true
+                    //self.action = 2
+                   
+                }){
+                    HStack{
+                        VStack{
+                            Image(systemName: "viewfinder")
+                                .resizable()
+                                .frame(width:35, height: 35)
+                                .padding(15)
+                                .foregroundColor(Color.white)
+                            Text("Scan")
+                                .foregroundColor(Color.white)
+                                .font(.headline)
+                        }
+                        
+                    }
+                     .frame(width:100, height: 100)
+                     .background(Color("primary"))
+                     .cornerRadius(10)
+                     .padding(5)
+                     //
+                    
+                     .frame(maxWidth:.infinity)
+                     //.shadow(color: Color.black.opacity(0.1), radius: 4, x: 2, y: 3)
                 }
-                .background(Color("primary"))
-                .cornerRadius(10)
-                .frame(maxWidth:.infinity)
-                
-            }
-            //.background(Color.blue.opacity(0.5))
-            .sheet(isPresented: self.$showScannerScan) {
-                CodeScannerView(codeTypes: [.qr]){ result in
-                    switch result {
-                    case .success(let codigo):
-                        self.resultadosScan = codigo
-                        self.userDataVM.DatosUserPay(id_usuario: self.resultadosScan)
-                        //print(<#T##items: Any...##Any#>)
-                        self.showScannerScan = false
-                    case .failure(let error):
-                        print(error.localizedDescription)
+                //.background(Color.blue.opacity(0.5))
+                .sheet(isPresented: self.$showScannerScan) {
+                    CodeScannerView(codeTypes: [.qr,.code128]){ result in
+                        switch result {
+                        case .success(let codigo):
+                            self.resultadosScan = codigo
+                            //aqui
+                            if self.resultadosScan.hasPrefix("pagar"){
+                                let scanDividido: [Substring] = self.resultadosScan.split(separator: ",")
+                                if scanDividido.count == 2 {
+                                    self.userDataVM.DatosUserPay(id_usuario: String(scanDividido[1]))
+                                     self.showScannerScan = false
+                                     self.action = 2
+                                }else{
+                                    self.userDataVM.DatosUserPay(id_usuario: String(scanDividido[1]))
+                                     self.showScannerScan = false
+                                     self.action = 2
+                                    self.montoPagoQR = String(scanDividido[2])
+                                    print("el primero \(scanDividido[0])")
+                                    print("el segundo \(scanDividido[1])")
+                                    print("el tercero \(scanDividido[2])")
+                                }
+                                
+                            }else{
+                                let scanDivididoCobrar: [Substring] = self.resultadosScan.split(separator: ",")
+                                if scanDivididoCobrar.count == 1{
+                                    print("no tiene pagar \(self.resultadosScan)")
+                                    self.userDataVM.DatosUserPay(id_usuario: String(scanDivididoCobrar[0]))
+                                    self.showScannerScan = false
+                                    self.action = 3
+                                }else{
+                                    self.userDataVM.DatosUserPay(id_usuario: String(scanDivididoCobrar[0]))
+                                    self.showScannerScan = false
+                                    self.action = 3
+                                    self.montoCobroQR = String(scanDivididoCobrar[1])
+                                }
+                                
+                            }
+                           // self.userDataVM.DatosUserPay(id_usuario: self.resultadosScan)
+                           // print("aki \(self.userDataVM.userResponsePay)")
+                            self.showScannerScan = false
+                        case .failure(let error):
+                            print(error.localizedDescription)
+                        }
                     }
                 }
-            }
-            NavigationLink(destination: ChargeView(dataUserPay: self.userDataVM.userResponsePay), tag: 2, selection: self.$action) {
-                EmptyView()
+                .onReceive(self.userDataVM.$userResponsePay) { (userPay) in
+                    if userPay._id == "ObjectId"{
+                        print("no hay user")
+                    }else{
+                        print("usuario existe")
+                      
+                    }
+                  
+                }
+                NavigationLink(destination: ChargeView(dataUserPay: self.userDataVM.userResponsePay, dataUser: self.userDataVM.user, montoCobroQR: self.$montoCobroQR), tag: 3, selection: self.$action) {
+                    EmptyView()
+                }
+                NavigationLink(destination: PayScanView(dataUserPay: self.userDataVM.userResponsePay, dataUser: self.userDataVM.user, montoPagoQR: self.$montoPagoQR), tag: 2, selection: self.$action) {
+                    EmptyView()
+                }
+               /* NavigationLink(destination: ChargeView(dataUserPay: self.userDataVM.userResponsePay), isActive: self.$userDataVM.nextPayview) {
+                    EmptyView()
+                }*/
             }
         }
-    }
+        
     
     var btnPay:some View{
             HStack{
@@ -223,13 +295,13 @@ struct HomeView: View {
                      .frame(maxWidth:.infinity)
                      .shadow(color: Color.black.opacity(0.1), radius: 4, x: 2, y: 3)
                 }
-                //aqui
-                /*NavigationLink(destination: QrChargeView(dataUserlog: self.userDataVM.user, dataString: ""), tag: 4, selection: self.$action) {
+                
+                NavigationLink(destination: QrChargeView(dataUserlog: self.userDataVM.user, dataString: ""), tag: 4, selection: self.$action) {
                     EmptyView()
-                }*/
+                }
             }
         }
-   /*
+   
     var btnIngresar:some View{
         HStack{
             Button(action: {
@@ -250,13 +322,13 @@ struct HomeView: View {
             }
         }
     }
-    */
+    
     var home:some View{
         ScrollView{
             HStack(spacing:10){
                 self.btnScan
                 self.btnPay
-                //self.btnIngresar
+                self.btnIngresar
                 }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
             VStack{
                 Text("Recarga de línea pre pago ")//\(self.userDataVM.testid)\\self.contactsVM.listContacts.count
@@ -288,6 +360,7 @@ struct HomeView: View {
                 }
             
             }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)*/
+          
   
         }
         .padding()
@@ -310,7 +383,7 @@ struct HomeView: View {
             self.home
             //test de registro de tarjetas
              VStack{
-                 Button(action: {
+                /* Button(action: {
                      print("home")
                     self.showingSheet.toggle()
                    // self.alertState = true
@@ -320,7 +393,7 @@ struct HomeView: View {
                  }
                  .sheet(isPresented: $showingSheet) {
                    // DeleteCardView()
-                 }
+                 }*/
              }
          
  
