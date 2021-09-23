@@ -8,8 +8,8 @@
 import SwiftUI
 import Introspect
 //lectorqr
-//import CodeScanner
-
+import CodeScanner
+import Foundation
 struct HomeView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var alertState: Bool = false
@@ -28,14 +28,14 @@ struct HomeView: View {
     
     @State var showingSheet = false
     //lector qr
-    /*@State private var showScannerTeleferico = false
+    @State private var showScannerTeleferico = false
     @State private var showScannerTransporte = false
     @State private var showScannerScan = false
     @State private var resultado = ""
     @State private var resultadosScan = ""
     //lector con monto
     @State private var idconmonto = ""
-    @State private var montoQR = ""*/
+    @State private var montoQR = ""
     
     @State private var action:Int? = 0
     //test de recuperar nro recien intalado la app
@@ -156,6 +156,7 @@ struct HomeView: View {
         }
       
     }
+     */
     
     var btnScan:some View{
         HStack{
@@ -196,26 +197,39 @@ struct HomeView: View {
     }
     
     var btnPay:some View{
-        HStack{
-            Button(action: {
-                self.action = 4
-            }){
-                HStack{
-                    Text("Pay")
-                        .frame(width:80, height: 80)
-                        .padding(10)
-                        .foregroundColor(Color.white)
+            HStack{
+                Button(action: {
+                    self.action = 4
+                }){
+                    HStack{
+                        VStack{
+                            Image(systemName: "barcode")
+                                .resizable()
+                                .frame(width:35, height: 35)
+                                .padding(15)
+                                .foregroundColor(Color.white)
+                            Text("Pagar")
+                                .foregroundColor(Color.white)
+                                .font(.headline)
+                        }
+                        
+                    }
+                     .frame(width:100, height: 100)
+                     .background(Color("primary"))
+                     .cornerRadius(10)
+                     .padding(5)
+                     //
+                    
+                     .frame(maxWidth:.infinity)
+                     .shadow(color: Color.black.opacity(0.1), radius: 4, x: 2, y: 3)
                 }
-                .background(Color("primary"))
-                .cornerRadius(10)
-                .frame(maxWidth:.infinity)
-            }
-            NavigationLink(destination: QrChargeView(dataUserlog: self.userDataVM.user), tag: 4, selection: self.$action) {
-                EmptyView()
+                //aqui
+                /*NavigationLink(destination: QrChargeView(dataUserlog: self.userDataVM.user, dataString: ""), tag: 4, selection: self.$action) {
+                    EmptyView()
+                }*/
             }
         }
-    }
-    
+   /*
     var btnIngresar:some View{
         HStack{
             Button(action: {
@@ -239,11 +253,11 @@ struct HomeView: View {
     */
     var home:some View{
         ScrollView{
-            /*HStack(spacing:10){
+            HStack(spacing:10){
                 self.btnScan
                 self.btnPay
-                self.btnIngresar
-                }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)*/
+                //self.btnIngresar
+                }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
             VStack{
                 Text("Recarga de línea pre pago ")//\(self.userDataVM.testid)\\self.contactsVM.listContacts.count
                     .font(.caption)

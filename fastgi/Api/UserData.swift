@@ -26,7 +26,7 @@ class UserData: ObservableObject {
     @Published var userResponsePago:UpdateUserPagoModel?
     @Published var userResponsePay:UpdateUserPagoModel?
     @Published var messageError :String = ""
-    
+    @Published var alertInexistente :Bool = false
     //rutas
     var navigationRoot = NavigationRoot()
     
@@ -192,7 +192,7 @@ class UserData: ObservableObject {
             headers.add(name: "token", value: token)
         }
         //let idusu = storage.string(forKey: idKey)!
-        guard let url = URL(string: "https://api2.fastgi.com/usuario/\(id_usuario)") else { return }
+        guard let url = URL(string: "https://api.fastgi.com/usuario/\(id_usuario)") else { return }
         //print("este es el idusuario\(idusu)")
         DispatchQueue.main.async {
             AF.request(url,method:.get,headers: headers )
@@ -213,6 +213,7 @@ class UserData: ObservableObject {
                         if let decodedResponse = try? JSONDecoder().decode(ErrorResponsePago.self, from: data) {
                             print(decodedResponse.err.kind)
                             self.messageError = decodedResponse.err.kind
+                            self.alertInexistente = true
                             self.isloading = false
                             /*if decodedResponse1.err.name == "TokenExpiredError" || decodedResponse1.err.name == "JsonWebTokenError"{
                                // self.navigationRoot.changeRootClose()
@@ -226,7 +227,6 @@ class UserData: ObservableObject {
                 }
         }
     }
-    
     
 }
 
