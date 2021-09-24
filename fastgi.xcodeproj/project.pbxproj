@@ -121,6 +121,8 @@
 		92DBE2A225537827001B791B /* SwiftUIRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 92DBE2A125537827001B791B /* SwiftUIRefresh */; };
 		92E2264626CDAD9A00F371B1 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E2264526CDAD9A00F371B1 /* ToastView.swift */; };
 		92E4F3E426865F8B00E423CD /* ListCityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E4F3E326865F8B00E423CD /* ListCityView.swift */; };
+		92FC4BD526FE6326005F0395 /* QrPayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC4BD426FE6326005F0395 /* QrPayView.swift */; };
+		92FC4BD926FE6970005F0395 /* FormLoadInternalCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC4BD826FE6970005F0395 /* FormLoadInternalCardView.swift */; };
 		C0100033257ACF3B00945FCA /* SlideFormJoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0100032257ACF3B00945FCA /* SlideFormJoinView.swift */; };
 		C05413E525783C2F000343EB /* TestWizardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05413E425783C2F000343EB /* TestWizardView.swift */; };
 		C0722FA8257197AC00D5B225 /* ListBankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0722FA7257197AC00D5B225 /* ListBankView.swift */; };
@@ -246,6 +248,8 @@
 		92D21AB926BC84EC003C7B42 /* RadioButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonView.swift; sourceTree = "<group>"; };
 		92E2264526CDAD9A00F371B1 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		92E4F3E326865F8B00E423CD /* ListCityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCityView.swift; sourceTree = "<group>"; };
+		92FC4BD426FE6326005F0395 /* QrPayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrPayView.swift; sourceTree = "<group>"; };
+		92FC4BD826FE6970005F0395 /* FormLoadInternalCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormLoadInternalCardView.swift; sourceTree = "<group>"; };
 		C0100032257ACF3B00945FCA /* SlideFormJoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideFormJoinView.swift; sourceTree = "<group>"; };
 		C05413E425783C2F000343EB /* TestWizardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestWizardView.swift; sourceTree = "<group>"; };
 		C0722FA7257197AC00D5B225 /* ListBankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListBankView.swift; sourceTree = "<group>"; };
@@ -290,6 +294,7 @@
 				923AE28725CAF3A30015ECA8 /* QrChargeView.swift */,
 				921CAE0226FC18D900812521 /* TransactionDetailChargePayView.swift */,
 				921CAE0D26FC1A7100812521 /* PayScanView.swift */,
+				92FC4BD426FE6326005F0395 /* QrPayView.swift */,
 			);
 			path = "New Group";
 			sourceTree = "<group>";
@@ -468,6 +473,7 @@
 		92A3BA9D2553675C00DF3707 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				92FC4BD726FE694B005F0395 /* InternalCard */,
 				921CADE526FC0C9F00812521 /* New Group */,
 				9224FE5E256DE2E500F79FA4 /* QrPayment */,
 				92A3BABC255368DD00DF3707 /* History */,
@@ -592,6 +598,14 @@
 				92A3BB0925536DE600DF3707 /* BrokenRule.swift */,
 			);
 			path = Validation;
+			sourceTree = "<group>";
+		};
+		92FC4BD726FE694B005F0395 /* InternalCard */ = {
+			isa = PBXGroup;
+			children = (
+				92FC4BD826FE6970005F0395 /* FormLoadInternalCardView.swift */,
+			);
+			path = InternalCard;
 			sourceTree = "<group>";
 		};
 		96FCE228DE20BF8279FF26D9 /* Frameworks */ = {
@@ -759,6 +773,7 @@
 				9209C21626A626F3004C2052 /* ValidationViewModel.swift in Sources */,
 				92A3BA65255364AE00DF3707 /* UpdateUserViewModel.swift in Sources */,
 				92CA837C25D5C4EF00727F89 /* ChargeView.swift in Sources */,
+				92FC4BD926FE6970005F0395 /* FormLoadInternalCardView.swift in Sources */,
 				92A3BA68255364CF00DF3707 /* ContactsViewModel.swift in Sources */,
 				9202E997255DF485009115ED /* test.swift in Sources */,
 				92A3BA252553616F00DF3707 /* AppDelegate.swift in Sources */,
@@ -811,6 +826,7 @@
 				92A3BAD725536A0700DF3707 /* BtnsEmView.swift in Sources */,
 				92A3BA7C255365E000DF3707 /* ContactsModel.swift in Sources */,
 				C05413E525783C2F000343EB /* TestWizardView.swift in Sources */,
+				92FC4BD526FE6326005F0395 /* QrPayView.swift in Sources */,
 				92A3BADD25536A5600DF3707 /* CardServiceView.swift in Sources */,
 				925F07282580323000153B5A /* Afiliacion.swift in Sources */,
 				921CAE0326FC18D900812521 /* TransactionDetailChargePayView.swift in Sources */,
