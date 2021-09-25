@@ -89,7 +89,7 @@ struct FormUserDataView: View {
                     Text("DATOS PERSONALES")
                         .textStyle(TitleStyle())
                     
-                    Text("DOCUMENTO DE IDENTIDAD \(self.userDataVM.user.telefono )")
+                    Text("DOCUMENTO DE IDENTIDAD")
                         .textStyle(TitleStyle())
                     TextField("C.I.", text:  self.$userDataVM.user1.ci, onEditingChanged: { changed in self.AddSpace = false})
                     .textFieldStyle(Input())

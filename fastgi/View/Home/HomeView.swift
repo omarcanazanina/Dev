@@ -285,7 +285,8 @@ struct HomeView: View {
                                 .frame(width:35, height: 35)
                                 .padding(15)
                                 .foregroundColor(Color.white)
-                            Text("Pagar")
+                           // Text("Pagar")
+                            Text("Cobro")
                                 .foregroundColor(Color.white)
                                 .font(.headline)
                         }
@@ -300,10 +301,13 @@ struct HomeView: View {
                      .frame(maxWidth:.infinity)
                      .shadow(color: Color.black.opacity(0.1), radius: 4, x: 2, y: 3)
                 }
-                
-                NavigationLink(destination: QrChargeView(dataUserlog: self.userDataVM.user, dataString: ""), tag: 4, selection: self.$action) {
+                NavigationLink(destination: FormDataQrView(), tag: 4, selection: self.$action) {
                     EmptyView()
                 }
+               //vi\1
+                /*NavigationLink(destination: QrChargeView(dataUserlog: self.userDataVM.user, dataString: ""), tag: 4, selection: self.$action) {
+                    EmptyView()
+                }*/
             }
         }
    
@@ -319,7 +323,7 @@ struct HomeView: View {
                                 .frame(width:35, height: 35)
                                 .padding(15)
                                 .foregroundColor(Color.white)
-                            Text("Recibir")
+                            Text("Pago")
                                 .foregroundColor(Color.white)
                                 .font(.headline)
                         }
@@ -334,9 +338,12 @@ struct HomeView: View {
                     .frame(maxWidth:.infinity)
                     .shadow(color: Color.black.opacity(0.1), radius: 4, x: 2, y: 3)
                 }
-                NavigationLink(destination: QrPayView( dataUserlog: self.userDataVM.user), tag: 3, selection: self.$action) {
+                 NavigationLink(destination: OptionPayQrView(), tag: 3, selection: self.$action) {
+                     EmptyView()
+                 }
+               /* NavigationLink(destination: QrPayView( dataUserlog: self.userDataVM.user), tag: 3, selection: self.$action) {
                     EmptyView()
-                }
+                }*/
             }
         }
     

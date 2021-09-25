@@ -123,6 +123,11 @@
 		92E4F3E426865F8B00E423CD /* ListCityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E4F3E326865F8B00E423CD /* ListCityView.swift */; };
 		92FC4BD526FE6326005F0395 /* QrPayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC4BD426FE6326005F0395 /* QrPayView.swift */; };
 		92FC4BD926FE6970005F0395 /* FormLoadInternalCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC4BD826FE6970005F0395 /* FormLoadInternalCardView.swift */; };
+		92FC4BE226FE7922005F0395 /* FormDataQrView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC4BE126FE7922005F0395 /* FormDataQrView.swift */; };
+		92FC4BE526FE7BC5005F0395 /* CollectionTypeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC4BE426FE7BC5005F0395 /* CollectionTypeListView.swift */; };
+		92FC4BE826FE7D98005F0395 /* ListExpirationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC4BE726FE7D98005F0395 /* ListExpirationView.swift */; };
+		92FC4BEB26FE7F35005F0395 /* ListMoneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC4BEA26FE7F35005F0395 /* ListMoneyView.swift */; };
+		92FC4BEF26FE8969005F0395 /* OptionPayQrView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC4BEE26FE8969005F0395 /* OptionPayQrView.swift */; };
 		C0100033257ACF3B00945FCA /* SlideFormJoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0100032257ACF3B00945FCA /* SlideFormJoinView.swift */; };
 		C05413E525783C2F000343EB /* TestWizardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05413E425783C2F000343EB /* TestWizardView.swift */; };
 		C0722FA8257197AC00D5B225 /* ListBankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0722FA7257197AC00D5B225 /* ListBankView.swift */; };
@@ -250,6 +255,11 @@
 		92E4F3E326865F8B00E423CD /* ListCityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCityView.swift; sourceTree = "<group>"; };
 		92FC4BD426FE6326005F0395 /* QrPayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrPayView.swift; sourceTree = "<group>"; };
 		92FC4BD826FE6970005F0395 /* FormLoadInternalCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormLoadInternalCardView.swift; sourceTree = "<group>"; };
+		92FC4BE126FE7922005F0395 /* FormDataQrView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDataQrView.swift; sourceTree = "<group>"; };
+		92FC4BE426FE7BC5005F0395 /* CollectionTypeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTypeListView.swift; sourceTree = "<group>"; };
+		92FC4BE726FE7D98005F0395 /* ListExpirationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListExpirationView.swift; sourceTree = "<group>"; };
+		92FC4BEA26FE7F35005F0395 /* ListMoneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListMoneyView.swift; sourceTree = "<group>"; };
+		92FC4BEE26FE8969005F0395 /* OptionPayQrView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionPayQrView.swift; sourceTree = "<group>"; };
 		C0100032257ACF3B00945FCA /* SlideFormJoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideFormJoinView.swift; sourceTree = "<group>"; };
 		C05413E425783C2F000343EB /* TestWizardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestWizardView.swift; sourceTree = "<group>"; };
 		C0722FA7257197AC00D5B225 /* ListBankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListBankView.swift; sourceTree = "<group>"; };
@@ -473,6 +483,8 @@
 		92A3BA9D2553675C00DF3707 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				92FC4BED26FE894C005F0395 /* PayQr */,
+				92FC4BE026FE78D7005F0395 /* RecoveryOrder */,
 				92FC4BD726FE694B005F0395 /* InternalCard */,
 				921CADE526FC0C9F00812521 /* New Group */,
 				9224FE5E256DE2E500F79FA4 /* QrPayment */,
@@ -606,6 +618,25 @@
 				92FC4BD826FE6970005F0395 /* FormLoadInternalCardView.swift */,
 			);
 			path = InternalCard;
+			sourceTree = "<group>";
+		};
+		92FC4BE026FE78D7005F0395 /* RecoveryOrder */ = {
+			isa = PBXGroup;
+			children = (
+				92FC4BE126FE7922005F0395 /* FormDataQrView.swift */,
+				92FC4BE426FE7BC5005F0395 /* CollectionTypeListView.swift */,
+				92FC4BE726FE7D98005F0395 /* ListExpirationView.swift */,
+				92FC4BEA26FE7F35005F0395 /* ListMoneyView.swift */,
+			);
+			path = RecoveryOrder;
+			sourceTree = "<group>";
+		};
+		92FC4BED26FE894C005F0395 /* PayQr */ = {
+			isa = PBXGroup;
+			children = (
+				92FC4BEE26FE8969005F0395 /* OptionPayQrView.swift */,
+			);
+			path = PayQr;
 			sourceTree = "<group>";
 		};
 		96FCE228DE20BF8279FF26D9 /* Frameworks */ = {
@@ -776,6 +807,7 @@
 				92FC4BD926FE6970005F0395 /* FormLoadInternalCardView.swift in Sources */,
 				92A3BA68255364CF00DF3707 /* ContactsViewModel.swift in Sources */,
 				9202E997255DF485009115ED /* test.swift in Sources */,
+				92FC4BEB26FE7F35005F0395 /* ListMoneyView.swift in Sources */,
 				92A3BA252553616F00DF3707 /* AppDelegate.swift in Sources */,
 				92A3BA822553661600DF3707 /* UpdateUserModel.swift in Sources */,
 				9202E994255DF196009115ED /* WelcomeTermsAndConditionsView.swift in Sources */,
@@ -835,6 +867,7 @@
 				92A3BA5B2553641100DF3707 /* Recargas.swift in Sources */,
 				920CF23A262F74B900F94C25 /* QrPaymentModuleResponse.swift in Sources */,
 				9271EF1D258D4DC8009659F4 /* AffiliateResponse.swift in Sources */,
+				92FC4BEF26FE8969005F0395 /* OptionPayQrView.swift in Sources */,
 				92A3BAF025536B1E00DF3707 /* ContentButtonsView.swift in Sources */,
 				92A3BA4D2553635F00DF3707 /* AuthState.swift in Sources */,
 				92A3BA6B255364F900DF3707 /* ImportContactsViewModel.swift in Sources */,
@@ -854,10 +887,13 @@
 				92A3BAF725536B8C00DF3707 /* SelectCreditCardView.swift in Sources */,
 				925F072B2580372B00153B5A /* AfiliacionViewModel.swift in Sources */,
 				92A3BA622553648C00DF3707 /* ImageViewModel.swift in Sources */,
+				92FC4BE826FE7D98005F0395 /* ListExpirationView.swift in Sources */,
 				92C90EC226965B130092E9EF /* DeleteCardView.swift in Sources */,
 				92A3BA7F255365FA00DF3707 /* RecargaModel.swift in Sources */,
 				92A3BA79255365C800DF3707 /* ContactModel.swift in Sources */,
 				92418373268D1DD8002DF4B6 /* CardsViewModel.swift in Sources */,
+				92FC4BE526FE7BC5005F0395 /* CollectionTypeListView.swift in Sources */,
+				92FC4BE226FE7922005F0395 /* FormDataQrView.swift in Sources */,
 				92A3BAC82553696500DF3707 /* MenuView.swift in Sources */,
 				92A3BA75255365AF00DF3707 /* ImageModel.swift in Sources */,
 				9271EF1A258D4D2E009659F4 /* AffiliateModel.swift in Sources */,

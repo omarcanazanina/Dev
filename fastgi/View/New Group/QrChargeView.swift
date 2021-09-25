@@ -93,8 +93,8 @@ struct QrChargeView: View {
     var vista:some View {
         ScrollView{
             VStack{
-                self.imageProfile
-                if self.dataUserlog.nombres == Optional("") || self.dataUserlog.nombres == nil{
+               // self.imageProfile
+             /*   if self.dataUserlog.nombres == Optional("") || self.dataUserlog.nombres == nil{
                     Text("+591 \(self.dataUserlog.telefono)")
                         .font(.subheadline)
                         //.bold()
@@ -102,8 +102,10 @@ struct QrChargeView: View {
                     Text("\(self.dataUserlog.nombres ?? "") \(self.dataUserlog.apellidos ?? "")")
                         .font(.subheadline)
                         .bold()
-                }
-                
+                }*/
+                Text("FASTGI")
+                    .font(.subheadline)
+                    .bold()
                 if self.monto == ""{
                     //barcode
                     /*
@@ -152,21 +154,23 @@ struct QrChargeView: View {
         ScrollView{
             VStack{
                 self.vista
-                VStack (alignment: .leading){
+                //ultimov2
+                /*VStack (alignment: .leading){
                     Text("Tarjetas")
                         .textStyle(TitleStyle())
                     self.pickerCard
-                }.padding()
+                }.padding()*/
                
                 HStack{
-                    Button(action: {
+                    //ultimov2
+                   /* Button(action: {
                         self.modal.toggle()
                     }){
                         Text("Monto")
                     }.buttonStyle(PrimaryButtonOutlineStyle())
                     .sheet(isPresented: $modal) {
                         EnterAmountView(modal: self.$modal, monto: self.$monto)
-                    }
+                    }*/
                     
                    /* Button(action: {
                         items.removeAll()
