@@ -408,9 +408,9 @@ struct HomeView: View {
     var home:some View{
         ScrollView{
             HStack(spacing:10){
-                self.btnMovimientos
-                self.btnPay
-                self.btnIngresar
+                //self.btnMovimientos
+                //self.btnPay
+                //self.btnIngresar
                 }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
             VStack{
                 Text("Recarga de línea pre pago ")//\(self.userDataVM.testid)\\self.contactsVM.listContacts.count
@@ -423,7 +423,8 @@ struct HomeView: View {
                     CardServiceHomeView(logo: "Tigo", isSelect: false, currentBtnEm: self.$currentBtnEm, btn: .Tigo)
                 }
             }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-            VStack{
+            //tarjeta interna
+            /*VStack{
                 Text("Tarjeta interna")
                     .font(.caption)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
@@ -433,7 +434,8 @@ struct HomeView: View {
                     Spacer()
                     .frame(maxWidth:.infinity)
                 }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-            }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+            }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)*/
+            ////////
             /*VStack{
                 Text("Transportes")
                     .font(.caption)
@@ -489,8 +491,8 @@ struct HomeView: View {
                 // }
              }
          
- 
-            VStack{
+            // test button
+           /* VStack{
                 Button(action: {
                     self.action = 44
                    // self.qrPayment.obtenerQr(id_qr: "6160b6502319e611418d95b5")
@@ -505,7 +507,7 @@ struct HomeView: View {
                 /*NavigationLink(destination: ToastView(), tag: 44, selection: self.$action) {
                     EmptyView()
                 }*/
-            }
+            }*/
             
         }
         .alert(isPresented:  self.$alertState){
