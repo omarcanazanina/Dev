@@ -15,7 +15,8 @@ class QrPayment: ObservableObject {
     private let tokenKey = "token"
     private let idKey = "usuario._id"
     @Published var pagoResponse: QrPaymentModel?
-    
+    //generar qr
+    @Published var generateQrResponse: QrGenerateModel?
     //nav userafiliacion
     @Published var afiliado : Bool = false
     @Published var noafiliado : String? = ""
@@ -162,4 +163,92 @@ class QrPayment: ObservableObject {
         
     }
     
+    func generarQr(tipocobro:String, vencimiento:String, tipomoneda:String, monto:String , descripcion:String){
+        let parametros : Parameters = [
+            "tipocobro": tipocobro,
+            "vencimiento":vencimiento,
+            "tipomoneda": tipomoneda,
+            "monto": monto,
+            "descripcion": descripcion
+        ]
+        
+        // creando headers
+        var headers: HTTPHeaders = [
+            "Accept": "application/json"
+        ]
+        
+        if let token = storage.string(forKey: tokenKey){
+            headers.add(name: "token", value: token)
+        }
+        let idusu = storage.string(forKey: idKey)!
+        guard let url = URL(string: "https://api.fastgi.com/cobro/\(idusu)") else { return }
+        DispatchQueue.main.async {
+            AF.request(url,method:.post,parameters: parametros,headers: headers )
+                // .validate(contentType: ["application/json"])
+                
+                .responseData{response in
+                    print("aki")
+                    debugPrint(response)
+                    switch response.result {
+                    case let .success(data):
+                        if let decodedResponse = try? JSONDecoder().decode(QrGenerateResponse.self, from: data) {
+                            print("entro aki")
+                            self.generateQrResponse = decodedResponse.Cobro
+                            debugPrint(self.generateQrResponse)
+                            //self.pagoResponse = decodedResponse.recarga
+                            //print(self.pagoResponse!)
+                            return
+                        }
+                        //Cast respuesta a ErrorResponce
+                        if let decodedResponse = try? JSONDecoder().decode(ErrorQrPaymentResponse.self, from: data) {
+                            print("ESTE ES EL ERROR \(decodedResponse.err.message)")
+                            //  self.ErrorRes = decodedResponse.err.message
+                            return
+                        }
+                    case let .failure(error):
+                        print(error)
+                    }
+                }
+        }
+        
+    }
+    
+    func obtenerQr(id_qr:String){
+        // creando headers
+       
+        var headers: HTTPHeaders = [
+            "Accept": "application/json"
+        ]
+        
+        if let token = storage.string(forKey: tokenKey){
+            headers.add(name: "token", value: token)
+        }
+        
+        //let idusu = storage.string(forKey: idKey)!
+        guard let url = URL(string: "https://api.fastgi.com/qrverifica/\(id_qr)") else { return }
+        DispatchQueue.main.async {
+            AF.request(url,method:.get,headers: headers )
+                // .validate(contentType: ["application/json"])
+                .responseData{response in
+                    switch response.result {
+                    case let .success(data):
+                        if let decodedResponse = try? JSONDecoder().decode(obtenerQrResponse.self, from: data) {
+                            print(decodedResponse)
+                            //self.pagoResponse = decodedResponse.recarga
+                            //print(self.pagoResponse!)
+                            return
+                        }
+                        //Cast respuesta a ErrorResponce
+                        if let decodedResponse = try? JSONDecoder().decode(ErrorQrPaymentResponse.self, from: data) {
+                            print("ESTE ES EL ERROR \(decodedResponse.err.message)")
+                            //  self.ErrorRes = decodedResponse.err.message
+                            return
+                        }
+                    case let .failure(error):
+                        print(error)
+                    }
+                }
+        }
+        
+    }
 }

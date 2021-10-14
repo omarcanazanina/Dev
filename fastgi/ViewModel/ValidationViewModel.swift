@@ -30,6 +30,7 @@ class ValidationViewModel : ObservableObject {
     //@Published var confirmPw = ""
     //card
     @Published var nameCard = ""
+    @Published var typeCobro = ""
     @Published var cardNumber = "" {
         didSet {
             for i in letras1 {
@@ -170,8 +171,7 @@ class ValidationViewModel : ObservableObject {
         return namenitTest.evaluate(with: nombrenit )
     }
     
-    
-    
+  
     var isValidationComplete: Bool {
        // if  !isEmailValid() || !isNameValid() || !isApellidosValid() || !isDireccionValid() || !isNameNitValid() {
         if   !isNameCardValid() || !isCardNumberValid() || !isDateValid() || !isCvvValid() || self.cardtype == ""{
@@ -299,5 +299,6 @@ class ValidationViewModel : ObservableObject {
             return "Ingrese nombre del nit"
         }
     }
+    
     
 }

@@ -9,15 +9,18 @@ import SwiftUI
 import SDWebImageSwiftUI
 import CarBode
 struct QrChargeView: View {
+    //navegation back
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     //datos user
     @ObservedObject var userDataVM = UserDataViewModel()
-    
+    var navigationRoot = NavigationRoot()
     let context = CIContext()
     let filter = CIFilter.qrCodeGenerator()
     var showBtn: Bool? = true
     
-    var dataUserlog: UserModel
+    var dataQr: QrGenerateModel
     
+    var montoQr: String
     //barcode generator
     //@State var id = Strin
     @State var dataString : String = ""
@@ -33,6 +36,7 @@ struct QrChargeView: View {
     @State var items : [Any] = []
     @State var sheet = false
     @State var testImg: UIImage?
+    @State var contIntentos: Int = 0
     //
     //select card
     @State var showingSheetBank = false
@@ -93,58 +97,19 @@ struct QrChargeView: View {
     var vista:some View {
         ScrollView{
             VStack{
-               // self.imageProfile
-             /*   if self.dataUserlog.nombres == Optional("") || self.dataUserlog.nombres == nil{
-                    Text("+591 \(self.dataUserlog.telefono)")
-                        .font(.subheadline)
-                        //.bold()
-                }else{
-                    Text("\(self.dataUserlog.nombres ?? "") \(self.dataUserlog.apellidos ?? "")")
-                        .font(.subheadline)
-                        .bold()
-                }*/
                 Text("FASTGI")
                     .font(.subheadline)
                     .bold()
-                if self.monto == ""{
-                    //barcode
-                    /*
-                    CBBarcodeView(data: .constant(self.dataUserlog._id) ,// self.dataUserlog._id,//$dataString,
-                        barcodeType: $barcodeType,
-                        orientation: $rotate)
-                        { image in
-                            self.barcodeImage = image
-                        }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 80, maxHeight: 80, alignment: .topLeading)//400
-                    */
                     //qr
-                    Image(uiImage: generarQR(text: self.dataUserlog._id))
+                    //Image(uiImage: generarQR(text: "\(self.dataUserlog._id),\(self.monto)"))
+                Image(uiImage: generarQR(text: self.dataQr._id))
                         .interpolation(.none)
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 200, height: 200)
-                }else{
-                    /*
-                    CBBarcodeView(data: .constant("\(self.dataUserlog._id),\(self.monto)" ) ,// self.dataUserlog._id,//$dataString,
-                        barcodeType: $barcodeType,
-                        orientation: $rotate)
-                        { image in
-                            self.barcodeImage = image
-                        }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 80, maxHeight: 80, alignment: .topLeading)//400
-                    */
-                    //qr
-                    Image(uiImage: generarQR(text: "\(self.dataUserlog._id),\(self.monto)"))
-                        .interpolation(.none)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 200, height: 200)
-                }
+                        .frame(width: 300, height: 300)
                 
-                if self.monto != ""{
-                    Text("\(self.monto) Bs.")
+                    Text("\(self.montoQr) Bs.")
                         .font(.title)
-                }else{
-                    //print("")
-                }
             }
             .padding(30)
         }
@@ -154,60 +119,31 @@ struct QrChargeView: View {
         ScrollView{
             VStack{
                 self.vista
-                //ultimov2
-                /*VStack (alignment: .leading){
-                    Text("Tarjetas")
-                        .textStyle(TitleStyle())
-                    self.pickerCard
-                }.padding()*/
-               
+                Text("\(self.contIntentos)")
+                    .foregroundColor(.clear)
                 HStack{
-                    //ultimov2
-                   /* Button(action: {
-                        self.modal.toggle()
-                    }){
-                        Text("Monto")
+                    Button(action: {
+                        self.navigationRoot.setRootView()
+                    })
+                    {
+                        Text("Aceptar")
                     }.buttonStyle(PrimaryButtonOutlineStyle())
-                    .sheet(isPresented: $modal) {
-                        EnterAmountView(modal: self.$modal, monto: self.$monto)
-                    }*/
-                    
-                   /* Button(action: {
-                        items.removeAll()
-                        items.append(self.vista.snapshot())
-                        //items.append(UIImage(named: self.imageShare)!)
-                        sheet.toggle()
-                    }){
-                        Text("Compartir")
-                    }.buttonStyle(PrimaryButtonOutlineStyle())
-                    .sheet(isPresented: $sheet, content: {
-                        ShareSheet(items: items)
-                    })*/
-                    /*Button(action: {
+               
+                    Button(action: {
+                        self.contIntentos += 1
                         self.testImg = self.vista.snapshot()
-                           self.showingSheet = true
+                        self.showingSheet = true
+                        //self.mode.wrappedValue.dismiss()
                        }) {
-                           Text("Share")
-                       }
+                           Text("Compartir")
+                       }.buttonStyle(PrimaryButtonOutlineStyle())
                        .sheet(isPresented: $showingSheet,
                               content: {
-                                ActivityView(activityItems: [self.testImg as Any], applicationActivities: nil) })
-                    */
-                    //error en la descarga
-                    
-                   /* Button("Decargar") {
-                        let image = self.vista.snapshot()
-                        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-                        showingAlert = true
-                    }.buttonStyle(PrimaryButtonOutlineStyle())*/
-                }
-                .alert(isPresented: $showingAlert) {
-                    Alert(title: Text("Fastgi"), message: Text("Descarga completa"), dismissButton: .default(Text("Aceptar")))
+                                ActivityView(activityItems: [self.testImg as Any], applicationActivities: nil)})
                 }
                
             }.navigationBarTitle(Text("Pagar"), displayMode: .inline)
         }
-    
     }
 }
 
@@ -218,8 +154,10 @@ struct QrChargeView: View {
 }*/
 // share
 
-struct ActivityView: UIViewControllerRepresentable {
 
+
+struct ActivityView: UIViewControllerRepresentable {
+    //@Environment(\.presentationMode) var mode: Binding<PresentationMode>
     let activityItems: [Any]
     let applicationActivities: [UIActivity]?
 
@@ -230,8 +168,9 @@ struct ActivityView: UIViewControllerRepresentable {
 
     func updateUIViewController(_ uiViewController: UIActivityViewController,
                                 context: UIViewControllerRepresentableContext<ActivityView>) {
-
+        //self.mode.wrappedValue.dismiss()
     }
+    
 }
 
 
@@ -249,3 +188,121 @@ struct ShareSheet : UIViewControllerRepresentable {
 }
 
 
+/*
+ var vista:some View {
+     ScrollView{
+         VStack{
+            // self.imageProfile
+          /*   if self.dataUserlog.nombres == Optional("") || self.dataUserlog.nombres == nil{
+                 Text("+591 \(self.dataUserlog.telefono)")
+                     .font(.subheadline)
+                     //.bold()
+             }else{
+                 Text("\(self.dataUserlog.nombres ?? "") \(self.dataUserlog.apellidos ?? "")")
+                     .font(.subheadline)
+                     .bold()
+             }*/
+             Text("FASTGI")
+                 .font(.subheadline)
+                 .bold()
+                 /*
+                 CBBarcodeView(data: .constant("\(self.dataUserlog._id),\(self.monto)" ) ,// self.dataUserlog._id,//$dataString,
+                     barcodeType: $barcodeType,
+                     orientation: $rotate)
+                     { image in
+                         self.barcodeImage = image
+                     }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 80, maxHeight: 80, alignment: .topLeading)//400
+                 */
+                 //qr
+                 //Image(uiImage: generarQR(text: "\(self.dataUserlog._id),\(self.monto)"))
+             Image(uiImage: generarQR(text: self.dataQr._id))
+                     .interpolation(.none)
+                     .resizable()
+                     .scaledToFit()
+                     .frame(width: 300, height: 300)
+             
+             
+             if self.montoQr != ""{
+                 Text("\(self.montoQr) Bs.")
+                     .font(.title)
+             }else{
+                 
+             }
+         }
+         .padding(30)
+     }
+ }
+ */
+
+/*
+ var body: some View {
+     ScrollView{
+         VStack{
+             self.vista
+             Text("Nro de intentos \(self.contIntentos)")
+             //ultimov2
+             /*VStack (alignment: .leading){
+                 Text("Tarjetas")
+                     .textStyle(TitleStyle())
+                 self.pickerCard
+             }.padding()*/
+            
+             HStack{
+                 Button(action: {
+                     self.navigationRoot.setRootView()
+                 })
+                 {
+                     Text("Aceptar")
+                 }.buttonStyle(PrimaryButtonOutlineStyle())
+                 //ultimov2
+                /* Button(action: {
+                     self.modal.toggle()
+                 }){
+                     Text("Monto")
+                 }.buttonStyle(PrimaryButtonOutlineStyle())
+                 .sheet(isPresented: $modal) {
+                     EnterAmountView(modal: self.$modal, monto: self.$monto)
+                 }*/
+                 
+                 Button(action: {
+                     items.removeAll()
+                     items.append(self.vista.snapshot())
+                     //items.append(UIImage(named: self.imageShare)!)
+                     sheet.toggle()
+                 }){
+                     Text("test")
+                 }.buttonStyle(PrimaryButtonOutlineStyle())
+                 .sheet(isPresented: $sheet, content: {
+                     ShareSheet(items: items)
+                 })
+                 Button(action: {
+                     self.testImg = self.vista.snapshot()
+                     self.showingSheet = true
+                    }) {
+                        Text("Compartir")
+                        
+                    }.buttonStyle(PrimaryButtonOutlineStyle())
+                    .sheet(isPresented: $showingSheet,
+                           content: {
+                             ActivityView(activityItems: [self.testImg as Any], applicationActivities: nil) })
+                 
+                 //error en la descarga
+                 
+                /* Button("Decargar") {
+                     let image = self.vista.snapshot()
+                     UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+                     showingAlert = true
+                 }.buttonStyle(PrimaryButtonOutlineStyle())*/
+             }
+             .alert(isPresented: $showingAlert) {
+                 Alert(title: Text("Fastgi"), message: Text("Descarga completa"), dismissButton: .default(Text("Aceptar")))
+             }
+            
+         }.navigationBarTitle(Text("Pagar"), displayMode: .inline)
+     }.onAppear{
+         //self.testImg1 = self.testImg
+        // self.dataQr._id
+     }
+ 
+ }
+ */

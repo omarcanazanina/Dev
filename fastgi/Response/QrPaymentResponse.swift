@@ -42,4 +42,15 @@ struct ErrorVerificaUserResponse : Codable {
     var err : ErrorVerificaUser
 }
 
+// genera qr
+struct QrGenerateResponse : Codable {
+    var ok : Bool
+    var result: String
+    var Cobro : QrGenerateModel
+}
 
+// genera qr
+struct obtenerQrResponse : Codable {
+    var ok : Bool
+    var Cobro : QrGenerateModel
+}

@@ -1,26 +1,20 @@
 //
-//  CreditCardView.swift
+//  FastgiCardView.swift
 //  fastgi
 //
-//  Created by Hegaro on 04/11/2020.
+//  Created by Hegaro on 30/09/2021.
 //
 
 import SwiftUI
 
-struct CreditCardView: View {
-    // images fastgi_white, visa, mastercard
-    var logo : String? = "fastgi_white"
+struct FastgiCardView: View {
+    var logo : String? = "logo_fastgi"
     var bank : String? = ""
     var dateExp : String? = "00/00"
     var number : String? = "0000"
     var id_card: String? = ""
     @State private var sizeChanged = false
     @State var delete = false
-    
-    /*init() {
-        print("creditcarview")
-        
-    }*/
     
     var body: some View {
         VStack{
@@ -52,15 +46,17 @@ struct CreditCardView: View {
                     .kerning(2)
             }
             
-            .foregroundColor(.white)
+            .foregroundColor(Color("primary"))
             HStack{
                 Text(self.bank!)
                     .font(.caption)
-               
+                Text("Fastgi")
+                    .font(.caption)
                 Spacer()
                 Text("Vence: \(self.dateExp!)")
                     .font(.caption)
-                Button(action: {
+                
+                /*Button(action: {
                     self.delete.toggle()
                     print("menu")
                 }){
@@ -74,20 +70,25 @@ struct CreditCardView: View {
                 }
                 NavigationLink(destination: DeleteCardView(idCard: self.id_card ?? "") , isActive: $delete) {
                     EmptyView()
-                }
+                }*/
                     
             }
             
             .padding(.horizontal)
-            .foregroundColor(.white)
+            .foregroundColor(Color("primary"))
             .frame(maxWidth: .infinity, maxHeight: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
         }
       
         .padding(.bottom,8)
         .padding(.horizontal)
         .frame(minWidth: 280, idealWidth: 280, maxWidth: 280, minHeight: 180, idealHeight: 180, maxHeight: 180, alignment: .center)
-        .background(Color("primary"))
+        .background(Color(.white))
         .cornerRadius(18)
+        .foregroundColor(Color("primary"))
+        .overlay(
+        RoundedRectangle(cornerRadius: 18)
+            .stroke(Color("primary"), lineWidth: 1))
+        .padding()
         /*
          Animation
          .scaleEffect(sizeChanged ? 0.2 : 1.0)
@@ -99,9 +100,8 @@ struct CreditCardView: View {
     }
 }
 
-struct CreditCardView_Previews: PreviewProvider {
+struct FastgiCardView_Previews: PreviewProvider {
     static var previews: some View {
-        CreditCardView()
+        FastgiCardView()
     }
 }
-

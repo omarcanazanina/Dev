@@ -115,7 +115,7 @@ struct QrPayView: View {
                         EnterAmountView(modal: self.$modal, monto: self.$monto)
                     }
                     
-                   /* Button(action: {
+                    Button(action: {
                         items.removeAll()
                         items.append(self.vista.snapshot())
                         //items.append(UIImage(named: self.imageShare)!)
@@ -125,7 +125,7 @@ struct QrPayView: View {
                     }.buttonStyle(PrimaryButtonOutlineStyle())
                     .sheet(isPresented: $sheet, content: {
                         ShareSheet(items: items)
-                    })*/
+                    })
                     //ultimo
                     /*Button("Decargar") {
                         let image = self.vista.snapshot()

@@ -195,7 +195,7 @@ struct TransactionDetailView: View {
             HStack{
                 if self.showBtn! {
                     Button(action: {
-                        /*self.exportToPDF(fecha_: self.fechaFormat, empresa_: self.empresa, phone_: self.phone, monto_: self.monto,fechaFormat_: self.fechaFormat, horaFormat_: self.horaFormat, showBtn_: false, nombreO_: self.userDataVM.user.nombres, hora_: self.hora)*/
+                        self.exportToPDF(fecha_: self.fechaFormat, empresa_: self.empresa, phone_: self.phone, monto_: self.monto,fechaFormat_: self.fechaFormat, horaFormat_: self.horaFormat, showBtn_: false, nombreO_: self.userDataVM.user.nombres ?? "", hora_: self.hora)
                     }){
                         Text("Compartir")
                     }.buttonStyle(PrimaryButtonOutlineStyle())
@@ -269,5 +269,4 @@ extension TransactionDetailView {
         pdfVC.removeFromParent()
         pdfVC.view.removeFromSuperview()
     }
-    
 }

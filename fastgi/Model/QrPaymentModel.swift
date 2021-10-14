@@ -32,3 +32,15 @@ struct VerificaUserAfiliadoModel : Codable { //,Identifiable {
     let id_usuario : String
     let fecha : String
 }
+
+struct QrGenerateModel : Codable { //,Identifiable {
+    let _id : String
+    let tipocobro : String
+    let vencimiento : String
+    let tipomoneda : String
+    let monto : String
+    let id_usuario: String
+    let descripcion: String
+    let fecha_registro:String
+}
+

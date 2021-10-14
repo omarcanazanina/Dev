@@ -14,6 +14,8 @@ class QrPaymentViewModel: ObservableObject {
     var qrPayResponse=QrPayment()
     private var disposables: Set<AnyCancellable> = []
     @Published var qrPayData = QrPaymentModel(_id: "", monto: "", id_cobrador: "", id_usuario: "", fecha: "")
+    //generar qr
+    @Published var generateQr = QrGenerateModel(_id: "", tipocobro: "", vencimiento: "", tipomoneda: "", monto: "", id_usuario: "", descripcion: "", fecha_registro: "")
     //nav userafiliacion
     @Published var afiliado : Bool = false
     @Published var noafiliado : String? = ""
@@ -86,6 +88,19 @@ class QrPaymentViewModel: ObservableObject {
         .eraseToAnyPublisher()
     }
     
+    //generar qr
+    private var QrDataPublisher: AnyPublisher<QrGenerateModel, Never> {
+        qrPayResponse.$generateQrResponse
+            .receive(on: RunLoop.main)
+            .map { response in
+                guard let response = response else {
+                    return self.generateQr
+                }
+                return response
+        }
+        .eraseToAnyPublisher()
+    }
+    
     init() {
         //Datapago
         PagoQrDataPublisher
@@ -113,6 +128,11 @@ class QrPaymentViewModel: ObservableObject {
             .assign(to: \.isloading, on: self)
             .store(in: &disposables)
         //userVerifi(id_cobrador: self.userCorrecto)
+        //generar qr
+        QrDataPublisher
+            .receive(on: RunLoop.main)
+            .assign(to: \.generateQr, on: self)
+            .store(in: &disposables)
     }
     
     func pagoQr(id_cobrador:String, monto:String) {
@@ -128,4 +148,7 @@ class QrPaymentViewModel: ObservableObject {
         qrPayResponse.verificaUserAfiliacion(id_afiliado: id_afiliado)
     }
     
+    func generateQrData(tipocobro:String, vencimiento:String, tipomoneda:String, monto:String , descripcion:String){
+        qrPayResponse.generarQr(tipocobro: tipocobro, vencimiento: vencimiento, tipomoneda: tipomoneda, monto: monto, descripcion: descripcion)
+    }
 }

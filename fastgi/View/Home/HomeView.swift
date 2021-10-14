@@ -10,10 +10,11 @@ import Introspect
 //lectorqr
 import CodeScanner
 import Foundation
+import UIKit
 struct HomeView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var navigationRoot = NavigationRoot()
-       
+   
        @ObservedObject var login = Login()
        @ObservedObject var loginVM = LoginViewModel()
        @Binding var currentBtnEm: BtnEm
@@ -280,7 +281,7 @@ struct HomeView: View {
                 }){
                     HStack{
                         VStack{
-                            Image(systemName: "barcode")
+                            Image(systemName: "qrcode")
                                 .resizable()
                                 .frame(width:35, height: 35)
                                 .padding(15)
@@ -318,7 +319,7 @@ struct HomeView: View {
                 }){
                     HStack{
                         VStack{
-                            Image(systemName: "qrcode")
+                            Image(systemName: "viewfinder")
                                 .resizable()
                                 .frame(width:35, height: 35)
                                 .padding(15)
@@ -338,7 +339,43 @@ struct HomeView: View {
                     .frame(maxWidth:.infinity)
                     .shadow(color: Color.black.opacity(0.1), radius: 4, x: 2, y: 3)
                 }
-                 NavigationLink(destination: OptionPayQrView(), tag: 3, selection: self.$action) {
+                NavigationLink(destination: OptionPayQrView(), tag: 3, selection: self.$action) {
+                     EmptyView()
+                 }
+               /* NavigationLink(destination: QrPayView( dataUserlog: self.userDataVM.user), tag: 3, selection: self.$action) {
+                    EmptyView()
+                }*/
+            }
+        }
+    
+    var btnMovimientos:some View{
+            HStack{
+                Button(action: {
+                    self.action = 12
+                }){
+                    HStack{
+                        VStack{
+                            Image(systemName: "arrow.left.arrow.right.square")
+                                .resizable()
+                                .frame(width:35, height: 35)
+                                .padding(15)
+                                .foregroundColor(Color.white)
+                            Text("Mov")
+                                .foregroundColor(Color.white)
+                                .font(.headline)
+                        }
+                        
+                    }
+                    .frame(width:100, height: 100)
+                    .background(Color("primary"))
+                    .cornerRadius(10)
+                    .padding(5)
+                    //
+                   
+                    .frame(maxWidth:.infinity)
+                    .shadow(color: Color.black.opacity(0.1), radius: 4, x: 2, y: 3)
+                }
+                 NavigationLink(destination: HistoryQrView(), tag: 12, selection: self.$action) {
                      EmptyView()
                  }
                /* NavigationLink(destination: QrPayView( dataUserlog: self.userDataVM.user), tag: 3, selection: self.$action) {
@@ -371,7 +408,7 @@ struct HomeView: View {
     var home:some View{
         ScrollView{
             HStack(spacing:10){
-                self.btnScan
+                self.btnMovimientos
                 self.btnPay
                 self.btnIngresar
                 }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
@@ -439,33 +476,37 @@ struct HomeView: View {
             self.home
             //test de registro de tarjetas
              VStack{
-                /* Button(action: {
+                 Button(action: {
                      print("home")
-                    self.showingSheet.toggle()
+                    self.qrPayment.generarQr(tipocobro: "cobro", vencimiento: "2021-10-04T02:42:52.226Z", tipomoneda: "Bs", monto: "10", descripcion: "pago de servicio")
                    // self.alertState = true
                     //self.cards.saveCard(card_nombre: "Banco App", card_number: "123123123123123", card_expiry_date: "11-2022", card_cvn: "312", card_type: "111")
                  }){
                     // Text("test1")
                  }
-                 .sheet(isPresented: $showingSheet) {
+                 //.sheet(isPresented: $showingSheet) {
                    // DeleteCardView()
-                 }*/
+                // }
              }
          
  
             VStack{
                 Button(action: {
                     self.action = 44
+                   // self.qrPayment.obtenerQr(id_qr: "6160b6502319e611418d95b5")
+                  
                 }){
-                  //  Text("toast notificacion")
+                    Text("test")
                 }
-                
-                NavigationLink(destination: ToastView(), tag: 44, selection: self.$action) {
+             
+                NavigationLink(destination: QrPayView(dataUserlog: self.userDataVM.user), tag: 44, selection: self.$action) {
                     EmptyView()
                 }
-                
-                
+                /*NavigationLink(destination: ToastView(), tag: 44, selection: self.$action) {
+                    EmptyView()
+                }*/
             }
+            
         }
         .alert(isPresented:  self.$alertState){
             self.alerts
@@ -483,6 +524,7 @@ struct HomeView_Previews: PreviewProvider {
             
     }
 }
+
 //retorno de cambio de variables ViewModel
 /*  .onReceive(self.qrPaymentVM.$noafiliado) {
       if $0 == nil{

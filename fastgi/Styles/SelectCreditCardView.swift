@@ -35,6 +35,7 @@ struct SelectCreditCardView: View {
             ScrollView(.horizontal)
             {
                 HStack{
+                    FastgiCardView()
                     ForEach(self.CardsVM.ListCards, id: \.self._id){ (card:CardModel) in
                         //NavigationLink(destination: ValidateCvvView(validateCvv: self.validateCvv)) {
                              Button(action: {
