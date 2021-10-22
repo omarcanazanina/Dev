@@ -71,7 +71,7 @@ class UserData: ObservableObject {
                             if let decodedResponse = try? JSONDecoder().decode(ErrorResponse.self, from: data) {
                                 //print(decodedResponse.err.name)
                                 if decodedResponse.err.name == "TokenExpiredError" || decodedResponse.err.name == "JsonWebTokenError"{
-                                    self.navigationRoot.changeRootClose()
+                                    self.navigationRoot.changeRootClose1()
                                 }
                                 return
                             }
@@ -122,6 +122,9 @@ class UserData: ObservableObject {
                             if let decodedResponse = try? JSONDecoder().decode(ErrorResponse.self, from: data) {
                                 //print(decodedResponse.err.name)
                                 if decodedResponse.err.name == "TokenExpiredError" || decodedResponse.err.name == "JsonWebTokenError"{
+                                    //login phone
+                                    //self.navigationRoot.changeRootClose()
+                                    //login user password
                                     self.navigationRoot.changeRootClose()
                                 }
                                 return

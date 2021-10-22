@@ -21,7 +21,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Create the SwiftUI view that provides the window contents.
         let authState = AuthState()
         let mainView = TabsView(currentBtnEm: .constant(.Entel))//.environmentObject(home)
-        let loginView = LoginView()//TabsView(currentBtnEm: .constant(.Entel))
+        //login telefono
+       // let loginView = LoginView()//TabsView(currentBtnEm: .constant(.Entel))
+        //login user password
+        let loginView1 = LoginUserPasswordView()
         let welcome = WelcomeTermsAndConditionsView()
         //welcome
         let storage = UserDefaults.standard
@@ -45,7 +48,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }else{
                 if let windowScene = scene as? UIWindowScene {
                     let window = UIWindow(windowScene: windowScene)
-                    window.rootViewController = UIHostingController(rootView:loginView.environmentObject(authState))
+                    //login phone
+                    //window.rootViewController = UIHostingController(rootView:loginView.environmentObject(authState))
+                    //login user password
+                    window.rootViewController = UIHostingController(rootView:loginView1.environmentObject(authState))
                     self.window = window
                     window.makeKeyAndVisible()
                 }

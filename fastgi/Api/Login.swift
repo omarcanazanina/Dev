@@ -126,28 +126,67 @@ class Login: ObservableObject {
     }
     
     
-    func userPassword(user:String, password: String) {
+    func userPassword(correo:String, password: String) {
         self.isloading = true
         let parametros : Parameters = [
-            "user": user,
+            "correo": correo,
             "password": password
         ]
-        guard let url = URL(string: "https://api.fastgi.com/sms") else { return }
+        guard let url = URL(string: "https://api.fastgi.com/login") else { return }
         DispatchQueue.main.async {
             AF.request(url, method: .post, parameters: parametros)
                 .responseData { (response) in
                     switch response.result {
                     case let .success(data):
                         //Cast respuesta a SmsResponse
-                        if let decodedResponse = try? JSONDecoder().decode(UserPasswordResponse.self, from: data) {
-                            print(decodedResponse.usuarioPassword)
-                            //self.pin = decodedResponse.usuario
-                            //self.smstext = decodedResponse.usuario.pin
-                            print("este es el sms \(self.smstext)")
-                            self.ruta = "idlogin"
+                        if let decodedResponse = try? JSONDecoder().decode(UserCorreoPasswordResponse.self, from: data) {
+                            print("entro")
+                            print(decodedResponse.usuario)
+                            self.storage.set(decodedResponse.token, forKey: self.tokenKey)
+                            self.storage.set(decodedResponse.usuario._id, forKey: self.idKey)
+                            SDWebImageDownloader.shared.setValue(decodedResponse.token, forHTTPHeaderField: "token")
+                            self.loginResponse = true
+                            // self.authState.isAuth = true
                             self.isloading = false
                             self.iscomplete = true
-                            //self.navigationRoot.setRootViewNav(number: telefono, smstext: self.smstext)
+                            self.navigationRoot.setRootView()
+                            return
+                        }
+                        //Cast respuesta a ErrorResponce
+                        if let decodedResponse = try? JSONDecoder().decode(ErrorResponse.self, from: data) {
+                            print(decodedResponse.err.message)
+                            //  self.ErrorRes = decodedResponse.err.message
+                            self.isloading = false
+                            self.iscomplete = true
+                            return
+                        }
+                    case let .failure(error):
+                        self.isloading = false
+                        print(error)
+                    }
+                }
+        }
+    }
+    
+    
+    func userRegisterPassword(correo:String, password: String, telefono: String) {
+        self.isloading = true
+        let parametros : Parameters = [
+            "correo": correo,
+            "password": password,
+            "telefono": telefono
+        ]
+        guard let url = URL(string: "https://api.fastgi.com/usuarioregist") else { return }
+        DispatchQueue.main.async {
+            AF.request(url, method: .post, parameters: parametros)
+                .responseData { (response) in
+                    switch response.result {
+                    case let .success(data):
+                        //Cast respuesta a SmsResponse
+                        if let decodedResponse = try? JSONDecoder().decode(RegisterCorreoPasswordResponse.self, from: data) {
+                            print("entro")
+                            print(decodedResponse.usuario)
+                       
                             return
                         }
                         //Cast respuesta a ErrorResponce

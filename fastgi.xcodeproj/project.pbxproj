@@ -25,6 +25,7 @@
 		9222F66925E99ED800931A36 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9222F66825E99ED800931A36 /* LoginRequest.swift */; };
 		9224FE6A256DE45F00F79FA4 /* MembershipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9224FE69256DE45F00F79FA4 /* MembershipView.swift */; };
 		92278A5F2556186E00D746EA /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92278A5E2556186E00D746EA /* Helper.swift */; };
+		92332EB0271A3139001909DD /* RegisterUserCorreoPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92332EAF271A3139001909DD /* RegisterUserCorreoPasswordView.swift */; };
 		923AE28825CAF3A30015ECA8 /* QrChargeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923AE28725CAF3A30015ECA8 /* QrChargeView.swift */; };
 		9241836A268D1413002DF4B6 /* Cards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92418369268D1413002DF4B6 /* Cards.swift */; };
 		9241836D268D1440002DF4B6 /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9241836C268D1440002DF4B6 /* CardModel.swift */; };
@@ -161,6 +162,7 @@
 		9222F66825E99ED800931A36 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		9224FE69256DE45F00F79FA4 /* MembershipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipView.swift; sourceTree = "<group>"; };
 		92278A5E2556186E00D746EA /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		92332EAF271A3139001909DD /* RegisterUserCorreoPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserCorreoPasswordView.swift; sourceTree = "<group>"; };
 		923AE28725CAF3A30015ECA8 /* QrChargeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrChargeView.swift; sourceTree = "<group>"; };
 		92418369268D1413002DF4B6 /* Cards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cards.swift; sourceTree = "<group>"; };
 		9241836C268D1440002DF4B6 /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
@@ -179,7 +181,7 @@
 		927D1DA025785C4200A97455 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		927D1DA325785DF700A97455 /* UserDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataViewModel.swift; sourceTree = "<group>"; };
 		9290C1BA257AFFB000504158 /* TestpayDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestpayDetail.swift; sourceTree = "<group>"; };
-		92A3BA212553616F00DF3707 /* fastgi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fastgi.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		92A3BA212553616F00DF3707 /* Fastgi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fastgi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92A3BA242553616F00DF3707 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92A3BA262553616F00DF3707 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		92A3BA282553616F00DF3707 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -351,7 +353,7 @@
 		92A3BA222553616F00DF3707 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				92A3BA212553616F00DF3707 /* fastgi.app */,
+				92A3BA212553616F00DF3707 /* Fastgi.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -512,6 +514,7 @@
 				92A3BAA2255367C600DF3707 /* BrokenRulesView.swift */,
 				92A3BAA5255367E200DF3707 /* LoginView.swift */,
 				925C60CC264B2954004C4BEE /* LoginUserPasswordView.swift */,
+				92332EAF271A3139001909DD /* RegisterUserCorreoPasswordView.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -676,9 +679,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		92A3BA202553616F00DF3707 /* fastgi */ = {
+		92A3BA202553616F00DF3707 /* Fastgi */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 92A3BA352553617400DF3707 /* Build configuration list for PBXNativeTarget "fastgi" */;
+			buildConfigurationList = 92A3BA352553617400DF3707 /* Build configuration list for PBXNativeTarget "Fastgi" */;
 			buildPhases = (
 				974B1E4A235B59D7E00209E0 /* [CP] Check Pods Manifest.lock */,
 				92A3BA1D2553616F00DF3707 /* Sources */,
@@ -690,7 +693,7 @@
 			);
 			dependencies = (
 			);
-			name = fastgi;
+			name = Fastgi;
 			packageProductDependencies = (
 				92A3BAFE25536D7A00DF3707 /* ValidatedPropertyKit */,
 				92DBE2A125537827001B791B /* SwiftUIRefresh */,
@@ -700,7 +703,7 @@
 				921CADFF26FC126000812521 /* CarBode */,
 			);
 			productName = fastgi;
-			productReference = 92A3BA212553616F00DF3707 /* fastgi.app */;
+			productReference = 92A3BA212553616F00DF3707 /* Fastgi.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -738,7 +741,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				92A3BA202553616F00DF3707 /* fastgi */,
+				92A3BA202553616F00DF3707 /* Fastgi */,
 			);
 		};
 /* End PBXProject section */
@@ -826,6 +829,7 @@
 				9202E997255DF485009115ED /* test.swift in Sources */,
 				92FC4BEB26FE7F35005F0395 /* ListMoneyView.swift in Sources */,
 				92A3BA252553616F00DF3707 /* AppDelegate.swift in Sources */,
+				92332EB0271A3139001909DD /* RegisterUserCorreoPasswordView.swift in Sources */,
 				92A3BA822553661600DF3707 /* UpdateUserModel.swift in Sources */,
 				9202E994255DF196009115ED /* WelcomeTermsAndConditionsView.swift in Sources */,
 				92A3BACB2553698200DF3707 /* SearchBar.swift in Sources */,
@@ -1081,7 +1085,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.11;
+				MARKETING_VERSION = 1.0.16;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hegaro.fastgicredit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1108,7 +1112,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.11;
+				MARKETING_VERSION = 1.0.16;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hegaro.fastgicredit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1129,7 +1133,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		92A3BA352553617400DF3707 /* Build configuration list for PBXNativeTarget "fastgi" */ = {
+		92A3BA352553617400DF3707 /* Build configuration list for PBXNativeTarget "Fastgi" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				92A3BA362553617400DF3707 /* Debug */,

@@ -37,3 +37,16 @@ struct UserPasswordResponse: Codable {
     var ok :Bool
     var usuarioPassword : UsuarioPassword
 }
+//login correo password
+
+struct UserCorreoPasswordResponse: Codable {
+    var ok :Bool
+    var usuario : UsuarioCorreoPassword
+    var token : String
+}
+
+//register correo password
+struct RegisterCorreoPasswordResponse: Codable {
+    var ok :Bool
+    var usuario : UsuarioCorreoPassword
+}

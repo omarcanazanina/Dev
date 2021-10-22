@@ -59,7 +59,7 @@ struct MenuView: View {
                 }*/
                 Button(action: {
                     self.authState.isAuth = false
-                    self.navigationRoot.changeRootClose()
+                    self.navigationRoot.changeRootClose1()
                 }) {
                     HStack{
                         Image(systemName: "arrow.right.to.line.alt")

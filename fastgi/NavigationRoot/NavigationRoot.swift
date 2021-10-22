@@ -52,4 +52,20 @@ class NavigationRoot{
            window.makeKeyAndVisible()
         }
     }
+    //cerrar sesion user password
+    func changeRootClose1(){
+        self.storage.removeObject(forKey: "_id")
+        self.storage.removeObject(forKey: "token")
+        let authState = AuthState()
+        let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+
+        if let windowScenedelegate = scene?.delegate as? SceneDelegate {
+           let window = UIWindow(windowScene: scene!)
+           window.rootViewController = UIHostingController(rootView:LoginUserPasswordView()
+            .environmentObject(authState)
+            )
+           windowScenedelegate.window = window
+           window.makeKeyAndVisible()
+        }
+    }
 }

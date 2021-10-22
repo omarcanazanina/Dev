@@ -50,7 +50,7 @@ struct WelcomeTermsAndConditionsView: View {
             Button(action: {
                 print("Aceptar")
                 self.storage.set("1", forKey: "termsAndConditions")
-                self.navRoot.changeRootClose()
+                self.navRoot.changeRootClose1()
             }){
                 Text("Aceptar y continuar")
                     .foregroundColor(Color.white)

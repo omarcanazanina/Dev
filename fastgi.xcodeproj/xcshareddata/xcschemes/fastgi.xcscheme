@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "92A3BA202553616F00DF3707"
-               BuildableName = "fastgi.app"
-               BlueprintName = "fastgi"
+               BuildableName = "Fastgi.app"
+               BlueprintName = "Fastgi"
                ReferencedContainer = "container:fastgi.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,8 +45,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "92A3BA202553616F00DF3707"
-            BuildableName = "fastgi.app"
-            BlueprintName = "fastgi"
+            BuildableName = "Fastgi.app"
+            BlueprintName = "Fastgi"
             ReferencedContainer = "container:fastgi.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "92A3BA202553616F00DF3707"
-            BuildableName = "fastgi.app"
-            BlueprintName = "fastgi"
+            BuildableName = "Fastgi.app"
+            BlueprintName = "Fastgi"
             ReferencedContainer = "container:fastgi.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

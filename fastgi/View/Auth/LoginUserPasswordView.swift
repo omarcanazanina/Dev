@@ -8,49 +8,61 @@
 import SwiftUI
 
 struct LoginUserPasswordView: View {
+    @ObservedObject var login = Login()
     @State var correo: String = ""
     @State var password: String = ""
+    @State private var action:Int? = 0
     var body: some View {
-        VStack(spacing:20) {
-           
-            Text("Fastgi")
-                .font(.largeTitle)
-                .foregroundColor(.white)
-                .padding(.top)
-            
-            VStack(alignment: .leading, spacing: 8){
-                Text("CORREO ELECTRÓNICO")
-                    .textStyle(TitleStyle1())
-                TextField("user@email.com", text: self.$correo)
-                    .textFieldStyle(Input())
-                    .keyboardType(.emailAddress)
-            }
-            
-            VStack(alignment: .leading, spacing: 8){
-                Text("PASSWORD")
-                    .textStyle(TitleStyle1())
-                TextField("password", text: self.$password)
-                    .textFieldStyle(Input())
-                    .keyboardType(.alphabet)
-            }
-            Button(action: {
+        NavigationView{
+            VStack(spacing :40) {
+               
+                Text("Fastgi")
+                    .font(.largeTitle)
+                    .foregroundColor(.white)
+                    .padding(.top)
                 
-            })
-            {
-                Text("Ingresar")
-                    .textStyle(TextButtonLoginStyle())
+                VStack(alignment: .leading, spacing: 8){
+                    Text("CORREO ELECTRÓNICO")
+                        .textStyle(TitleStyle1())
+                    TextField("user@email.com", text: self.$correo)
+                        .textFieldStyle(Input())
+                        .keyboardType(.emailAddress)
+                }
+                
+                VStack(alignment: .leading, spacing: 8){
+                    Text("PASSWORD")
+                        .textStyle(TitleStyle1())
+                    TextField("password", text: self.$password)
+                        .textFieldStyle(Input())
+                        .keyboardType(.alphabet)
+                }
+                Button(action: {
+                    self.action = 1
+                }){
+                    Text("Registrarse")
+                        .font(.caption)
+                        .foregroundColor(.white)
+                }
+                Button(action: {
+                    self.login.userPassword(correo: self.correo, password: self.password)
+                })
+                {
+                    Text("Ingresar")
+                        .textStyle(TextButtonLoginStyle())
+                }
+                
+                Spacer()
+                NavigationLink(destination: RegisterUserCorreoPasswordView(), tag: 1, selection: self.$action) {
+                   EmptyView()
+                }
             }
-            
-            Spacer()
-          /*  NavigationLink(destination: CodeView(number: "12121212", smstext: self.loginVM.smstext), tag: "idlogin", selection: self.$login.ruta) {
-                EmptyView()
-            }*/
+        
+            .padding([.top, .leading, .trailing])
+            .frame(maxWidth:.infinity, maxHeight: .infinity)
+            .background(Color("primary"))
+            .edgesIgnoringSafeArea(.top)
         }
-    
-        .padding([.top, .leading, .trailing])
-        .frame(maxWidth:.infinity, maxHeight: .infinity)
-        .background(Color("primary"))
-        .edgesIgnoringSafeArea(.top)
+       
     }
 }
 
