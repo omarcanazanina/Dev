@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ListCreditCardView: View {
+    
     @State private var cards = ["mastercard", "visa", "mastercard", "visa", "visa"]
     @ObservedObject var CardsVM = CardsViewModel()
     var body: some View {
@@ -18,6 +19,7 @@ struct ListCreditCardView: View {
                         ItemListCreditCardView(logo: card)
                     }*/
                     Text("Fastgi")
+                    Text("Fastgi1")
                     ForEach(self.CardsVM.ListCards, id: \.self._id){ (card:CardModel) in
                         //NavigationLink(destination: ValidateCvvView(validateCvv: self.validateCvv)) {
                         Text("card.card_nombre")

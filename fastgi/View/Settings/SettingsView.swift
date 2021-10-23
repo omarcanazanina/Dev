@@ -217,7 +217,11 @@ import SDWebImageSwiftUI
 }*/
 
 struct SettingsView: View {
-    
+    //lista de tarjetas
+    @State private  var cardNumber = ""
+    @State private  var idCard = ""
+    @State var isView1Active: Bool = false
+    //
     @ObservedObject var login = Login()
     //imagen
     // @ObservedObject var image = ImageAvatar()
@@ -399,8 +403,9 @@ struct SettingsView: View {
                 VStack(alignment: .leading, spacing: 8){
                     
                     Divider()
-                    NavigationLink(destination: ListCreditCardView()) {
-                        HStack{
+                   // NavigationLink(destination: ListCreditCardView()) {
+                    NavigationLink(destination: SelectCreditCardView( cardNumber1: $cardNumber, idCard1: $idCard) , isActive: $isView1Active) {
+                    HStack{
                             Image(systemName: "creditcard")
                             Text("MÉTODOS DE PAGO")
                                 .font(.caption)
