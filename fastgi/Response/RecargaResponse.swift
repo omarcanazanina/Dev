@@ -17,7 +17,15 @@ struct GetRecargasResponse : Codable {
     let ok :Bool
     let recarga: [RecargaListModel]
 }
+
+struct FiltrarRecargaResponse : Codable {
+    let ok : Bool
+    let estado : String
+    let recarga: [RecargaListModel]
+}
+
 struct ErrorRecargaResponse : Codable {
     var ok : Bool
     var err : ErrorRecarga
 }
+

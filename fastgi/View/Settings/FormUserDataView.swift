@@ -10,7 +10,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 struct FormUserDataView: View {
     var updateUser = UpdateUser()
-    @State var text: String = ""
+    @State var correoEstatico: String = "elvin@gmail.com"
     @ObservedObject var login = Login()
     @ObservedObject var updateVM = UpdateUserViewModel()
     var navigationRoot = NavigationRoot()
@@ -105,9 +105,9 @@ struct FormUserDataView: View {
                          }
                     Text("CORREO ELECTRÓNICO")
                         .textStyle(TitleStyle())
-                    TextField("user@email.com", text: self.$userDataVM.user1.correo, onEditingChanged: { changed in self.AddSpace = false})
-                    .textFieldStyle(Input())
-                        .keyboardType(.emailAddress)
+                    TextField("user@email.com", text: self.$correoEstatico)
+                      .textFieldStyle(InputCorreo())
+                        //.keyboardType(.emailAddress)
                     Text("NOMBRES")
                         .textStyle(TitleStyle())
                     TextField("user name", text: self.$userDataVM.user1.nombres, onEditingChanged: { changed in self.AddSpace = false})
@@ -167,7 +167,7 @@ struct FormUserDataView: View {
     var buttonSuccess:some View {
         VStack(){
             Button(action: {
-                self.updateVM.updateUser(ci: self.userDataVM.user1.ci, correo: self.userDataVM.user1.correo, nombres: self.userDataVM.user1.nombres, apellidos: self.userDataVM.user1.apellidos, direccion: self.userDataVM.user1.direccion, nombrenit: self.userDataVM.user1.nombrenit, nit: self.userDataVM.user1.nit)
+                self.updateVM.updateUser(ci: self.userDataVM.user1.ci, correo: "elvin@gmail.com", nombres: self.userDataVM.user1.nombres, apellidos: self.userDataVM.user1.apellidos, direccion: self.userDataVM.user1.direccion, nombrenit: self.userDataVM.user1.nombrenit, nit: self.userDataVM.user1.nit)
                 //self.authState.navigateBack = true
                 self.alertState = true
             }){

@@ -113,7 +113,49 @@ class Recargas: ObservableObject {
                    }
                }
        }
-       
+}
+
+func FiltarRecargas(fecha_ini: String, fecha_fin:String){
+   // self.isloading = true
+    let parametros : Parameters = [
+        "fecha_ini":fecha_ini,
+        "fecha_fin":fecha_fin
+          ]
     
+     // creando headers
+    var headers: HTTPHeaders = [
+           "Accept": "application/json"
+     ]
+ 
+     
+    guard let url = URL(string: "https://api.fastgi.com/recarga") else { return }
+    DispatchQueue.main.async {
+        AF.request(url,method:.get,parameters: parametros,headers: headers )
+            // .validate(contentType: ["application/json"])
+            .responseData{response in
+                print("aki")
+                 debugPrint(response)
+                //print(response)
+                switch response.result {
+                case let .success(data):
+                    //Cast respuesta a SmsResponse
+                    if let decodedResponse = try? JSONDecoder().decode(FiltrarRecargaResponse.self, from: data) {
+                        print("entro al filtro")
+                        // self.ruta = "idlogin"
+                        return
+                    }
+                    //Cast respuesta a ErrorResponce
+                    if let decodedResponse = try? JSONDecoder().decode(ErrorRecargaResponse.self, from: data) {
+                        print(decodedResponse.err.message)
+                        //self.isloading = false
+                        //  self.ErrorRes = decodedResponse.err.message
+                        return
+                    }
+                case let .failure(error):
+                    //self.isloading = false
+                    print(error)
+                }
+        }
+    }
     
 }

@@ -25,16 +25,15 @@ struct MenuView: View {
     var body: some View {
         VStack{
             List {
-                Button(action: {
-                    self.login.ruta = "updateform"
-                }) {
-                    HStack{
-                        Image(systemName: "pencil")
-                        Text("Editar datos")
-                        Spacer()
-                    }
-                    NavigationLink(destination: FormUserDataView(), tag: "updateform", selection: self.$login.ruta) {
-                        EmptyView()
+                NavigationLink(destination: FormUserDataView(), tag: "updateform", selection: self.$login.ruta) {
+                    Button(action: {
+                        self.login.ruta = "updateform"
+                    }) {
+                        HStack{
+                            Image(systemName: "pencil")
+                            Text("Editar datos")
+                            Spacer()
+                        }
                     }
                 }
                 /*Button(action: {
@@ -48,9 +47,10 @@ struct MenuView: View {
                 NavigationLink(destination: TermsAndConditionsView()) {
                     HStack{
                         Image(systemName: "book")
-                        Text("Términos de uso")
+                        Text("Términos y condiciones de uso")
                     }
                 }
+            
                 /*NavigationLink(destination: AboutFastgiView()) {
                     HStack{
                         Image(systemName: "info.circle")

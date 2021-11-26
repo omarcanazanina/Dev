@@ -500,10 +500,12 @@ struct HomeView: View {
                 }){
                     Text("test")
                 }
-             
-                NavigationLink(destination: QrPayView(dataUserlog: self.userDataVM.user), tag: 44, selection: self.$action) {
+             NavigationLink(destination: TransactionDetailView(fecha: "05/09/2020", hora: "20:48:36", empresa:  "Entel", phone: "60287987", monto: "50", control: 1, fechaFormat: "", horaFormat: ""), tag: 44, selection: self.$action) {
+                     EmptyView()
+             }
+               /* NavigationLink(destination: QrPayView(dataUserlog: self.userDataVM.user), tag: 44, selection: self.$action) {
                     EmptyView()
-                }
+                }*/
                 /*NavigationLink(destination: ToastView(), tag: 44, selection: self.$action) {
                     EmptyView()
                 }*/

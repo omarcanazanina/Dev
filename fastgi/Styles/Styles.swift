@@ -142,6 +142,17 @@ struct Input: ViewModifier {
     }
 }
 
+struct InputCorreo: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .padding(.horizontal,12)
+            .padding(.vertical,8)
+            .background(Color("input"))
+            .clipShape(Capsule())
+            .disabled(true)
+    }
+}
+
 
 func UIColorPrimary() -> UIColor {
     return UIColor(red: 0.44, green: 0.13, blue: 0.92, alpha: 1)

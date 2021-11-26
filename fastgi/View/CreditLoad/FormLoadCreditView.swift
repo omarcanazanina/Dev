@@ -230,6 +230,7 @@ struct FormLoadCreditView: View {
         //llamado desde ContactsViewModel
          .onAppear{
             //self.userDataVM.DatosUser()
+            print("entro")
             self.contactsVM.getContacts()
         }
        

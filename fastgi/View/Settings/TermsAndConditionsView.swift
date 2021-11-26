@@ -10,7 +10,12 @@ import SwiftUI
 struct TermsAndConditionsView: View {
     var body: some View {
         ScrollView{
-            Text("El vídeo proporciona una manera eficaz para ayudarle a demostrar el punto. Cuando haga clic en Vídeo en línea, puede pegar el código para insertar del vídeo que desea agregar. También puede escribir una palabra clave para buscar en línea el vídeo que mejor se adapte a su documento. Para otorgar a su documento un aspecto profesional, Word proporciona encabezados, pies de página, páginas de portada y diseños de cuadro de texto que se complementan entre sí. Por ejemplo, puede agregar una portada coincidente, el encabezado y la barra lateral. Haga clic en Insertar y elija los elementos que desee de las distintas galerías. Los temas y estilos también ayudan a mantener su documento coordinado. Cuando haga clic en Diseño y seleccione un tema nuevo, cambiarán las imágenes, gráficos y gráficos SmartArt para que coincidan con el nuevo tema.")
+            Text("Bienvenidos a Fastgi.com el uso de nuestros servicios a través de Fastgi.com manifiesta la aceptación de estos términos y condiciones de uso. Por favor leer este documento cuidadosamente. el presente contrato describe los términos y condiciones generales aplicables al uso (ejemplo: visita, registro, compra, recarga, transferencia e inicio de sesión) de los diferentes servicios brindados por Fastgi, en adelante el 'servicio', servicios brindados en este sitio web www.fastgi.com o su aplicación mobile (app), en adelante 'Fastgi.com' o el 'sitio', la persona natural o juridica que haga uso de los servicios brindados por el sitio.")
+            Spacer()
+            Text("En adelante sera mencionada como el 'usuario'. adicionalmente a los servicios de compra de crédito, pago de servicio, transferencia de crédito anteriormente mencionados, Fastgi.com podra ofrecer otros tipos de servicios los cuales estarán igualmente sujetos a los términos y condiciones generales de uso y a las condiciones particulares y aplicables al servicio.")
+            Spacer()
+            Text("Cualquier persona que desee acceder y/o usar el servicio, podra hacerlo sujetandose a los términos y condiciones del uso del sitio o aplicación mobile, las políticas de privacidad del sitio o aplicación mobile, y cada una de las cláusulas que se presentan y que en adelante se detalla.")
+            Text("CUALQUIER PERSONA NATURAL O JURÍDICA QUE NO ACEPTE LO ANTERIORMENTE MENCIONADO Y LO QUE SE DETALLA A CONTINUACIÓN, LO CUAL TIENE UN CARÁCTER OBLIGATORIO Y VINCULANTE, DEBERA ABSTENERSE DE UTILIZAR EL SERVICIO DE FASTGI.COM")
                 .lineLimit(nil)
                 .multilineTextAlignment(.leading)
                 .padding()
