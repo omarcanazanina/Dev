@@ -24,6 +24,7 @@ struct HomeView: View {
        @ObservedObject var userData = UserData()
        @ObservedObject var userDataVM = UserDataViewModel()
        @ObservedObject var contactsVM = ContactsViewModel()
+        @ObservedObject var contacts = Contacts()
        //lector qr
        @State private var showScannerTeleferico = false
        @State private var showScannerTransporte = false
@@ -67,9 +68,8 @@ struct HomeView: View {
         let appearance = UINavigationBarAppearance()
         appearance.shadowColor = .clear
         UINavigationBar.appearance().standardAppearance = appearance
-        //self.contactsVM.getContacts()
+        self.contactsVM.getContacts()
         self.userDataVM.DatosUser()
-
         //print("init del home \(self.userDataVM.user._id)")
         /*self.updateVM.updateUser(ci: self.userDataVM.user.ci, correo: self.userDataVM.user.correo, nombres: self.userDataVM.user.nombres, apellidos: self.userDataVM.user.apellidos, direccion: self.userDataVM.user.direccion, nombrenit: self.userDataVM.user.nombrenit, nit: self.userDataVM.user.nit)*/
         //self.userDataVM.DatosUser()
@@ -418,9 +418,9 @@ struct HomeView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                     .padding(.vertical,10)
                 HStack{
-                    CardServiceHomeView( logo: "Entel", isSelect: false, currentBtnEm: self.$currentBtnEm, btn: .Entel)
-                    CardServiceHomeView(logo: "Viva", isSelect: false, currentBtnEm: self.$currentBtnEm, btn: .Viva)
-                    CardServiceHomeView(logo: "Tigo", isSelect: false, currentBtnEm: self.$currentBtnEm, btn: .Tigo)
+                    CardServiceHomeView(contContacts: self.contactsVM.listContacts.count, logo: "Entel", isSelect: false, currentBtnEm: self.$currentBtnEm, btn: .Entel)
+                    CardServiceHomeView(contContacts: self.contactsVM.listContacts.count, logo: "Viva", isSelect: false, currentBtnEm: self.$currentBtnEm, btn: .Viva)
+                    CardServiceHomeView(contContacts: self.contactsVM.listContacts.count, logo: "Tigo", isSelect: false, currentBtnEm: self.$currentBtnEm, btn: .Tigo)
                 }
             }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
             //tarjeta interna
@@ -494,15 +494,15 @@ struct HomeView: View {
             // test button
            /* VStack{
                 Button(action: {
-                    self.action = 44
+                    //self.action = 44
                    // self.qrPayment.obtenerQr(id_qr: "6160b6502319e611418d95b5")
                   
                 }){
-                    Text("test")
+                    Text("test \(self.contactsVM.listContacts.count)")
                 }
-             NavigationLink(destination: TransactionDetailView(fecha: "05/09/2020", hora: "20:48:36", empresa:  "Entel", phone: "60287987", monto: "50", control: 1, fechaFormat: "", horaFormat: ""), tag: 44, selection: self.$action) {
+             /*NavigationLink(destination: TransactionDetailView(fecha: "05/09/2020", hora: "20:48:36", empresa:  "Entel", phone: "60287987", monto: "50", control: 1, fechaFormat: "", horaFormat: ""), tag: 44, selection: self.$action) {
                      EmptyView()
-             }
+             }*/
                /* NavigationLink(destination: QrPayView(dataUserlog: self.userDataVM.user), tag: 44, selection: self.$action) {
                     EmptyView()
                 }*/
@@ -515,6 +515,11 @@ struct HomeView: View {
         .alert(isPresented:  self.$alertState){
             self.alerts
         }
+      /*  .onAppear{
+            print("**ENTRO**")
+            self.contactsVM.getContacts()
+            print("**SALIO**")
+        }*/
         /*.alert(isPresented:  self.$qrPaymentVM.alertNoAfiliado){
             self.alerts
         }*/

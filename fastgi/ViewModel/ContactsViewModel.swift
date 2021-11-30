@@ -63,8 +63,7 @@ class ContactsViewModel: ObservableObject {
         }
         .eraseToAnyPublisher()
     }
-    
- 
+   
     
     init() {
         isListContactsPublisher
@@ -86,15 +85,12 @@ class ContactsViewModel: ObservableObject {
             .receive(on: RunLoop.main)
             .assign(to: \.controlContacts, on: self)
             .store(in: &disposables)
-        
         //getContacts()
     }
     
     
     func getContacts() {
-        print("repite contacts")
         self.contactsResponse.ListContacts()
-        
        }
     
     func updateContacts() {

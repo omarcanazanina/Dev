@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CardServiceHomeView: View {
     //var nombreUsu: String
-    //var contContacts : Int
+    var contContacts : Int
     var logo : String
     @State var isSelect:Bool
     @ObservedObject var login = Login()
@@ -22,13 +22,13 @@ struct CardServiceHomeView: View {
     //navegation
     @State private var action:Int? = 0
     let btn: BtnEm
+
     var body: some View {
         HStack{
             Button(action: {
                 //self.login.ruta = "recargas"
                 self.currentBtnEm = self.btn
                 self.action = 1
-                
                // print("este es el current desde el home\(self.currentBtnEm)")
                 //print("este es el btn desde el home\(self.btn)")
                 //self.contactsVM.getContacts()
@@ -53,15 +53,15 @@ struct CardServiceHomeView: View {
                 )
             }.buttonStyle(PlainButtonStyle())
             if self.logo == "Entel"{
-                NavigationLink(destination: FormLoadCreditView(empresa: self.logo, selectEm: .Entel, MontoRecarga1: .Btn30, MontoRecarga: ""), tag: 1, selection: self.$action) {
+                NavigationLink(destination: FormLoadCreditView(contContacts: self.contContacts, empresa: self.logo, selectEm: .Entel, MontoRecarga1: .Btn30, MontoRecarga: ""), tag: 1, selection: self.$action) {
                     EmptyView()
                 }
             }else if self.logo == "Viva"{
-                NavigationLink(destination: FormLoadCreditView( empresa: self.logo, selectEm: .Viva, MontoRecarga1: .Btn30, MontoRecarga: ""), tag: 1, selection: self.$action) {
+                NavigationLink(destination: FormLoadCreditView( contContacts: self.contContacts, empresa: self.logo, selectEm: .Viva, MontoRecarga1: .Btn30, MontoRecarga: ""), tag: 1, selection: self.$action) {
                     EmptyView()
                 }
             }else{
-                NavigationLink(destination: FormLoadCreditView(empresa: self.logo, selectEm: .Tigo, MontoRecarga1: .Btn30, MontoRecarga: ""), tag: 1, selection: self.$action) {
+                NavigationLink(destination: FormLoadCreditView(contContacts: self.contContacts, empresa: self.logo, selectEm: .Tigo, MontoRecarga1: .Btn30, MontoRecarga: ""), tag: 1, selection: self.$action) {
                     EmptyView()
                 }
             }
@@ -72,7 +72,6 @@ struct CardServiceHomeView: View {
         .frame(maxWidth:.infinity)
         .shadow(color: Color.black.opacity(0.1), radius: 4, x: 2, y: 3)
        
-        
     }
 
 }
