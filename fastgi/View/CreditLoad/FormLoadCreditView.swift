@@ -149,7 +149,7 @@ struct FormLoadCreditView: View {
                     print(self.telefono)
                     print(self.idCard)
                    
-                   if  self.telefono == "" {
+                    if  self.telefono == "" {
                         self.alertState = true
                     }else{
                         if self.MontoRecarga == ""{
