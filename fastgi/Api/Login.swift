@@ -140,7 +140,7 @@ class Login: ObservableObject {
                     case let .success(data):
                         //Cast respuesta a SmsResponse
                         if let decodedResponse = try? JSONDecoder().decode(UserCorreoPasswordResponse.self, from: data) {
-                            print("entro")
+                            print("entro a la funcion userPassword")
                             print(decodedResponse.usuario)
                             self.storage.set(decodedResponse.token, forKey: self.tokenKey)
                             self.storage.set(decodedResponse.usuario._id, forKey: self.idKey)
@@ -184,9 +184,8 @@ class Login: ObservableObject {
                     case let .success(data):
                         //Cast respuesta a SmsResponse
                         if let decodedResponse = try? JSONDecoder().decode(RegisterCorreoPasswordResponse.self, from: data) {
-                            print("entro")
+                            print("entro a la funcion")
                             print(decodedResponse.usuario)
-                       
                             return
                         }
                         //Cast respuesta a ErrorResponce

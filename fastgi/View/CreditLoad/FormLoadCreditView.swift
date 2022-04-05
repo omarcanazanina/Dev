@@ -207,6 +207,7 @@ struct FormLoadCreditView: View {
     var alerts:Alert{
         Alert(title: Text("Fastgi"), message: Text("Ingrese todos los campos por favor."), dismissButton: .default(Text("Aceptar"), action: {
             //self.presentationMode.wrappedValue.dismiss()
+            //self.presentationMode.wrappedValue.dismiss()
         }))
     }
     

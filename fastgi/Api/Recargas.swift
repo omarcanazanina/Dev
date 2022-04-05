@@ -82,7 +82,8 @@ class Recargas: ObservableObject {
 
 
      func ListRecargas(){
-           // creando headers
+         
+           // creando headers func listRecargas(){
            var headers: HTTPHeaders = [
                "Accept": "application/json"
            ]
@@ -140,7 +141,7 @@ func FiltarRecargas(fecha_ini: String, fecha_fin:String){
                 case let .success(data):
                     //Cast respuesta a SmsResponse
                     if let decodedResponse = try? JSONDecoder().decode(FiltrarRecargaResponse.self, from: data) {
-                        print("entro al filtro")
+                        print("entro al filtro funcion de filtrarRecargas")
                         // self.ruta = "idlogin"
                         return
                     }
